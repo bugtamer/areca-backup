@@ -1,0 +1,21 @@
+# IDEs
+.vscode/
+
+# Project folders
+building/
+plugins/
+jdk/
+jre/
+lib/
+releases/
+
+# C Language
+*.h
+*.o
+
+# Java
+*.class
+*.jar
+
+# Areca files
+*.log
