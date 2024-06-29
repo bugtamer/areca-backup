@@ -2,7 +2,8 @@
 .vscode/
 
 # Project folders
-building/
+building/apache-ivy/
+classes/
 plugins/
 jdk/
 jre/

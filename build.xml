@@ -5,13 +5,17 @@
      Syntax : ant -buildfile compile.xml
 -->
 
-<project name="Areca compilation" default="compileall">
+<project name="Areca compilation" default="compileall" xmlns:ivy="antlib:org.apache.ivy.ant">
     <description>Areca's compilation script</description>
 
-    <!-- Path to SWT libraries (download the SWT package if this file is missing on your system) -->
-    <property name="swtfile" value="/usr/lib/java/swt.jar"/>
-
     <property name="root" value="."/>
+
+    <!-- Path to SWT libraries (download the SWT package if this file is missing on your system) -->
+    <property name="swtfile" value="${root}/lib/swt.jar"/>
+    <property name="scripts.dir" value="${root}/building/scripts"/>
+
+    <import file="${scripts.dir}/swt-platform.xml"/>
+    <import file="${scripts.dir}/dependency-manager.xml"/>
 
     <!-- Test the OS -->
     <condition property="isWindows">
@@ -97,6 +101,7 @@
 
     <target name="compileall">
         <description>Global compilation task (builds areca.jar and libarecafs.so)</description>
+        <antcall target="get-java-dependencies"/>
         <antcall target="compilejava"/>
         <antcall target="jnicheck"/>
         <antcall target="compilejni"/>
