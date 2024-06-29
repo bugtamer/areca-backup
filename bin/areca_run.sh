@@ -73,6 +73,8 @@ check_version() {
     else
       return 0
     fi
+  elif [ "$JAVA_IMPL" = "openjdk" ] ; then
+    return 0 # the very first version of OpenJDK is 7
   else
     return 1
   fi
