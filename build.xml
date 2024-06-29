@@ -35,6 +35,7 @@
                destdir="${root}/classes"
                debug="off"
                source="1.4"
+               encoding="ISO-8859-1"
         >
             <classpath>
                 <fileset dir="${root}/lib">
