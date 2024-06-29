@@ -66,6 +66,9 @@
             <class name="com.myJava.file.metadata.posix.jni.wrapper.FileAccessWrapper"/>
         </javah>
 
+        <chmod file="${scripts.dir}/locate-jni-headers.sh" perm="755" type="file"/>
+        <exec dir="${scripts.dir}" executable="./locate-jni-headers.sh" os="Linux" outputproperty="jni.h.dir"/>
+
         <!-- Compile the JNI code -->
         <exec dir="${root}/jni" executable="gcc">
             <arg value="-c"/>
@@ -74,6 +77,7 @@
             <arg value="com_myJava_file_metadata_posix_jni_wrapper_FileAccessWrapper.c"/>
             <arg value="-o"/>
             <arg value="com_myJava_file_metadata_posix_jni_wrapper_FileAccessWrapper.o"/>
+            <arg value="-I${jni.h.dir}"/>
         </exec>
         <exec dir="${root}/jni" executable="gcc">
             <arg value="-shared"/>
