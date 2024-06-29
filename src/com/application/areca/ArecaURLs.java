@@ -4,12 +4,14 @@ package com.application.areca;
  * 
  * <BR>
  * @author Olivier PETRUCCI
+ * @author bugtamer
  * <BR>
  *
  */
 
  /*
  Copyright 2005-2015, Olivier PETRUCCI.
+ Copyright 2024, bugtamer.
 
 This file is part of Areca.
 
@@ -29,12 +31,18 @@ This file is part of Areca.
 
  */
 public interface ArecaURLs {
-	public String HELP_ROOT = "http://www.areca-backup.org/documentation.php?fromApplication=1&currentVersion=";
-	public String TUTORIAL_ROOT = "http://www.areca-backup.org/tutorial.php?fromApplication=1&currentVersion=";
+    /** Only used to shorten Areca URLs. */
+    static String BASE_URL = "https://bugtamer.github.io/areca-backup-legacy-documentation/areca-backup.org";
+
+    /** Only used to shorten Areca URLs. */
+    static String QUERY_PARAMS = "?fromApplication=1&currentVersion=";
+
+	public String HELP_ROOT       = BASE_URL + "/documentation.html" + QUERY_PARAMS;
+	public String TUTORIAL_ROOT   = BASE_URL + "/tutorial.html"      + QUERY_PARAMS;
 	public String DONATION_URL = "https://www.paypal.com/cgi-bin/webscr?item_name=Donation+to+Areca+Backup&cmd=_donations&business=olivier.petrucci%40gmail.com&lc=US";
-	public String ARECA_URL = "http://www.areca-backup.org";
-	public String REGEX_URL = "http://www.areca-backup.org/regex.php";
-    public String VERSION_URL = "http://www.areca-backup.org/version_xml.php";
-    public String BACKUP_COPY_URL = "http://www.areca-backup.org/config_backup.php";
-    public String PLUGINS_URL = "http://www.areca-backup.org/plugin_list.php";
+	public String ARECA_URL       = BASE_URL;
+	public String REGEX_URL       = BASE_URL + "/regex.html";
+    public String VERSION_URL     = "https://raw.githubusercontent.com/bugtamer/areca-backup-legacy-documentation/main/areca-backup.org/version.xml";
+    public String BACKUP_COPY_URL = BASE_URL + "/config_backup.html";
+    public String PLUGINS_URL     = BASE_URL + "/plugin_list.html";
 }

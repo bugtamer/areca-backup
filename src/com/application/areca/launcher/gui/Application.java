@@ -94,12 +94,14 @@ import com.myJava.util.xml.AdapterException;
  * <BR>
  * 
  * @author Olivier PETRUCCI <BR>
+ * @author bugtamer
  *         
  *
  */
 
  /*
  Copyright 2005-2015, Olivier PETRUCCI.
+ Copyright 2024, bugtamer.
 
 This file is part of Areca.
 
@@ -868,7 +870,7 @@ public class Application implements ActionConstants, Window.IExceptionHandler, A
 						VersionData currentVersion = VersionInfos
 								.getLastVersion();
 
-						if (currentVersion.equals(data)) {
+						if (currentVersion.isGreaterThanOrEqualsTo(data)) {
 							Logger.defaultLogger().info(
 									"No new version found : v"
 											+ data.getVersionId()
