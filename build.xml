@@ -68,6 +68,7 @@
 
         <chmod file="${scripts.dir}/locate-jni-headers.sh" perm="755" type="file"/>
         <exec dir="${scripts.dir}" executable="./locate-jni-headers.sh" os="Linux" outputproperty="jni.h.dir"/>
+        <available type="file" file="${jni.h.dir}/linux/jni_md.h" property="jni_md.h.dir" value="${jni.h.dir}/linux"/>
 
         <!-- Compile the JNI code -->
         <exec dir="${root}/jni" executable="gcc">
@@ -78,6 +79,7 @@
             <arg value="-o"/>
             <arg value="com_myJava_file_metadata_posix_jni_wrapper_FileAccessWrapper.o"/>
             <arg value="-I${jni.h.dir}"/>
+            <arg value="-I${jni_md.h.dir}"/>
         </exec>
         <exec dir="${root}/jni" executable="gcc">
             <arg value="-shared"/>
