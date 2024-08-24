@@ -113,7 +113,8 @@ implements ArecaURLs {
 					}
 				}
 			});
-			lnk.setText("<A HREF=\"" + ARECA_URL + "\">areca-backup.org</A>");
+            final String anchorLabel = RM.getLabel("preferences.checkversions.official.site.label");
+			lnk.setText("<A HREF=\"" + ARECA_URL + "\">" + anchorLabel + "</A>");
 			lnk.setLayoutData(dt3);
 
 			tabs.setSelection(selectedIndex);
