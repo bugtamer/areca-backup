@@ -39,12 +39,14 @@ import com.myJava.util.version.VersionData;
 /**
  * <BR>
  * @author Olivier PETRUCCI
+ * @author bugtamer
  * <BR>
  *
  */
 
  /*
  Copyright 2005-2015, Olivier PETRUCCI.
+ Copyright 2024, bugtamer.
 
 This file is part of Areca.
 
@@ -66,7 +68,6 @@ This file is part of Areca.
 public class AboutWindow
 extends AbstractWindow
 implements ArecaURLs {
-	private static final int CURRENT_YEAR = VersionInfos.getLastVersion().getYear();
 	private static final int widthHint = computeWidth(400);
 	private static final int heightHint = computeHeight(250);
 
@@ -133,11 +134,23 @@ implements ArecaURLs {
 	}
 
 	private void initAboutContent(Composite composite) {
+		String authors = "AUTHORS file is missing !";
+		try {
+			URL url = ClassLoader.getSystemClassLoader().getResource("AUTHORS");
+			if (url != null) {
+				InputStream in = url.openStream();
+				FileTool tool = FileTool.getInstance();
+				authors = tool.getInputStreamContent(in, true);
+			}
+		} catch (IOException e) {
+			application.handleException("Error reading AUTHORS file", e);
+		}
+		
 		Text content = configurePanel(composite, SWT.WRAP);
 		String txt =
 				VersionInfos.APP_NAME +
 				"\n" + RM.getLabel("about.version.label") + " " + VersionInfos.getLastVersion().getVersionId() + " - " + VersionInfos.formatVersionDate(VersionInfos.getLastVersion().getVersionDate()) +
-				"\n\n" + RM.getLabel("about.copyright.label", new Object[] {""+CURRENT_YEAR});
+				"\n\n" + authors;
 
 		content.setText(txt);
 	}
