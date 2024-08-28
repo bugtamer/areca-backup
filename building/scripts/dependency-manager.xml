@@ -8,9 +8,6 @@
     <property name="ivy.jar.dir" value="${root}/building/apache-ivy"/>
     <property name="ivy.jar.file" value="${ivy.jar.dir}/ivy.jar"/>
 
-    <property name="build.dir" value="${root}/build"/>
-    <property name="src.dir" value="${root}/src"/>
-
 
     <target name="download-ivy" unless="skip.download">
         <mkdir dir="${ivy.jar.dir}"/>
@@ -19,7 +16,7 @@
     </target>
 
 
-    <target name="install-ivy" depends="download-ivy" description="--&gt; install ivy">
+    <target name="install-ivy" depends="download-ivy" description="Install Apache Ivy">
         <path id="ivy.lib.path">
             <fileset dir="${ivy.jar.dir}" includes="*.jar"/>
         </path>
@@ -27,25 +24,51 @@
     </target>
 
 
-    <target name="get-java-dependencies" depends="install-ivy,detect-swt-platform" description="--&gt; retrieve dependencies with Ivy">
+    <target name="get-java-dependencies" depends="install-ivy,detect-swt-platform" description="Retrieve dependencies with Apache Ivy">
+        <property name="swt.name" value="${swt.org}.${swt.os}.${swt.arch}"/>
+        <property name="swt.cache" value="${user.home}/.ivy2/cache/${swt.org}/${swt.name}/jars/${swt.name}-${swt.rev}.jar"/>
+        <property name="swtfile" value="${root}/building/legacy/lib/swt.jar"/>
+        <property name="lib.swt" value="${root}/lib/${swt.name}-${swt.rev}.jar"/>
+
         <ivy:retrieve conf="platform-specific" type="jar" transitive="false"/>
         <move file="${lib.swt}" tofile="${swtfile}" overwrite="true"/>
+ 
+        <checksum file="${root}/lib/swt.jar" algorithm="SHA-512" property="hash.sha512"/>
+        <checksum file="${root}/lib/swt.jar" algorithm="SHA-1"   property="hash.sha1"/>
+        <checksum file="${root}/lib/swt.jar" algorithm="MD5"     property="hash.md5"/>
+        
+        <echo message="Retrieved swt.jar (see: ivy.xml):"/>
+        <echo message="- Artifact:   ${swt.name}"/>
+        <echo message="- Repository: https://mvnrepository.com/artifact/${swt.org}/${swt.name}/${swt.rev}"/>
+        <echo message="- SHA-512:    ${hash.sha512}"/>
+        <echo message="- SHA-1:      ${hash.sha1}"/>
+        <echo message="- MD5:        ${hash.md5}"/>
     </target>
 
 
-    <target name="clean" depends="install-ivy" description="--&gt; clean the project">
-        <delete includeemptydirs="true" quiet="true">
-            <fileset dir="${build.dir}"/>
+    <target name="clean" depends="install-ivy" description="Clean the project">
+        <delete quiet="true" file="${root}/areca.exe"/>
+        <delete quiet="true" file="${root}/areca_cl.exe"/>
+        <delete quiet="true" file="${root}/lib/areca.jar"/>
+        <delete quiet="true" file="${root}/lib/swt.jar"/>
+        <delete quiet="true" file="${root}/lib/libarecafs.so"/>
+        <delete quiet="true" file="${root}/jni/com_myJava_file_metadata_posix_jni_wrapper_FileAccessWrapper.h"/>
+        <delete quiet="true" file="${root}/jni/com_myJava_file_metadata_posix_jni_wrapper_FileAccessWrapper.o"/>
+        <delete quiet="true" file="${root}/building/GenerateBuildId.class"/>
+
+        <delete quiet="true" includeemptydirs="true">
+            <fileset dir="${root}/building/releases"/>
+            <fileset dir="${root}/releases"/>
         </delete>
     </target>
     
 
-    <target name="clean-ivy" depends="install-ivy" description="--&gt; clean the Ivy installation">
+    <target name="clean-ivy" depends="install-ivy" description="Clean the Apache Ivy installation">
         <delete dir="${ivy.jar.dir}"/>
     </target>
     
 
-    <target name="clean-cache" depends="install-ivy" description="--&gt; clean the Ivy cache">
+    <target name="clean-cache" depends="install-ivy" description="Clean the Apache Ivy cache">
         <ivy:cleancache/>
     </target>
 

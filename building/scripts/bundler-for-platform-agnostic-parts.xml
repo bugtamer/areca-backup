@@ -1,0 +1,59 @@
+<project name="platform-agnostic-parts-bundler" basedir=".">
+
+    <target name="platform-agnostic-parts-bundler" depends="compileall" if="target.platform">
+        <property name="bundle.file.name" value="areca-${bundle.version}-${target.platform}"/>
+
+        <delete dir="${bundle.dir}"/>
+        <mkdir dir="${bundle.dir}"/>
+
+        <!-- bin/ -->
+
+        <!-- config/ -->
+        <copy todir="${bundle.dir}/config" preservelastmodified="true" overwrite="true">
+            <fileset dir="${root}/config"/>
+        </copy>
+
+        <!-- help/ -->
+        <copy todir="${bundle.dir}/help" preservelastmodified="true" overwrite="true">
+            <fileset dir="${root}/help"/>
+        </copy>
+
+        <!-- icons/ -->
+        <mkdir dir="${bundle.dir}/icons"/>
+        <copy file="${root}/icons/ico_16.png" tofile="${bundle.dir}/icons/ico_16.png" preservelastmodified="true" overwrite="true"/>
+        <copy file="${root}/icons/ico_72.png" tofile="${bundle.dir}/icons/ico_72.png" preservelastmodified="true" overwrite="true"/>
+
+        <!-- lib/ -->
+        <copy todir="${bundle.dir}/lib" preservelastmodified="true" overwrite="true">
+            <fileset dir="${root}/lib"/>
+            <!-- platform-specific SWT was previously set) -->
+        </copy>
+        
+        <!-- plugins/ -->
+        <mkdir dir="${bundle.dir}/plugins"/>
+
+        <!-- translations/ -->
+        <copy todir="${bundle.dir}/translations" preservelastmodified="true" overwrite="true">
+            <fileset dir="${root}/translations"/>
+        </copy>
+
+        <!-- areca.sh/exe -->
+
+        <!-- areca_check_version.sh/exe -->
+
+        <!-- AUTHORS -->
+        <copy file="${root}/AUTHORS" tofile="${bundle.dir}/AUTHORS" preservelastmodified="true" overwrite="true"/>
+
+        <!-- build.xml -->
+        <copy file="${root}/build.xml" tofile="${bundle.dir}/build.xml" preservelastmodified="true" overwrite="true"/>
+
+        <!-- COPYING -->
+        <copy file="${root}/COPYING" tofile="${bundle.dir}/COPYING" preservelastmodified="true" overwrite="true"/>
+
+        <!-- README -->
+        <copy file="${root}/README" tofile="${bundle.dir}/README" preservelastmodified="true" overwrite="true"/>
+
+        <property name="bundle.agnostic-part.ready" value="true"/>
+    </target>
+
+</project>

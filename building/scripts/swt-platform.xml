@@ -39,10 +39,12 @@
 -->
 <project name="detect-swt-platform" basedir="${root}">
 
-    <echo message="SWT platform-specific dependency"/>
+    <target name="detect-swt-platform" unless="target.platform">
+
+        <!-- avoid building bundles -->
+        <property name="target.platform" value=""/>
 
 
-    <target name="detect-swt-platform">
         <!-- Check Operative System -->
 
         <condition property="swt.os" value="win32.win32">
@@ -131,25 +133,11 @@
 
         <!-- Set SWT dependency -->
 
-        <property name="swt.org"  value="org.eclipse.swt"/>
-        <property name="swt.name" value="org.eclipse.swt.${swt.os}.${swt.arch}"/>
-        <property name="swt.rev"  value="4.3"/>
+        <property name="swt.org" value="org.eclipse.swt"/>
+        <property name="swt.rev" value="4.3"/>
 
-        <property name="swtfile"   value="${root}/building/legacy/lib/swt.jar"/>
-        <property name="swt.cache" value="${user.home}/.ivy2/cache/${swt.org}/${swt.name}/jars/${swt.name}-${swt.rev}.jar"/>
-        <property name="lib.swt"   value="${root}/lib/${swt.name}-${swt.rev}.jar"/>
-        
-        <echo message="Operative System"/>
-        <echo message="- Actual: '${os.name}'"/>
-        <echo message="- Target: '${swt.os}'"/>
-        
-        <echo message="CPU architecture"/>
-        <echo message="- Actual: '${os.arch}'"/>
-        <echo message="- Target: '${swt.arch}'"/>
-
-        <echo message="SWT dependency (See: ivy.xml)"/>
-        <echo message="- Artifact:   org.eclipse.swt.${swt.os}.${swt.arch}"/>
-        <echo message="- Repository: https://mvnrepository.com/artifact/${swt.org}/${swt.name}/${swt.rev}"/>
+        <echo message="Operative System (${os.name}) >>> SWT (${swt.os})"/>
+        <echo message="CPU architecture (${os.arch}) >>> SWT (${swt.arch})"/>
     </target>
 
 </project>

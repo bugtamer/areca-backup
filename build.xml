@@ -16,6 +16,7 @@
 
     <import file="${scripts.dir}/swt-platform.xml"/>
     <import file="${scripts.dir}/dependency-manager.xml"/>
+    <import file="${scripts.dir}/bundlers.xml"/>
 
     <!-- Test the OS -->
     <condition property="isWindows">
