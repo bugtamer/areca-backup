@@ -167,7 +167,7 @@ public class Utils implements ArecaFileConstants {
 	
 	public static String getTuiExecutableName() {
 		if (OSTool.isSystemWindows()) {
-			return "areca_cl.exe";
+			return "areca_cl.bat";
 		} else {
 			return "areca_cl.sh";
 		}
@@ -175,7 +175,7 @@ public class Utils implements ArecaFileConstants {
 	
 	public static String getGuiExecutableName() {
 		if (OSTool.isSystemWindows()) {
-			return "areca.exe";
+			return "areca.bat";
 		} else {
 			return "areca.sh";
 		}
