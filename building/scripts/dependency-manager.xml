@@ -47,8 +47,6 @@
 
 
     <target name="clean" depends="install-ivy" description="Clean the project">
-        <delete quiet="true" file="${root}/areca.exe"/>
-        <delete quiet="true" file="${root}/areca_cl.exe"/>
         <delete quiet="true" file="${root}/lib/areca.jar"/>
         <delete quiet="true" file="${root}/lib/swt.jar"/>
         <delete quiet="true" file="${root}/lib/libarecafs.so"/>
@@ -59,6 +57,7 @@
         <delete quiet="true" includeemptydirs="true">
             <fileset dir="${root}/building/releases"/>
             <fileset dir="${root}/releases"/>
+            <fileset dir="${root}" includes="**/*.class"/>
         </delete>
     </target>
     

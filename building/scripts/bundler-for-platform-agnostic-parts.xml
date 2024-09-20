@@ -15,7 +15,9 @@
 
         <!-- help/ -->
         <copy todir="${bundle.dir}/help" preservelastmodified="true" overwrite="true">
-            <fileset dir="${root}/help"/>
+            <fileset dir="${root}/help">
+                <exclude name="Help.html.url"/>
+            </fileset>
         </copy>
 
         <!-- icons/ -->
@@ -45,7 +47,6 @@
         <copy file="${root}/AUTHORS" tofile="${bundle.dir}/AUTHORS" preservelastmodified="true" overwrite="true"/>
 
         <!-- build.xml -->
-        <copy file="${root}/build.xml" tofile="${bundle.dir}/build.xml" preservelastmodified="true" overwrite="true"/>
 
         <!-- COPYING -->
         <copy file="${root}/COPYING" tofile="${bundle.dir}/COPYING" preservelastmodified="true" overwrite="true"/>

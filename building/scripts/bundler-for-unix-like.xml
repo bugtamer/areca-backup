@@ -29,7 +29,10 @@
         <copy file="${root}/areca_check_version.sh" tofile="${bundle.dir}/areca_check_version.sh" preservelastmodified="true" overwrite="true"/>
 
         <!-- AUTHORS -->
+
         <!-- build.xml -->
+        <copy file="${root}/build.xml" tofile="${bundle.dir}/build.xml" preservelastmodified="true" overwrite="true"/>
+        
         <!-- COPYING -->
         <!-- README -->
 

@@ -9,6 +9,7 @@
 
 
     <import file="bundler-for-platform-agnostic-parts.xml"/>
+    <import file="bundler-for-windows.xml"/>
     <import file="bundler-for-unix-like.xml"/>
     <import file="bundler-for-linux.xml"/>
 
