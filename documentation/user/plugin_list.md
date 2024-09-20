@@ -27,7 +27,7 @@
 | SFTP                                  | Included in Areca-Backup                      | SFTP Server Support <br> This plugins adds the ability to store archives on remote servers, by using the SFTP protocol.                                                                                |
 
 
-Note : If you want to implement your ow plugin, Areca's plugin API documentation can be found [here](./documents/areca_plugins_documentation.pdf)
+Note : If you want to implement your own plugin, Areca's plugin API documentation can be found [here](./areca_plugins_documentation.pdf)
 
 
 ---
