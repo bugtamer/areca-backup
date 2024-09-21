@@ -14,12 +14,14 @@ import com.myJava.util.version.VersionData;
 /**
  * <BR>
  * @author Olivier PETRUCCI
+ * @author bugtamer
  * <BR>
  *
  */
 
  /*
  Copyright 2005-2015, Olivier PETRUCCI.
+ Copyright 2024, bugtamer.
 
 This file is part of Areca.
 
@@ -58,9 +60,10 @@ public class VersionInfos {
 
 	static {
 		// INIT BUILD ID - DO NOT MODIFY THE FOLLOWING COMMENT :
-		BUILD_ID = 5872222636083894532L;
+		BUILD_ID = 5682047565851761744L;
 
 		// INIT VERSION DATA
+		VERSIONS.add(new VersionData("8.0.0", new GregorianCalendar(2024, 8, 21), "Fixed Areca launchers. Support for Java 8 LTS. Fixed broken links to online documentation. Fixed `Check for new version ...` feature. Fixed building pipeline. Add dependency manager. Add some documentation for users and developers."));
 		VERSIONS.add(new VersionData("7.5", new GregorianCalendar(2015, 7, 26), "Fixed the issue that prevented archives from being created when there were only deleted files (no new files);Fixed a minor issue when reconnecting to a FTP server."));
 		VERSIONS.add(new VersionData("7.4.9", new GregorianCalendar(2014, 10, 26), "Fixed compression issue that could occur with filenames containing line breaks."));
 		VERSIONS.add(new VersionData("7.4.8", new GregorianCalendar(2014, 10, 02), "Fixed encryption issued which could occur with recent versions of JREs"));

@@ -1,6 +1,17 @@
 # Areca Backup - Versions history
 
 
+## Version 8.0.0 (released on 2024-09-21)
+
+- Fixed Areca launchers.
+- Support for Java 8 LTS.
+- Fixed broken links to online documentation.
+- Fixed `Check for new version ...` feature.
+- Fixed building pipeline.
+- Add dependency manager.
+- Add some documentation for users and developers.
+
+
 ## Version 7.5 (released on 2015-8-26)
 
 - Fixed the issue that prevented archives from being created when there were only deleted files (no new files).
