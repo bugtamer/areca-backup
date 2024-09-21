@@ -26,12 +26,14 @@ import com.myJava.util.log.Logger;
 /**
  * <BR>
  * @author Olivier PETRUCCI
+ * @author bugtamer
  * <BR>
  *
  */
 
  /*
  Copyright 2005-2015, Olivier PETRUCCI.
+ Copyright 2024, bugtamer.
 
 This file is part of Areca.
 
@@ -110,7 +112,8 @@ extends AbstractWindow {
                     }
                 }
             });
-            lnk.setText("<A HREF=\"" + ArecaURLs.ARECA_URL + "\">areca-backup.org</A>");
+            final String anchorLabel = RM.getLabel("preferences.checkversions.official.site.label");
+            lnk.setText("<A HREF=\"" + ArecaURLs.ARECA_URL + "\">" + anchorLabel + "</A>");
             lnk.setLayoutData(dt3);
             
             SavePanel pnlSave;

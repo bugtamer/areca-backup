@@ -4,6 +4,7 @@ import java.net.URL;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
+import com.application.areca.Utils;
 import com.myJava.object.EqualsHelper;
 import com.myJava.object.HashHelper;
 import com.myJava.object.ToStringHelper;
@@ -12,12 +13,14 @@ import com.myJava.object.ToStringHelper;
  * Class containing various informations about a sotfware's version
  * <BR>
  * @author Olivier PETRUCCI
+ * @author bugtamer
  * <BR>
  *
  */
 
  /*
  Copyright 2005-2015, Olivier PETRUCCI.
+ Copyright 2024, bugtamer.
 
 This file is part of Areca.
 
@@ -178,4 +181,44 @@ public class VersionData {
         hash = HashHelper.hash(hash, this.versionId);
         return hash;
     }
+
+    /**
+     * Checks <code>this</code> version (e.g. "7.5") is greater than or equals to <code>other</code> version (e.g. "8.0.0").
+     */
+    public boolean isGreaterThanOrEqualsTo(VersionData other) {
+        return versionToOrdinal(this) >= versionToOrdinal(other);
+    }
+
+    /**
+     * Makes <code>VersionData</code> unequivocally sortable or comparable by its <code>getVersionId()</code> method.
+	 * <p>Examples:</p>
+	 * <ul>
+	 *   <li>From <code>"7.5"</code>   to <code>700500000</code></li>
+	 *   <li>From <code>"7.5.0"</code> to <code>700500000</code></li>
+	 *   <li>From <code>"7.5.1"</code> to <code>700500100</code></li>
+	 *   <li>From <code>"7.5.1"</code> to <code>700500100</code></li>
+	 * </ul>
+     * @return <code>-1</code> when <code>versionData</code> is <code>null</code>.
+     * <code>0</code> when <code>getVersionId()</code> returns <code>null</code> or an empty string.
+     * Otherwise, it returns its ordinal value representation.
+     */
+    private int versionToOrdinal(VersionData versionData) {
+        if (versionData == null) {
+            return -1;
+        }
+        boolean isVersionIdEmpty = (versionData.getVersionId() == null) || (versionData.getVersionId().length() == 0);
+        String version = isVersionIdEmpty ? "0.0.0" : versionData.getVersionId();
+        String[] semanticVersion = version.split("\\.");
+        int numSemVerParts = semanticVersion.length;
+        String major = (numSemVerParts >= 1) ? semanticVersion[0] : "0";
+        String minor = (numSemVerParts >= 2) ? semanticVersion[1] : "0";
+        String patch = (numSemVerParts >= 3) ? semanticVersion[2] : "0";
+        final char padding = '0';
+        final int minLength = 3;
+        major = Utils.addRightPadding(major, padding, minLength);
+        minor = Utils.addRightPadding(minor, padding, minLength);
+        patch = Utils.addRightPadding(patch, padding, minLength);
+        return Integer.parseInt(major + minor + patch);
+    }
+
 }

@@ -1,0 +1,16 @@
+<project name="generate-bundles" basedir=".">
+
+    <!-- versiondata.id | versiondata.date | versiondata.url | versiondata.description -->
+    <xmlproperty file="${root}/version.xml" collapseAttributes="true"/>
+
+    <property name="building.dir" value="${root}/releases"/>
+    <property name="bundle.dir" value="${building.dir}/areca"/>
+    <property name="bundle.version" value="${versiondata.id}"/>
+
+
+    <import file="bundler-for-platform-agnostic-parts.xml"/>
+    <import file="bundler-for-windows.xml"/>
+    <import file="bundler-for-unix-like.xml"/>
+    <import file="bundler-for-linux.xml"/>
+
+</project>

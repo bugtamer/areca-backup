@@ -31,12 +31,14 @@ import com.myJava.util.log.Logger;
  * Utility methods
  * <BR>
  * @author Olivier PETRUCCI
+ * @author bugtamer
  * <BR>
  *
  */
 
  /*
  Copyright 2005-2015, Olivier PETRUCCI.
+ Copyright 2024, bugtamer.
 
 This file is part of Areca.
 
@@ -165,7 +167,7 @@ public class Utils implements ArecaFileConstants {
 	
 	public static String getTuiExecutableName() {
 		if (OSTool.isSystemWindows()) {
-			return "areca_cl.exe";
+			return "areca_cl.bat";
 		} else {
 			return "areca_cl.sh";
 		}
@@ -173,7 +175,7 @@ public class Utils implements ArecaFileConstants {
 	
 	public static String getGuiExecutableName() {
 		if (OSTool.isSystemWindows()) {
-			return "areca.exe";
+			return "areca.bat";
 		} else {
 			return "areca.sh";
 		}
@@ -423,4 +425,27 @@ public class Utils implements ArecaFileConstants {
 		}
 		return sb.toString();
 	}
+
+	/**
+	 * Examples:
+	 * <ul>
+	 *   <li><code>addRightPadding("", '*', 4); // output: "****"</code></li>
+	 *   <li><code>addRightPadding("17", '*', 4); // output: "17**"</code></li>
+	 *   <li><code>addRightPadding("17", '*', 2); // output: "17"</code></li>
+	 *   <li><code>addRightPadding("17", '*', 1); // output: "17"</code></li>
+	 *   <li><code>addRightPadding(null, '*', 8); // output: ""</code></li>
+	 * </ul>
+	 * @return a padded string or an empty string when <code>input</code> is <code>null</code>.
+	 */
+	public static String addRightPadding(String input, char padding, int minLength) {
+		if (input == null) {
+			input = "";
+		}
+		StringBuilder sb = new StringBuilder(input);
+		while (sb.length() < minLength) {
+			sb.append(padding);
+		}
+		return sb.toString();
+	}
+
 }

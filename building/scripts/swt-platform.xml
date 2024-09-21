@@ -1,0 +1,143 @@
+<!--
+    Set the platform-specific for the SWT dependency.
+    Should be executed by the Apache Ant main XML script.
+
+    Specific platforms available for the SWT dependency in version 4.3:
+    
+    === GNU/Linux *** amd64 | x86 | ppc64 | ppc | s390x | s390 ===
+    
+    https://mvnrepository.com/artifact/org.eclipse.swt/org.eclipse.swt.gtk.linux.x86_64
+    https://mvnrepository.com/artifact/org.eclipse.swt/org.eclipse.swt.gtk.linux.x86
+    https://mvnrepository.com/artifact/org.eclipse.swt/org.eclipse.swt.gtk.linux.ppc64
+    https://mvnrepository.com/artifact/org.eclipse.swt/org.eclipse.swt.gtk.linux.ppc
+    https://mvnrepository.com/artifact/org.eclipse.swt/org.eclipse.swt.gtk.linux.s390x
+    https://mvnrepository.com/artifact/org.eclipse.swt/org.eclipse.swt.gtk.linux.s390
+
+    === Microsoft Windows *** amd64 | x86 ===
+    
+    https://mvnrepository.com/artifact/org.eclipse.swt/org.eclipse.swt.win32.win32.x86_64
+    https://mvnrepository.com/artifact/org.eclipse.swt/org.eclipse.swt.win32.win32.x86
+    
+    === Mac OS X *** amd64 | x86 ===
+    
+    https://mvnrepository.com/artifact/org.eclipse.swt/org.eclipse.swt.cocoa.macosx.x86_64
+    https://mvnrepository.com/artifact/org.eclipse.swt/org.eclipse.swt.cocoa.macosx
+    
+    === (Sun Microsystems) Solaris *** sparc | x86 ===
+    
+    https://mvnrepository.com/artifact/org.eclipse.swt/org.eclipse.swt.gtk.solaris.x86
+    https://mvnrepository.com/artifact/org.eclipse.swt/org.eclipse.swt.gtk.solaris.sparc
+    
+    === IBM Power AIX *** ppc64 | ppc ===
+    
+    https://mvnrepository.com/artifact/org.eclipse.swt/org.eclipse.swt.gtk.aix.ppc64
+    https://mvnrepository.com/artifact/org.eclipse.swt/org.eclipse.swt.gtk.aix.ppc
+    
+    === HP-UX *** ia64 ===
+    
+    https://mvnrepository.com/artifact/org.eclipse.swt/org.eclipse.swt.gtk.hpux.ia64
+-->
+<project name="detect-swt-platform" basedir="${root}">
+
+    <target name="detect-swt-platform" unless="target.platform">
+
+        <!-- avoid building bundles -->
+        <property name="target.platform" value=""/>
+
+
+        <!-- Check Operative System -->
+
+        <condition property="swt.os" value="win32.win32">
+            <os family="windows"/>
+        </condition>
+
+
+        <condition property="swt.os" value="gtk.linux">
+            <os name="Linux"/>
+        </condition>
+        
+
+        <condition property="swt.os" value="cocoa.macosx">
+            <os name="macosx"/>
+        </condition>
+        
+
+        <condition property="swt.os" value="gtk.solaris">
+            <os name="solaris"/>
+        </condition>
+        
+
+        <condition property="swt.os" value="gtk.aix">
+            <os name="aix"/>
+        </condition>
+        
+
+        <condition property="swt.os" value="gtk.hpux">
+            <os name="hpux"/>
+        </condition>
+
+
+
+        <!-- Check CPU architecture -->
+
+        <condition property="swt.arch" value="x86">
+            <and>
+                <os arch="x86"/>
+                <not>
+                    <os name="macosx"/>
+                </not>
+                <!-- [win32.x86] VS [linux.x86] VS [solaris.x86] VS [cocoa.macosx (x86)] VS [cocoa.macosx.x86_64] -->
+            </and>
+        </condition>
+
+
+        <condition property="swt.arch" value="">
+            <and>
+                <os arch="x86"/>
+                <os name="macosx"/>
+                <!-- [win32.x86] VS [linux.x86] VS [solaris.x86] VS [cocoa.macosx (x86)] VS [cocoa.macosx.x86_64] -->
+            </and>
+        </condition>
+
+
+        <condition property="swt.arch" value="x86_64">
+            <os arch="amd64"/>
+        </condition>
+
+
+        <condition property="swt.arch" value="ppc64">
+            <os arch="ppc64"/>
+        </condition>
+
+
+        <condition property="swt.arch" value="ppc">
+            <os arch="ppc"/>
+        </condition>
+
+
+        <condition property="swt.arch" value="s390x">
+            <os arch="s390x"/>
+        </condition>
+
+
+        <condition property="swt.arch" value="s390">
+            <os arch="s390"/>
+        </condition>
+
+
+        <condition property="swt.arch" value="ia64">
+            <os arch="ia64"/>
+        </condition>
+
+
+
+        <!-- Set SWT dependency -->
+
+        <property name="swt.org" value="org.eclipse.swt"/>
+        <property name="swt.rev" value="4.3"/>
+
+        <echo message="Operative System (${os.name}) >>> SWT (${swt.os})"/>
+        <echo message="CPU architecture (${os.arch}) >>> SWT (${swt.arch})"/>
+    </target>
+
+</project>

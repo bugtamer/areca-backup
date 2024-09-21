@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<versiondata
+    id="8.0.0"
+    date="2024-8-21"
+    url="https://github.com/bugtamer/areca-backup/releases"
+    description="Fixed Areca launchers. Support for Java 8 LTS. Fixed broken links to online documentation. Fixed `Check for new version ...` feature. Fixed building pipeline. Add dependency manager. Add some documentation for users and developers."
+/>

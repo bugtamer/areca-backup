@@ -1,0 +1,73 @@
+<project name="generate-unix-like-bundles" basedir="${root}">
+
+    <target name="unix-like-bundler" if="target.platform" depends="platform-agnostic-parts-bundler">
+        <echo message="Unix-like bundler"/>
+        <echo message="- swt.os   = '${swt.os}'"/>
+        <echo message="- swt.arch = '${swt.arch}'"/>
+
+        <delete file="${building.dir}/${bundle.file.name}.tar.gz"/>
+
+        <!-- bin/ -->
+        <copy todir="${bundle.dir}/bin" preservelastmodified="true" overwrite="true">
+            <fileset dir="${root}/bin"  includes="*.sh"/>
+        </copy>
+
+        <!-- config/ -->
+        <!-- help/ -->
+        <!-- icons/ -->
+        <!-- lib/ -->
+        
+        <!-- plugins/ -->
+        <mkdir dir="${bundle.dir}/plugins"/>
+
+        <!-- translations/ -->
+
+        <!-- areca.sh -->
+        <copy file="${root}/areca.sh" tofile="${bundle.dir}/areca.sh" preservelastmodified="true" overwrite="true"/>
+
+        <!-- areca_check_version.sh -->
+        <copy file="${root}/areca_check_version.sh" tofile="${bundle.dir}/areca_check_version.sh" preservelastmodified="true" overwrite="true"/>
+
+        <!-- AUTHORS -->
+
+        <!-- build.xml -->
+        <copy file="${root}/build.xml" tofile="${bundle.dir}/build.xml" preservelastmodified="true" overwrite="true"/>
+        
+        <!-- COPYING -->
+        <!-- README -->
+
+        <!-- compression and set permissions -->
+        <tar destfile="${building.dir}/${bundle.file.name}.tar" longfile="posix">
+            <tarfileset dir="${bundle.dir}" prefix="${bundle.file.name}" preserveLeadingSlashes="true">
+                <exclude name="areca.sh"/>
+                <exclude name="areca_check_version.sh"/>
+                <exclude name="bin/areca_cl.sh"/>
+                <exclude name="bin/areca_decrypt.sh"/>
+                <exclude name="bin/areca_dezip.sh"/>
+                <exclude name="bin/areca_run.sh"/>
+                <exclude name="bin/run_tui.sh"/>
+            </tarfileset>
+            <tarfileset dir="${bundle.dir}" prefix="${bundle.file.name}" preserveLeadingSlashes="true" filemode="755">
+                <include name="areca.sh"/>
+                <include name="areca_check_version.sh"/>
+                <include name="bin/areca_cl.sh"/>
+                <include name="bin/areca_decrypt.sh"/>
+                <include name="bin/areca_dezip.sh"/>
+                <include name="bin/areca_run.sh"/>
+                <include name="bin/run_tui.sh"/>
+            </tarfileset>
+        </tar>
+        <gzip src="${building.dir}/${bundle.file.name}.tar" destfile="${building.dir}/${bundle.file.name}.tar.gz"/>
+        
+        <!-- bundle hashes -->
+        <property name="hash.dir" value="${building.dir}/hashes/areca-${versiondata.id}-${target.platform}"/>
+        <checksum file="${building.dir}/${bundle.file.name}.tar.gz" todir="${hash.dir}" forceOverwrite="yes" algorithm="SHA-512"/>
+        <checksum file="${building.dir}/${bundle.file.name}.tar.gz" todir="${hash.dir}" forceOverwrite="yes" algorithm="SHA-1"/>
+        <checksum file="${building.dir}/${bundle.file.name}.tar.gz" todir="${hash.dir}" forceOverwrite="yes" algorithm="MD5"/>
+        
+        <!-- remove files and folders -->
+        <delete dir="${bundle.dir}"/>
+        <delete file="${building.dir}/${bundle.file.name}.tar"/>
+    </target>
+
+</project>

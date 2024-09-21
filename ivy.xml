@@ -1,0 +1,36 @@
+<!--
+    Dependency Management
+-->
+<ivy-module version="2.0">
+
+    <info organisation="bugtamer" module="areca"/>
+
+
+    <configurations defaultconf="all-dependencies">
+        <conf name="all-dependencies" extends="platform-agnostic,platform-specific"/>
+        <conf name="platform-agnostic"/>
+        <conf name="platform-specific"/>
+    </configurations>
+
+
+    <dependencies>
+
+        <!-- Look at swt-platform.xml to find out how this dependency is determined at building time -->
+        <dependency conf="platform-specific->*" org="${swt.org}" name="${swt.name}" rev="${swt.rev}"/>
+
+        <!-- https://mvnrepository.com/artifact/oro/oro -->
+        <dependency conf="platform-agnostic->*" org="oro" name="oro" rev="2.0.8"/>
+
+        <!-- https://mvnrepository.com/artifact/commons-net/commons-net -->
+        <dependency conf="platform-agnostic->*" org="commons-net" name="commons-net" rev="1.4.1"/>
+
+        <!-- https://mvnrepository.com/artifact/commons-codec/commons-codec -->
+        <dependency conf="platform-agnostic->*" org="commons-codec" name="commons-codec" rev="1.4"/>
+
+        <!-- https://mvnrepository.com/artifact/org.eclipse.jface/org.eclipse.jface -->
+        <dependency conf="platform-agnostic->*" org="org.eclipse.jface" name="org.eclipse.jface" rev="3.2.0-I20060605-1400"/>
+
+    </dependencies>
+
+
+</ivy-module>

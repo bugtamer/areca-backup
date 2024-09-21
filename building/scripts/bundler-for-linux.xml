@@ -1,0 +1,53 @@
+<!--
+    $ ant linux-x86-64
+    $ ant linux-x86-32
+    
+    === GNU/Linux *** amd64 | x86 | ppc64 | ppc | s390x | s390 ===
+    
+    https://mvnrepository.com/artifact/org.eclipse.swt/org.eclipse.swt.gtk.linux.x86_64
+    https://mvnrepository.com/artifact/org.eclipse.swt/org.eclipse.swt.gtk.linux.x86
+    https://mvnrepository.com/artifact/org.eclipse.swt/org.eclipse.swt.gtk.linux.ppc64
+    https://mvnrepository.com/artifact/org.eclipse.swt/org.eclipse.swt.gtk.linux.ppc
+    https://mvnrepository.com/artifact/org.eclipse.swt/org.eclipse.swt.gtk.linux.s390x
+    https://mvnrepository.com/artifact/org.eclipse.swt/org.eclipse.swt.gtk.linux.s390
+-->
+<project name="generate-linux-bundles" basedir="${root}">
+
+    <property name="bundler.message" value="Build Areca Backup bundle compatible with GNU/Linux"/>
+
+
+
+    <target name="linux-x86-64">
+        <echo message="${bundler.message} x64 | AMD64 | x86-64 | x86_64 | Intel 64 | IA-32e | EM64T"/>
+
+        <property name="target.platform" value="linux-x86-64"/>
+
+        <property name="swt.os"   value="gtk.linux"/>
+        <property name="swt.arch" value="x86_64"/>
+
+        <antcall target="linux-bundler"/>
+    </target>
+
+
+
+    <target name="linux-x86-32">
+        <echo message="${bundler.message} x32 | x86 | x86-32 | x86_32 | i586 | i686"/>
+
+        <property name="target.platform" value="linux-x86-32"/>
+
+        <property name="swt.os"   value="gtk.linux"/>
+        <property name="swt.arch" value="x86"/>
+
+        <antcall target="linux-bundler"/>
+    </target>
+
+
+
+    <target name="linux-bundler" if="target.platform">
+        <property name="swt.org" value="org.eclipse.swt"/>
+        <property name="swt.rev" value="4.3"/>
+
+        <antcall target="unix-like-bundler"/>
+    </target>
+
+</project>

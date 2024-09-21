@@ -1,0 +1,116 @@
+<!--
+    ant windows-x86-64
+    ant windows-x86-32
+
+    === Microsoft Windows *** amd64 | x86 ===
+    
+    https://mvnrepository.com/artifact/org.eclipse.swt/org.eclipse.swt.win32.win32.x86_64
+    https://mvnrepository.com/artifact/org.eclipse.swt/org.eclipse.swt.win32.win32.x86
+-->
+<project name="generate-windows-bundles" basedir="${root}">
+
+    <property name="bundler.message" value="Build Areca Backup bundle compatible with Microsoft Windows"/>
+
+
+
+    <target name="windows-x86-64">
+        <echo message="${bundler.message} x64 | AMD64 | x86-64 | x86_64 | Intel 64 | IA-32e | EM64T"/>
+
+        <property name="target.platform" value="windows-x86-64"/>
+
+        <property name="swt.os"   value="win32.win32"/>
+        <property name="swt.arch" value="x86_64"/>
+
+        <property name="swt.org" value="org.eclipse.swt"/>
+        <property name="swt.rev" value="4.3"/>
+
+        <antcall target="windows-bundler"/>
+    </target>
+
+
+
+    <target name="windows-x86-32">
+        <echo message="${bundler.message}  x32 | x86 | x86-32 | x86_32 | i586 | i686"/>
+
+        <property name="target.platform" value="windows-x86-32"/>
+
+        <property name="swt.os"   value="win32.win32"/>
+        <property name="swt.arch" value="x86"/>
+
+        <property name="swt.org" value="org.eclipse.swt"/>
+        <property name="swt.rev" value="4.3"/>
+
+        <antcall target="windows-bundler"/>
+    </target>
+
+
+
+    <target name="windows-bundler" if="target.platform" depends="platform-agnostic-parts-bundler">
+        <echo message="Prepare Windows agnostic common files"/>
+        <echo message="Windows bundler"/>
+        <echo message="- swt.os   = '${swt.os}'"/>
+        <echo message="- swt.arch = '${swt.arch}'"/>
+
+        <delete file="${building.dir}/${bundle.file.name}.zip"/>
+
+        <!-- bin/ -->
+        <copy todir="${bundle.dir}/bin" preservelastmodified="true" overwrite="true">
+            <fileset dir="${root}/bin" includes="*.bat"/>
+        </copy>
+
+        <!-- config/ -->
+        <copy file="${root}/config/fwk.windows.properties" tofile="${bundle.dir}/config/fwk.properties" preservelastmodified="true" overwrite="true"/>
+        <delete file="${bundle.dir}/config/fwk.windows.properties"/>
+
+        <!-- help/ -->
+        <copy todir="${bundle.dir}/help" preservelastmodified="true" overwrite="true">
+            <fileset dir="${root}/help"/>
+        </copy>
+
+        <!-- lib/ -->
+        <copy todir="${bundle.dir}/lib" preservelastmodified="true" overwrite="true">
+            <fileset dir="${root}/lib">
+                <exclude name="libarecafs.so"/>
+            </fileset>
+        </copy>
+        
+        <!-- tools/ -->
+        <copy todir="${bundle.dir}/tools" preservelastmodified="true" overwrite="true">
+            <fileset dir="${root}/tools"/>
+        </copy>
+
+        <!-- areca.exe -->
+        <!-- <copy file="${root}/areca.exe" tofile="${bundle.dir}/areca.exe" preservelastmodified="true" overwrite="true"/> -->
+
+        <!-- areca.bat -->
+        <copy file="${root}/areca.bat" tofile="${bundle.dir}/areca.bat" preservelastmodified="true" overwrite="true"/>
+
+        <!-- areca.l4j.ini -->
+        <!-- <copy file="${root}/areca.l4j.ini" tofile="${bundle.dir}/areca.l4j.ini" preservelastmodified="true" overwrite="true"/> -->
+
+        <!-- areca_cl.exe -->
+        <!-- <copy file="${root}/areca_cl.exe" tofile="${bundle.dir}/areca_cl.exe" preservelastmodified="true" overwrite="true"/> -->
+
+        <!-- areca_cl.bat -->
+        <copy file="${root}/areca_cl.bat" tofile="${bundle.dir}/areca_cl.bat" preservelastmodified="true" overwrite="true"/>
+
+        <!-- areca_cl.l4j.ini -->
+        <!-- <copy file="${root}/areca_cl.l4j.ini" tofile="${bundle.dir}/areca_cl.l4j.ini" preservelastmodified="true" overwrite="true"/> -->
+
+        <!-- build.xml -->
+
+        <zip destfile="${building.dir}/${bundle.file.name}.zip" level="9" zip64Mode="as-needed">
+            <zipfileset dir="${bundle.dir}" prefix="${bundle.file.name}"/>
+        </zip>
+
+        <!-- bundle hashes -->
+        <property name="hash.dir" value="${building.dir}/hashes/areca-${versiondata.id}-${target.platform}"/>
+        <checksum file="${building.dir}/${bundle.file.name}.zip" todir="${hash.dir}" forceOverwrite="yes" algorithm="SHA-512"/>
+        <checksum file="${building.dir}/${bundle.file.name}.zip" todir="${hash.dir}" forceOverwrite="yes" algorithm="SHA-1"/>
+        <checksum file="${building.dir}/${bundle.file.name}.zip" todir="${hash.dir}" forceOverwrite="yes" algorithm="MD5"/>
+        
+        <!-- remove files and folders -->
+        <delete dir="${bundle.dir}"/>
+    </target>
+
+</project>

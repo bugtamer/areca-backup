@@ -1,0 +1,22 @@
+# IDEs
+.vscode/
+
+# Project folders
+building/apache-ivy/
+classes/
+plugins/
+jdk/
+jre/
+lib/
+releases/
+
+# C Language
+*.h
+*.o
+
+# Java
+*.class
+*.jar
+
+# Areca files
+*.log

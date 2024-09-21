@@ -5,13 +5,18 @@
      Syntax : ant -buildfile compile.xml
 -->
 
-<project name="Areca compilation" default="compileall">
+<project name="Areca compilation" default="compileall" xmlns:ivy="antlib:org.apache.ivy.ant">
     <description>Areca's compilation script</description>
 
-    <!-- Path to SWT libraries (download the SWT package if this file is missing on your system) -->
-    <property name="swtfile" value="/usr/lib/java/swt.jar"/>
-
     <property name="root" value="."/>
+
+    <!-- Path to SWT libraries (download the SWT package if this file is missing on your system) -->
+    <property name="swtfile" value="${root}/lib/swt.jar"/>
+    <property name="scripts.dir" value="${root}/building/scripts"/>
+
+    <import file="${scripts.dir}/swt-platform.xml"/>
+    <import file="${scripts.dir}/dependency-manager.xml"/>
+    <import file="${scripts.dir}/bundlers.xml"/>
 
     <!-- Test the OS -->
     <condition property="isWindows">
@@ -31,6 +36,7 @@
                destdir="${root}/classes"
                debug="off"
                source="1.4"
+               encoding="ISO-8859-1"
         >
             <classpath>
                 <fileset dir="${root}/lib">
@@ -61,6 +67,10 @@
             <class name="com.myJava.file.metadata.posix.jni.wrapper.FileAccessWrapper"/>
         </javah>
 
+        <chmod file="${scripts.dir}/locate-jni-headers.sh" perm="755" type="file"/>
+        <exec dir="${scripts.dir}" executable="./locate-jni-headers.sh" os="Linux" outputproperty="jni.h.dir"/>
+        <available type="file" file="${jni.h.dir}/linux/jni_md.h" property="jni_md.h.dir" value="${jni.h.dir}/linux"/>
+
         <!-- Compile the JNI code -->
         <exec dir="${root}/jni" executable="gcc">
             <arg value="-c"/>
@@ -69,6 +79,8 @@
             <arg value="com_myJava_file_metadata_posix_jni_wrapper_FileAccessWrapper.c"/>
             <arg value="-o"/>
             <arg value="com_myJava_file_metadata_posix_jni_wrapper_FileAccessWrapper.o"/>
+            <arg value="-I${jni.h.dir}"/>
+            <arg value="-I${jni_md.h.dir}"/>
         </exec>
         <exec dir="${root}/jni" executable="gcc">
             <arg value="-shared"/>
@@ -97,6 +109,7 @@
 
     <target name="compileall">
         <description>Global compilation task (builds areca.jar and libarecafs.so)</description>
+        <antcall target="get-java-dependencies"/>
         <antcall target="compilejava"/>
         <antcall target="jnicheck"/>
         <antcall target="compilejni"/>
