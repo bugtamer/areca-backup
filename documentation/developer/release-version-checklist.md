@@ -121,4 +121,4 @@ What `<major>.<minor>.<patch>` means in a specific Areca version (`8.0.0`):
       - Add some documentation for users and developers."
       ```
     - Upload local commits to the remote repo:<br>
-      `git push`
+      `git push --follow-tags`
