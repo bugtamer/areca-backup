@@ -4,7 +4,8 @@ The building pipeline is initially defined by [`build.xml`](../../build.xml) and
 
 - See [Development environment](development-environment.md).
 - See [Testing](testing.md).
-- See [Change log](documentation/developer/history.md).
+- See how to [release a new version](./release-version-checklist.md) before building.
+- See [Change log](history.md).
 
 
 ## Supported platforms
