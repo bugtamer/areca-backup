@@ -52,7 +52,7 @@
         <copy file="${root}/COPYING" tofile="${bundle.dir}/COPYING" preservelastmodified="true" overwrite="true"/>
 
         <!-- README -->
-        <copy file="${root}/README" tofile="${bundle.dir}/README" preservelastmodified="true" overwrite="true"/>
+        <copy file="${root}/README.md" tofile="${bundle.dir}/README.md" preservelastmodified="true" overwrite="true"/>
 
         <property name="bundle.agnostic-part.ready" value="true"/>
     </target>
