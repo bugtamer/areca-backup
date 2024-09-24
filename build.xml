@@ -25,6 +25,26 @@
         </and>
     </condition>
 
+    
+    <!-- (2017) javah until Java 9 -->
+    <available property="javah.present" file="javah" type="file"/>
+
+    <target name="generate-jni-header-until-java-9" if="javah.present" description="javah until Java 9 (2017)">
+        <javah destdir="${root}/jni" force="yes" classpath="${root}/lib/areca.jar">
+            <class name="com.myJava.file.metadata.posix.jni.wrapper.FileAccessWrapper"/>
+        </javah>
+    </target>
+
+    <target name="generate-jni-header-since-java-10" unless="javah.present">
+        <exec dir="${root}" executable="javac">
+            <arg value="-h"/>
+            <arg value="${root}/jni"/>
+            <arg value="-classpath"/>
+            <arg value="${root}/lib/areca.jar"/>
+            <arg value="${root}/src/com/myJava/file/metadata/posix/jni/wrapper/FileAccessWrapper.java"/>
+        </exec>
+    </target>
+
 
     <target name="compilejava">
         <description>Java compilation task (builds areca.jar)</description>
@@ -63,9 +83,8 @@
     <target name="compilejni" unless="isWindows">
         <description>JNI compilation task (builds libarecafs.so ... for unix-like operating systems only)</description>
         <!--Generate the JNI header-->
-        <javah destdir="${root}/jni" force="yes" classpath="${root}/lib/areca.jar">
-            <class name="com.myJava.file.metadata.posix.jni.wrapper.FileAccessWrapper"/>
-        </javah>
+        <antcall target="generate-jni-header-until-java-9"/>
+        <antcall target="generate-jni-header-since-java-10"/>
 
         <chmod file="${scripts.dir}/locate-jni-headers.sh" perm="755" type="file"/>
         <exec dir="${scripts.dir}" executable="./locate-jni-headers.sh" os="Linux" outputproperty="jni.h.dir"/>
