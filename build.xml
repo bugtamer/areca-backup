@@ -55,7 +55,7 @@
         <javac srcdir="${root}/src"
                destdir="${root}/classes"
                debug="off"
-               source="7"
+               source="8"
                encoding="ISO-8859-1"
         >
             <classpath>
