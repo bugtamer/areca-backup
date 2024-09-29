@@ -80,4 +80,4 @@ Of course, nothing can be done if you forgot your password : Areca won't be able
 [Top] | [Copyright (c) 2005-2015 Olivier PETRUCCI]
 
 [Top]: #areca-backup---tutorial-recovering-files-when-your-backup-configuration-has-been-lost "Go to top of the document"
-[Copyright (c) 2005-2015 Olivier PETRUCCI]: https://areca-backup.org/tutorial5.php "Visit the original resource"
+[Copyright (c) 2005-2015 Olivier PETRUCCI]: areca-backup.org/tutorial5.php "Visit the original resource"

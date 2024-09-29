@@ -79,4 +79,4 @@ Step 4 : [Merging your archives](tutorial4.md)
 [Top] | [Copyright (c) 2005-2015 Olivier PETRUCCI]
 
 [Top]: #areca-backup---tutorial-recovering-files-from-your-archives "Go to top of the document"
-[Copyright (c) 2005-2015 Olivier PETRUCCI]: https://areca-backup.org/tutorial3.php "Visit the original resource"
+[Copyright (c) 2005-2015 Olivier PETRUCCI]: areca-backup.org/tutorial3.php "Visit the original resource"

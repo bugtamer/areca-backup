@@ -38,4 +38,4 @@ Section 5 : [Recovering files when your backup configuration has been lost](./tu
 [Top] | [Copyright (c) 2005-2015 Olivier PETRUCCI]
 
 [Top]: #areca-backup---tutorial "Go to top of the document"
-[Copyright (c) 2005-2015 Olivier PETRUCCI]: https://areca-backup.org/tutorial.php "Visit the original resource"
+[Copyright (c) 2005-2015 Olivier PETRUCCI]: areca-backup.org/tutorial.php "Visit the original resource"

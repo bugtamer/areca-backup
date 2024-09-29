@@ -57,5 +57,5 @@
 [Top] | [Copyright (c) 2005-2015 Olivier PETRUCCI] | [archive.org]
 
 [Top]: #areca-backup---features "Go to top of the document"
-[Copyright (c) 2005-2015 Olivier PETRUCCI]: https://areca-backup.org/features.php "Visit the original resource"
+[Copyright (c) 2005-2015 Olivier PETRUCCI]: areca-backup.org/features.php "Visit the original resource"
 [archive.org]: http://web.archive.org/web/20150912034048/http://www.areca-backup.org/features.php "Visit the original resource at archive.org"

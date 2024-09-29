@@ -107,4 +107,4 @@ Step 3 : [Recovering files from your archives](tutorial3.md)
 [Top] | [Copyright (c) 2005-2015 Olivier PETRUCCI]
 
 [Top]: #areca-backup---tutorial-running-your-first-backup "Go to top of the document"
-[Copyright (c) 2005-2015 Olivier PETRUCCI]: https://areca-backup.org/tutorial2.php "Visit the original resource"
+[Copyright (c) 2005-2015 Olivier PETRUCCI]: areca-backup.org/tutorial2.php "Visit the original resource"

@@ -72,4 +72,4 @@ Step 5 : [Recovering files when your backup configuration has been lost](tutoria
 [Top] | [Copyright (c) 2005-2015 Olivier PETRUCCI]
 
 [Top]: #areca-backup---tutorial-merging-your-archives "Go to top of the document"
-[Copyright (c) 2005-2015 Olivier PETRUCCI]: https://areca-backup.org/tutorial4.php "Visit the original resource"
+[Copyright (c) 2005-2015 Olivier PETRUCCI]: areca-backup.org/tutorial4.php "Visit the original resource"

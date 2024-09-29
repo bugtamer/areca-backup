@@ -167,5 +167,5 @@ _This solves all of the mentioned timeout problems for me."_
 [Top] | [Copyright (c) 2005-2015 Olivier PETRUCCI] | [archive.org]
 
 [Top]: #areca-backup---faq "Go to top of the document"
-[Copyright (c) 2005-2015 Olivier PETRUCCI]: https://areca-backup.org/faq.php "Visit the original resource"
+[Copyright (c) 2005-2015 Olivier PETRUCCI]: areca-backup.org/faq.php "Visit the original resource"
 [archive.org]: http://web.archive.org/web/20150912034048/http://www.areca-backup.org/faq.php "Visit the original resource at archive.org"
