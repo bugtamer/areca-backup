@@ -80,6 +80,20 @@ check_version() {
   fi
 }
 
+
+# Set JAVA_HOME or embedded JDK/JRE if exists
+for java_dir in "$PROGRAM_DIR/jdk" "$PROGRAM_DIR/jre" "$JAVA_HOME"
+do 
+  if [[ -d "$java_dir" ]]; then
+    java_bin_dir=$java_dir/bin/
+    if [[ -d "$java_bin_dir" ]] && [[ -x "${java_bin_dir}java" ]]; then
+      JAVA_PROGRAM_DIR=$java_bin_dir
+      break
+    fi
+  fi
+done
+
+
 #Locate and test the java executable
 if [ "$JAVA_PROGRAM_DIR" == "" ]; then
   if ! command -v java &>/dev/null; then
@@ -94,6 +108,43 @@ if [ "$JAVA_PROGRAM_DIR" == "" ]; then
     fi
   fi
 fi
+
+
+# Logging
+ARECA_LOG=${PROGRAM_DIR}/logs/areca_run.sh.log
+mkdir --parents ${PROGRAM_DIR}/logs
+echo DATE:                       $(date --utc --iso-8601)  > $ARECA_LOG 2>&1
+echo SCRIPT:                     areca_run.sh             >> $ARECA_LOG 2>&1
+echo CURRENT_WORKING_DIRECTORY:  $(pwd)                   >> $ARECA_LOG 2>&1
+echo                                                      >> $ARECA_LOG 2>&1
+echo JAVADIR:                    $JAVADIR                 >> $ARECA_LOG 2>&1
+echo JAVA_HOME:                  $JAVA_HOME               >> $ARECA_LOG 2>&1
+echo ARECA_HOME:                 $ARECA_HOME              >> $ARECA_LOG 2>&1
+echo GDK_NATIVE_WINDOWS:         $GDK_NATIVE_WINDOWS      >> $ARECA_LOG 2>&1
+echo                                                      >> $ARECA_LOG 2>&1
+echo JAVA_PROGRAM_DIR:           $JAVA_PROGRAM_DIR        >> $ARECA_LOG 2>&1
+echo CLASSPATH:                  $CLASSPATH               >> $ARECA_LOG 2>&1
+echo PROGRAM_DIR:                $PROGRAM_DIR             >> $ARECA_LOG 2>&1
+echo LIBRARY_PATH:               $LIBRARY_PATH            >> $ARECA_LOG 2>&1
+echo                                                      >> $ARECA_LOG 2>&1
+echo P0:                         $0                       >> $ARECA_LOG 2>&1
+echo P1_REQUIRED_LAUNCHER_CLASS: $1                       >> $ARECA_LOG 2>&1
+echo P2_OPTIONAL:                $2                       >> $ARECA_LOG 2>&1
+echo P3_OPTIONAL:                $3                       >> $ARECA_LOG 2>&1
+echo P4_OPTIONAL:                $4                       >> $ARECA_LOG 2>&1
+echo P5_OPTIONAL:                $5                       >> $ARECA_LOG 2>&1
+echo P6_OPTIONAL:                $6                       >> $ARECA_LOG 2>&1
+echo P7_OPTIONAL:                $7                       >> $ARECA_LOG 2>&1
+echo P8_OPTIONAL:                $8                       >> $ARECA_LOG 2>&1
+echo P9_OPTIONAL:                $9                       >> $ARECA_LOG 2>&1
+echo P10_OPTIONAL:               ${10}                    >> $ARECA_LOG 2>&1
+echo P11_OPTIONAL:               ${11}                    >> $ARECA_LOG 2>&1
+echo P12_OPTIONAL:               ${12}                    >> $ARECA_LOG 2>&1
+echo                                                      >> $ARECA_LOG 2>&1
+echo "${JAVA_PROGRAM_DIR}java" -version                   >> $ARECA_LOG 2>&1
+echo                                                      >> $ARECA_LOG 2>&1
+"${JAVA_PROGRAM_DIR}java" -version                        >> $ARECA_LOG 2>&1
+
 
 #Launching Areca
 "${JAVA_PROGRAM_DIR}java" -version
