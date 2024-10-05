@@ -48,5 +48,5 @@ Thanks to them for their very useful work.
 [Top] | [Copyright (c) 2005-2015 Olivier PETRUCCI] | [archive.org]
 
 [Top]: #areca-backup---support "Go to top of the document"
-[Copyright (c) 2005-2015 Olivier PETRUCCI]: areca-backup.org/support.php "Visit the original resource"
+[Copyright (c) 2005-2015 Olivier PETRUCCI]: https://bugtamer.github.io/areca-backup-legacy-documentation/areca-backup.org/support.html "Visit a legacy copy of the original resource that is no longer available"
 [archive.org]: http://web.archive.org/web/20150827085406/http://www.areca-backup.org/support.php "Visit the original resource at archive.org"

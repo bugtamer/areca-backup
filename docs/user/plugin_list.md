@@ -20,11 +20,11 @@
 
 ## Available plugins :
 
-| Plugin                                | Download                                      | Description                                                                                                                                                                                            |
-|---------------------------------------|-----------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [ArecaVSS](../arecavss.com/README.md) | [www.arecavss.com](../arecavss.com/README.md) | Volume Shadow Copy Services (VSS) Support <br> By invoking VSS services, Areca will be able to backup files that are opened or locked by the system or other programs (for instance Outlook PST files) |
-| FTP/FTPs                              | Included in Areca-Backup                      | FTP/FTPs Server Support <br> This plugins adds the ability to store archives on remote servers, by using the FTP or FTPs protocol.                                                                     |
-| SFTP                                  | Included in Areca-Backup                      | SFTP Server Support <br> This plugins adds the ability to store archives on remote servers, by using the SFTP protocol.                                                                                |
+| Plugin   | Download                 | Description                                                                                                                                                                                            |
+|----------|--------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| ArecaVSS | [www.arecavss.com]       | Volume Shadow Copy Services (VSS) Support <br> By invoking VSS services, Areca will be able to backup files that are opened or locked by the system or other programs (for instance Outlook PST files) |
+| FTP/FTPs | Included in Areca-Backup | FTP/FTPs Server Support <br> This plugins adds the ability to store archives on remote servers, by using the FTP or FTPs protocol.                                                                     |
+| SFTP     | Included in Areca-Backup | SFTP Server Support <br> This plugins adds the ability to store archives on remote servers, by using the SFTP protocol.                                                                                |
 
 
 Note : If you want to implement your own plugin, Areca's plugin API documentation can be found [here](./areca_plugins_documentation.pdf)
@@ -35,5 +35,6 @@ Note : If you want to implement your own plugin, Areca's plugin API documentatio
 [Top] | [Copyright (c) 2005-2015 Olivier PETRUCCI] | [archive.org]
 
 [Top]: #areca-backup---plugins "Go to top of the document"
-[Copyright (c) 2005-2015 Olivier PETRUCCI]: areca-backup.org/plugin_list.php "Visit the original resource"
+[Copyright (c) 2005-2015 Olivier PETRUCCI]: https://bugtamer.github.io/areca-backup-legacy-documentation/areca-backup.org/plugin_list.html "Visit a legacy copy of the original resource that is no longer available"
+[www.arecavss.com]: https://bugtamer.github.io/areca-backup-legacy-documentation/arecavss.com/ "ArecaVSS plugin"
 [archive.org]: http://web.archive.org/web/20150912034048/http://www.areca-backup.org/plugin_list.php "Visit the original resource at archive.org"

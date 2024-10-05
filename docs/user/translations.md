@@ -32,22 +32,22 @@ If you want to be notified of translation requests when new versions of Areca ar
 
 | Language | Last translated version | Translators                                     |
 | -------- | ----------------------- | ----------------------------------------------- |
-| cs       | 7.4.3                   | miloslav dot thon at gmail dot com              |
-| de       | 7.4.4                   | weakmum at gmx dot de                           |
-| en       | 7.4.4                   | aventin at users dot sourceforge dot net        |
-| es       | 7.3.6                   | lucasvieites at gmail dot com                   |
-| fr       | 7.4.4                   | aventin at users dot sourceforge dot net        |
-| hu       | 7.4.3                   | SanskritFritz at gmail dot com                  |
-| cn       | 7.4.3                   | slreycn at gmail dot com                        |
-| ru       | 7.4                     | pbtsrc at ya dot ru                             |
-| it       | 7.4.4                   | danielecortesi at users dot sourceforge dot net |
-| pt       | 7.4.2                   | palbuquerque at gmail dot com                   |
-| br       | 7.4.4                   | joao dot cormick at gmail dot com               |
-| da       | 6.0.2                   | *! TRANSLATOR WANTED !*                         |
-| ja       | 6.0                     | *! TRANSLATOR WANTED !*                         |
-| nl       | 7.1.7                   | *! TRANSLATOR WANTED !*                         |
-| sv       | 7.1.8                   | *! TRANSLATOR WANTED !*                         |
-| tw       | 6.0.2                   | *! TRANSLATOR WANTED !*                         |
+| `cs`     | `7.4.3`                 | miloslav dot thon at gmail dot com              |
+| `de`     | `7.4.4`                 | weakmum at gmx dot de                           |
+| `en`     | `7.4.4`                 | aventin at users dot sourceforge dot net        |
+| `es`     | `7.3.6`                 | lucasvieites at gmail dot com                   |
+| `fr`     | `7.4.4`                 | aventin at users dot sourceforge dot net        |
+| `hu`     | `7.4.3`                 | SanskritFritz at gmail dot com                  |
+| `cn`     | `7.4.3`                 | slreycn at gmail dot com                        |
+| `ru`     | `7.4`                   | pbtsrc at ya dot ru                             |
+| `it`     | `7.4.4`                 | danielecortesi at users dot sourceforge dot net |
+| `pt`     | `7.4.2`                 | palbuquerque at gmail dot com                   |
+| `br`     | `7.4.4`                 | joao dot cormick at gmail dot com               |
+| `da`     | `6.0.2`                 | *! TRANSLATOR WANTED !*                         |
+| `ja`     | `6.0`                   | *! TRANSLATOR WANTED !*                         |
+| `nl`     | `7.1.7`                 | *! TRANSLATOR WANTED !*                         |
+| `sv`     | `7.1.8`                 | *! TRANSLATOR WANTED !*                         |
+| `tw`     | `6.0.2`                 | *! TRANSLATOR WANTED !*                         |
 
 
 ## How to translate Areca
@@ -55,12 +55,12 @@ If you want to be notified of translation requests when new versions of Areca ar
 If you want to add a new language :
 
 - First, send me (aventin at users dot sourceforge dot net) an email with your SourceForge account so I can add you to Areca's wiki editors list.
-- Once you have been granted "editor" access, make a copy of the english translation ("translations/resources_en.properties" file) and name it after the language you want to add ("de" for german, "it" for italian, ...)
+- Once you have been granted "editor" access, make a copy of the english translation ("`translations/resources_en.properties`" file) and name it after the language you want to add ("`de`" for german, "`it`" for italian, ...)
 - Once your translation is completed, add it to this wiki (don't forget to add your language and email to the table above) 
 
 
 
-VERY IMPORTANT : The content of the translations file MUST be encoded using the ISO-8859-1 encoding. Non-compatible characters (for instance chinese characters) must be unicode-encoded (using a \u escape character).
+VERY IMPORTANT : The content of the translations file MUST be encoded using the `ISO-8859-1` encoding. Non-compatible characters (for instance chinese characters) must be unicode-encoded (using a `\u` escape character).
 
 You can ensure this by using one of the following translation tools :
 
@@ -69,7 +69,7 @@ You can ensure this by using one of the following translation tools :
 - "PropEdit", available at http://sourceforge.jp/projects/propedit/
 - "Open Language Tools", available at [https://open-language-tools.dev.java.net/](https://web.archive.org/web/20151012065719/https://open-language-tools.dev.java.net/)
 
-NOTE: If you use a plain text editor (Notepad or Gedit) you can use the "native2ascii" command provided with Sun's JDK to convert UTF-8 files to ASCII.
+NOTE: If you use a plain text editor (*Notepad* or *Gedit*) you can use the "`native2ascii`" command provided with Sun's JDK to convert `UTF-8` files to `ASCII`.
 
 
 ---
@@ -77,5 +77,5 @@ NOTE: If you use a plain text editor (Notepad or Gedit) you can use the "native2
 [Top] | [Copyright (c) 2005-2015 Olivier PETRUCCI] | [archive.org]
 
 [Top]: #areca-backup---translations "Go to top of the document"
-[Copyright (c) 2005-2015 Olivier PETRUCCI]: https://areca-backup.org "Visit the original resource"
+[Copyright (c) 2005-2015 Olivier PETRUCCI]: https://bugtamer.github.io/areca-backup-legacy-documentation/areca-backup.org/ "Visit a legacy copy of the original resource that is no longer available"
 [archive.org]: https://web.archive.org/web/20151012065719/http://www.areca-backup.org/arcwk/index.php?title=Translations "Visit the original resource at archive.org"

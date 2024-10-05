@@ -48,4 +48,4 @@
 [Top] | [Copyright (c) 2005-2015 Olivier PETRUCCI]
 
 [Top]: #areca-backup---screenshots "Go to top of the document"
-[Copyright (c) 2005-2015 Olivier PETRUCCI]: areca-backup.org/screenshots.php "Visit the original resource"
+[Copyright (c) 2005-2015 Olivier PETRUCCI]: https://bugtamer.github.io/areca-backup-legacy-documentation/areca-backup.org/screenshots.html "Visit a legacy copy of the original resource that is no longer available"

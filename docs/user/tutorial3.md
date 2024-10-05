@@ -34,11 +34,11 @@ Make sure you've had a look at the previous tutorial (Section 2 : "[Running your
 
 ## Recovering a specific version of a specific file
 
-Let's assume that you want to recover the very first version of "MyNewPicture.jpg" (see image below and tutorial section 2 : "[Running your first backup](tutorial2.md)").
+Let's assume that you want to recover the very first version of "`MyNewPicture.jpg`" (see image below and tutorial section 2 : "[Running your first backup](tutorial2.md)").
 
 ![](./images/logical.jpg)
 
-Select it in the history (on the right side of the "Logical view" tab), right click and select "Recover ...".
+Select it in the history (on the right side of the "`Logical view`" tab), right click and select "`Recover ...`".
 
 ![](./images/recover.jpg)
 
@@ -46,27 +46,27 @@ A new window appears and asks you where to recover the file.
 
 ![](./images/recover2.jpg)
 
-Enter the destination (for instance "/home/olivier") and hit "OK".
-That's it : your file has been recovered in "/home/olivier".
+Enter the destination (for instance "`/home/olivier`") and hit "`OK`".
+That's it : your file has been recovered in "`/home/olivier`".
 
 
 ## Recovering a whole archive
 
-If you want to recover the whole archive, go back to the "Physical view" and select the last archive :
+If you want to recover the whole archive, go back to the "`Physical view`" and select the last archive :
 
 ![](./images/physical3.jpg)
 
-Right-click and select "Recover..."
+Right-click and select "`Recover...`"
 
 ![](./images/recover3.jpg)
 
-As previously, a new window appears and asks where to recover the selected archive. Enter the destination (for instance "/home/olivier") and hit "OK".
+As previously, a new window appears and asks where to recover the selected archive. Enter the destination (for instance "`/home/olivier`") and hit "`OK`".
 
 ![](./images/recover4.jpg)
 
-Note that in this case, Areca will recover your archive in a "rcv" subdirectory (in this example : "/home/olivier/rcv").
+Note that in this case, Areca will recover your archive in a "`rcv`" subdirectory (in this example : "`/home/olivier/rcv`").
 
-You can also notice that Areca recovers the "MyNewPicture.jpg" file that is contained in your third archive, but also the files stored in your previous archives : you don't have to recover your data archive-by-archive.
+You can also notice that Areca recovers the "`MyNewPicture.jpg`" file that is contained in your third archive, but also the files stored in your previous archives : you don't have to recover your data archive-by-archive.
 
 
 ## Next step ...
@@ -79,4 +79,4 @@ Step 4 : [Merging your archives](tutorial4.md)
 [Top] | [Copyright (c) 2005-2015 Olivier PETRUCCI]
 
 [Top]: #areca-backup---tutorial-recovering-files-from-your-archives "Go to top of the document"
-[Copyright (c) 2005-2015 Olivier PETRUCCI]: areca-backup.org/tutorial3.php "Visit the original resource"
+[Copyright (c) 2005-2015 Olivier PETRUCCI]: https://bugtamer.github.io/areca-backup-legacy-documentation/areca-backup.org/tutorial3.html "Visit a legacy copy of the original resource that is no longer available"

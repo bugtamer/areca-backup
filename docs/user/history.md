@@ -725,5 +725,5 @@ CAUTION : This refactoring is NOT backward-compatible. This means that this new 
 [Top] | [Copyright (c) 2005-2015 Olivier PETRUCCI] | [archive.org]
 
 [Top]: #areca-backup---versions-history "Go to top of the document"
-[Copyright (c) 2005-2015 Olivier PETRUCCI]: areca-backup.org/history.php "Visit the original resource"
+[Copyright (c) 2005-2015 Olivier PETRUCCI]: https://bugtamer.github.io/areca-backup-legacy-documentation/areca-backup.org/history.html "Visit a legacy copy of the original resource that is no longer available"
 [archive.org]: http://web.archive.org/web/20150901140137/http://www.areca-backup.org/history.php "Visit the original resource at archive.org"

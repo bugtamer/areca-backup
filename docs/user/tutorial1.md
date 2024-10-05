@@ -30,20 +30,20 @@ It is assumed that you've installed Areca using the default procedure of your sy
 
 ### Configuration directory
 
-Areca will need a directory where it will store the configuration of your backups (what files to backup, where to store them, which files types must be filtered, whether the backups are compressed or encrypted, and so on). This "configuration directory" is called a "workspace".
+Areca will need a directory where it will store the configuration of your backups (what files to backup, where to store them, which files types must be filtered, whether the backups are compressed or encrypted, and so on). This "`configuration directory`" is called a "`workspace`".
 
 
-In this tutorial, I assume that your workspace is "/home/olivier/areca_workspace".
+In this tutorial, I assume that your workspace is "`/home/olivier/areca_workspace`".
 
 
 ### Backup directory
 
-Areca will also need a directory (on your local hard drive or a USB drive, for instance) where to store your archives. This directory will be refered as "Backup directory". I assume in this tutorial that your backup directory is "/backups".
+Areca will also need a directory (on your local hard drive or a USB drive, for instance) where to store your archives. This directory will be refered as "`Backup directory`". I assume in this tutorial that your backup directory is "`/backups`".
 
 
 ## Launching Areca
 
-Simply run the "areca.sh" script (on Linux) or "areca.exe" (on Windows) ... A new window like this one should appear :
+Simply run the "`areca.sh`" script (on Linux) or "`areca.bat`" or "`areca.exe`" (on Windows) ... A new window like this one should appear :
 
 ![](./images/main.jpg)
 
@@ -52,7 +52,7 @@ This is the main interface of Areca Backup.
 
 ## Choosing your workspace
 
-As said before, we want to store our configuration in "/home/olivier/areca_workspace", so go to the "Workspace" menu, choose "Open Workspace" and select "/home/olivier/areca_workspace".
+As said before, we want to store our configuration in "`/home/olivier/areca_workspace`", so go to the "`Workspace`" menu, choose "`Open Workspace`" and select "`/home/olivier/areca_workspace`".
 
 ![](./images/open_ws.jpg)
 
@@ -63,15 +63,15 @@ You can create multiple backup configurations in Areca. For instance you can cre
 
 Areca allows you to group your configurations so they will be easier to manage.
 
-To create your first group, go to the "Edit" menu and select "New Group".
+To create your first group, go to the "`Edit`" menu and select "`New Group`".
 
 ![](./images/new_grp.jpg)
 
-A new window will appear, asking for a group name and description. Enter "My First Backup Group" as group name.
+A new window will appear, asking for a group name and description. Enter "`My First Backup Group`" as group name.
 
 ![](./images/new_grp2.jpg)
 
-... and click the "Save" button.
+... and click the "`Save`" button.
 
 Your new group magically appears in the main window :
 
@@ -80,7 +80,7 @@ Your new group magically appears in the main window :
 
 ## Creating your first target
 
-A backup configuration is called "target" in Areca. To create your first target, select "My First Backup Group", go to the "Edit" menu, and select the "New Target" item :
+A backup configuration is called "`target`" in Areca. To create your first target, select "`My First Backup Group`", go to the "`Edit`" menu, and select the "`New Target`" item :
 
 ![](./images/new_tg.jpg)
 
@@ -93,9 +93,9 @@ A new screen appears ...
 
 ![](./images/tg_main.jpg)
 
-Enter "My First Target" as target name, and select your backup directory (which will be - as discussed at the beginning of this tutorial - "/backups").
+Enter "`My First Target`" as target name, and select your backup directory (which will be - as discussed at the beginning of this tutorial - "`/backups`").
 
-Keep all other fields unchanged and go to the "Sources" tab ...
+Keep all other fields unchanged and go to the "`Sources`" tab ...
 
 
 ### "Sources" Tab
@@ -104,15 +104,15 @@ Keep all other fields unchanged and go to the "Sources" tab ...
 
 This tab allows you to select the directories you want to backup.
 
-Click the "Add" Button, and select a directory (for instance : "/home/olivier/Photos")
+Click the "`Add`" Button, and select a directory (for instance : "`/home/olivier/Photos`")
 
 ![](./images/tg_sources2.jpg)
 
-Click on the "Save" Button. "/home/olivier/Photos" appears in the "sources" list :
+Click on the "`Save`" Button. "`/home/olivier/Photos`" appears in the "`sources`" list :
 
 ![](./images/tg_sources3.jpg)
 
-Add as many source directories as you want, and go to the "Compression" tab.
+Add as many source directories as you want, and go to the "`Compression`" tab.
 
 
 ### "Compression" Tab
@@ -121,9 +121,9 @@ Add as many source directories as you want, and go to the "Compression" tab.
 
 This window allows you to select whether your archive will be compressed or not (and how it will be compressed).
 
-In our case, we just want to create standard zip files, so keep the default settings, and simply check the "add .zip extension to filenames" checkbox.
+In our case, we just want to create standard zip files, so keep the default settings, and simply check the "`add .zip extension to filenames`" checkbox.
 
-Once you're done, go to the "Advanced" tab ...
+Once you're done, go to the "`Advanced`" tab ...
 
 
 ### "Advanced" Tab
@@ -132,7 +132,7 @@ Once you're done, go to the "Advanced" tab ...
 
 This window allows you to choose advanced parameters such as permission management (on Linux) or encryption.
 
-In our case, we don't want encryption, so keep the default configuration and go to the "filters" tab.
+In our case, we don't want encryption, so keep the default configuration and go to the "`filters`" tab.
 
 
 ### "Filters" Tab
@@ -141,17 +141,17 @@ In our case, we don't want encryption, so keep the default configuration and go 
 
 Filters allow you to exclude unwanted files or directories from your backup.
 
-By default, Areca excludes "*.tmp" and "*.temp" files as well as locked files.
+By default, Areca excludes "`*.tmp`" and "`*.temp`" files as well as locked files.
 
-If you want to add a new filter (for instance to exclude the "/home/olivier/Photos/old" subdirectory), select the "..." filter item and click the "Add" button :
+If you want to add a new filter (for instance to exclude the "`/home/olivier/Photos/old`" subdirectory), select the "`...`" filter item and click the "`Add`" button :
 
 ![](./images/tg_filters2.jpg)
 
-Select "Directory filter" as filter type, choose "/home/olivier/Photos/old" as directory and click the "Save" button.
+Select "`Directory filter`" as filter type, choose "`/home/olivier/Photos/old`" as directory and click the "`Save`" button.
 
 ![](./images/tg_filters3.jpg)
 
-Go to the "pre-processing" tab.
+Go to the "`pre-processing`" tab.
 
 
 ### "Pre-processing" Tab
@@ -160,27 +160,27 @@ Go to the "pre-processing" tab.
 
 This tab allows you to define tasks that will be performed by Areca before each Backup.
 
-We don't want any pre-processing, so go directly to the "post-processing" tab.
+We don't want any pre-processing, so go directly to the "`post-processing`" tab.
 
 
 ### "Post-processing" Tab
 
 ![](./images/tg_postprocessing.jpg)
 
-We want Areca to send an email to "admin@mycorp.com", using the SMTP server "smtp.mycorp.com" after each backup.
+We want Areca to send an email to "`admin@mycorp.com`", using the SMTP server "`smtp.mycorp.com`" after each backup.
 
 
-To do that, click the "Add" button, and select "Send the report by email".
+To do that, click the "`Add`" button, and select "`Send the report by email`".
 
-Fill the "Title", "Recipients", "From" and "SMTP server" fields as shown bellow :
+Fill the "`Title`", "`Recipients`", "`From`" and "`SMTP server`" fields as shown bellow :
 
 ![](./images/tg_postprocessing2.jpg)
 
-... and click the "Save" button.
+... and click the "`Save`" button.
 
 ![](./images/tg_postprocessing3.jpg)
 
-Go to the "Description" tab.
+Go to the "`Description`" tab.
 
 
 ### "Description" Tab
@@ -189,7 +189,7 @@ Enter whatever you want : it's just for information purpose.
 
 ![](./images/tg_description.jpg)
 
-Once you're done, hit the "Save" button. That's it ! You've created your first target with Areca Backup !
+Once you're done, hit the "`Save`" button. That's it ! You've created your first target with Areca Backup !
 
 ![](./images/main3.jpg)
 
@@ -204,4 +204,4 @@ Step 2 : [Running your first backup](tutorial2.md)
 [Top] | [Copyright (c) 2005-2015 Olivier PETRUCCI]
 
 [Top]: #areca-backup---tutorial-configuring-your-first-target "Go to top of the document"
-[Copyright (c) 2005-2015 Olivier PETRUCCI]: areca-backup.org/tutorial1.php "Visit the original resource"
+[Copyright (c) 2005-2015 Olivier PETRUCCI]: https://bugtamer.github.io/areca-backup-legacy-documentation/areca-backup.org/tutorial1.html "Visit a legacy copy of the original resource that is no longer available"

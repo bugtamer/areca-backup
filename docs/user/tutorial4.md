@@ -36,11 +36,11 @@ Make sure you've had a look at the previous tutorial (Section 3 : "[Merging your
 
 If you want to keep only a limited number of archives to avoid using too much space on your backup location, the "merge" feature will be useful to you.
 
-Go to the "Physical view" and select your three archives :
+Go to the "`Physical view`" and select your three archives :
 
 ![](./images/physical4.jpg)
 
-Right-click and select the "Merge" menu item :
+Right-click and select the "`Merge`" menu item :
 
 ![](./images/merge.jpg)
 
@@ -48,16 +48,16 @@ A new window appears :
 
 ![](./images/merge2.jpg)
 
-Just hit the "Start merge" button.
-Once the merge is performed, you can notice that only one archive appears in the "Physical view" :
+Just hit the "`Start merge`" button.
+Once the merge is performed, you can notice that only one archive appears in the "`Physical view`" :
 
 ![](./images/physical5.jpg)
 
-Double-click on it to see its content : you can notice that all files (including "MyNewPicture.jpg") are contained in this unique archive :
+Double-click on it to see its content : you can notice that all files (including "`MyNewPicture.jpg`") are contained in this unique archive :
 
 ![](./images/content4.jpg)
 
-If you go back to the "Logical view" and select "MyNewPicture.jpg", you see that the file's history has disappeared. A unique version is now displayed (created at 9:54 PM) : Areca has destroyed the file's history and kept the last version only.
+If you go back to the "`Logical view`" and select "`MyNewPicture.jpg`", you see that the file's history has disappeared. A unique version is now displayed (created at 9:54 PM) : Areca has destroyed the file's history and kept the last version only.
 
 ![](./images/logical2.jpg)
 
@@ -72,4 +72,4 @@ Step 5 : [Recovering files when your backup configuration has been lost](tutoria
 [Top] | [Copyright (c) 2005-2015 Olivier PETRUCCI]
 
 [Top]: #areca-backup---tutorial-merging-your-archives "Go to top of the document"
-[Copyright (c) 2005-2015 Olivier PETRUCCI]: areca-backup.org/tutorial4.php "Visit the original resource"
+[Copyright (c) 2005-2015 Olivier PETRUCCI]: https://bugtamer.github.io/areca-backup-legacy-documentation/areca-backup.org/tutorial4.html "Visit a legacy copy of the original resource that is no longer available"

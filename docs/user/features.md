@@ -22,9 +22,9 @@
 
 ## Backup Engine Features :
 
-- Archives **compression** (Zip & Zip64 format)
-- Archives **encryption** (AES128 & AES256 encryption algorithms)
-- Storage on local hard drive, network drive, USB key, FTP, FTPs (with implicit and explicit SSL / TLS) or SFTP server
+- Archives **compression** (`Zip` & `Zip64` format)
+- Archives **encryption** (`AES128` & `AES256` encryption algorithms)
+- Storage on local hard drive, network drive, USB key, `FTP`, `FTPs` (with implicit and explicit SSL / TLS) or `SFTP` server
 - Source file **filters** (by extension, subdirectory, regular expression, size, date, status, with AND/OR/NOT logical operators)
 - Incremental, differential and full backup support
 - Support for **delta backup** (store only modified **parts** of your files)
@@ -57,5 +57,5 @@
 [Top] | [Copyright (c) 2005-2015 Olivier PETRUCCI] | [archive.org]
 
 [Top]: #areca-backup---features "Go to top of the document"
-[Copyright (c) 2005-2015 Olivier PETRUCCI]: areca-backup.org/features.php "Visit the original resource"
+[Copyright (c) 2005-2015 Olivier PETRUCCI]: https://bugtamer.github.io/areca-backup-legacy-documentation/areca-backup.org/features.html "Visit a legacy copy of the original resource that is no longer available"
 [archive.org]: http://web.archive.org/web/20150912034048/http://www.areca-backup.org/features.php "Visit the original resource at archive.org"

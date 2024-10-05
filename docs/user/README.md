@@ -26,13 +26,13 @@ It basically allows you to select a set of files / directories to back-up, choos
 It has been designed to ...
 
 
-_... Be as simple as possible to set up_ : No complex configuration files to edit - Your backup configuration (stored as an XML file) can be edited with Areca's graphical user interface.
+***... Be as simple as possible to set up*** : No complex configuration files to edit - Your backup configuration (stored as an XML file) can be edited with Areca's graphical user interface.
 
 
-_... Be as versatile as possible_ : Areca can use advanced backup modes (like "delta backup") or simply produce a basic copy of your source files as a standard directory or zip archive (readable by WinZip or other archivers).
+***... Be as versatile as possible*** : Areca can use advanced backup modes (like "delta backup") or simply produce a basic copy of your source files as a standard directory or zip archive.
 
 
-_... Allow you to interact with your archives_ : Browse your archives, track and recover a specific version of a file, merge a set of archives into a single one, etc.
+***... Allow you to interact with your archives*** : Browse your archives, track and recover a specific version of a file, merge a set of archives into a single one, etc.
   
 
 ## How do I get started with Areca Backup ?
@@ -53,4 +53,4 @@ Read some of the [tutorials](tutorial.md)
 [Top] | [Copyright (c) 2005-2015 Olivier PETRUCCI]
 
 [Top]: #areca-backup---home "Go to top of the document"
-[Copyright (c) 2005-2015 Olivier PETRUCCI]: https://areca-backup.org "Visit the original resource"
+[Copyright (c) 2005-2015 Olivier PETRUCCI]: https://bugtamer.github.io/areca-backup-legacy-documentation/areca-backup.org/ "Visit a legacy copy of the original resource that is no longer available"

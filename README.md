@@ -18,7 +18,7 @@ It has been designed to ?
 - ***Be as versatile as possible*** :<br>
   Areca can use advanced backup modes (like *delta backup*)
   or simply produce a basic copy of your source files as a standard directory
-  or zip archive (readable by File Explorer in Windows, WinRAR, WinZip, 7-Zip, PeaZip or other archivers).
+  or zip archive.
 
 - ***Allow you to interact with your archives*** :<br>
   Browse your archives, track and recover a specific version of a file,

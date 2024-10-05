@@ -22,30 +22,30 @@
 
 Here is a listing of the most popular regular expression patterns.
 
-| Rule                                                     | Syntax                                                         |
-|:---------------------------------------------------------|:---------------------------------------------------------------|
-| Exactly one occurence of x                               | x                                                              |
-| At least one occurence of x                              | x+                                                             |
-| 0 or many occurences of x                                | x*                                                             |
-| 0 or 1 occurence of x                                    | x?                                                             |
-| Escape character                                         | \                                                              |
-| Any single character                                     | .                                                              |
-| One character in a predefined set                        | [_list-of-characters_] ... examples : [ABCD], [012345789]      |
-| One character in a character range                       | [_character1_-_character2_] ... examples : [0-9], [a-zA-Z] ... |
-| Any character except those contained in a predefined set | [^_list-of-characters_] ... examples : [^ABCD], [^0-9]         |
-| Tab                                                      | \t                                                             |
-| New line                                                 | \n                                                             |
-| Carriage return                                          | \r                                                             |
-| Beginning of the line                                    | ^                                                              |
-| End of the line                                          | $                                                              |
+| Rule                                                     | Syntax                                                                 |
+|:---------------------------------------------------------|:-----------------------------------------------------------------------|
+| Exactly one occurence of x                               | `x`                                                                    |
+| At least one occurence of x                              | `x+`                                                                   |
+| 0 or many occurences of x                                | `x*`                                                                   |
+| 0 or 1 occurence of x                                    | `x?`                                                                   |
+| Escape character                                         | `\`                                                                    |
+| Any single character                                     | `.`                                                                    |
+| One character in a predefined set                        | `[`_list-of-characters_`]` ... examples : `[ABCD]`, `[012345789]`      |
+| One character in a character range                       | `[`_character1_-_character2_`]` ... examples : `[0-9]`, `[a-zA-Z]` ... |
+| Any character except those contained in a predefined set | `[^`_list-of-characters_`]` ... examples : `[^ABCD]`, `[^0-9]`         |
+| Tab                                                      | `\t`                                                                   |
+| New line                                                 | `\n`                                                                   |
+| Carriage return                                          | `\r`                                                                   |
+| Beginning of the line                                    | `^`                                                                    |
+| End of the line                                          | `$`                                                                    |
   
 
 ## Examples :
 
 | Example                           | Syntax         |
 |:----------------------------------|:---------------|
-| All filenames ending with ".html" | ^.*\.html$   |
-| All filenames containing "client" | ^.*client.*$ |
+| All filenames ending with "`.html`" | `^.*\.html$`   |
+| All filenames containing "`client`" | `^.*client.*$` |
 
 Additional help can be found on [Areca's regular expressions wiki](../sourceforge.net/regex.md)
 
@@ -55,4 +55,4 @@ Additional help can be found on [Areca's regular expressions wiki](../sourceforg
 [Top] | [Copyright (c) 2005-2015 Olivier PETRUCCI]
 
 [Top]: #areca-backup---regex "Go to top of the document"
-[Copyright (c) 2005-2015 Olivier PETRUCCI]: areca-backup.org/regex.php "Visit the original resource"
+[Copyright (c) 2005-2015 Olivier PETRUCCI]: https://bugtamer.github.io/areca-backup-legacy-documentation/areca-backup.org/regex.html "Visit a legacy copy of the original resource that is no longer available"

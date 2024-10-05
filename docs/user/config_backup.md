@@ -19,9 +19,9 @@
 
 
 Areca stores backup copies of your configuration files on your backup location.
-These copies are stored in a subdirectory named "areca_config_backup", as ".bcfg" files.
+These copies are stored in a subdirectory named "`areca_config_backup`", as "`.bcfg`" files.
 
-They can be opened directly in Areca (by using the "open workspace" feature).
+They can be opened directly in Areca (by using the "`open workspace`" feature).
 Nevertheless, Areca needs to make sure that these files won't be inadvertently modified or corrupted.
 That's why target edition are not permitted in backup workspaces.
 
@@ -35,4 +35,4 @@ Areca will create copies of these backup files, which will be editable.
 [Top] | [Copyright (c) 2005-2015 Olivier PETRUCCI]
 
 [Top]: #areca-backup---config-backup "Go to top of the document"
-[Copyright (c) 2005-2015 Olivier PETRUCCI]: http://www.areca-backup.org/config_backup.php "Visit the original resource"
+[Copyright (c) 2005-2015 Olivier PETRUCCI]: https://bugtamer.github.io/areca-backup-legacy-documentation/areca-backup.org/config_backup.html "Visit a legacy copy of the original resource that is no longer available"
