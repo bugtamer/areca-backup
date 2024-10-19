@@ -1,5 +1,6 @@
 package com.application.areca.launcher.gui.composites;
 
+import java.util.Comparator;
 import java.util.GregorianCalendar;
 import java.util.Iterator;
 import java.util.List;
@@ -11,6 +12,7 @@ import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.MouseEvent;
 import org.eclipse.swt.events.MouseListener;
+import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.TreeEvent;
 import org.eclipse.swt.events.TreeListener;
@@ -34,6 +36,7 @@ import com.application.areca.launcher.gui.UIRecoveryFilter;
 import com.application.areca.launcher.gui.common.AbstractWindow;
 import com.application.areca.launcher.gui.common.ArecaImages;
 import com.application.areca.launcher.gui.common.Colors;
+import com.application.areca.launcher.gui.common.ArchiveExplorerComparatorFactory;
 import com.application.areca.launcher.gui.resources.ResourceManager;
 import com.application.areca.metadata.MetadataConstants;
 import com.application.areca.metadata.trace.TraceEntry;
@@ -44,11 +47,13 @@ import com.myJava.util.log.Logger;
  * reported by some users.<BR>
  * 
  * @author Olivier PETRUCCI <BR>
+ * @author bugtamer <BR>
  *
  */
 
  /*
  Copyright 2005-2015, Olivier PETRUCCI.
+ Copyright 2024, bugtamer.
 
 This file is part of Areca.
 
@@ -81,7 +86,16 @@ implements MouseListener, Listener {
 	private ArchiveMedium medium;
 	private AggregatedViewContext context = new AggregatedViewContext();
 	private GregorianCalendar fromDate;
+	
+	/**
+	 * <b>Aggregated View</b> flag (Logical View):
+	 * All files will be displayed, whether they have been deleted or not.
+	 */
 	private boolean aggregated = false;
+
+	final int defaultNameColumnIndex = 0;
+	private Comparator<TraceEntry> comparator;
+
 
 	public ArchiveExplorer(Composite parent, boolean aggregated) {
 		super(parent, SWT.NONE);
@@ -99,9 +113,12 @@ implements MouseListener, Listener {
 			TreeColumn column1 = new TreeColumn(tree, SWT.LEFT);
 			column1.setText(RM.getLabel("mainpanel.name.label"));
 			column1.setWidth(AbstractWindow.computeWidth(400));
-			TreeColumn column2 = new TreeColumn(tree, SWT.LEFT);
+			TreeColumn column2 = new TreeColumn(tree, SWT.RIGHT);
 			column2.setText(RM.getLabel("mainpanel.size.label"));
 			column2.setWidth(AbstractWindow.computeWidth(120));
+
+			addSortingListenerTo(0);
+			addSortingListenerTo(1);
 
 			viewer.addDoubleClickListener(new IDoubleClickListener() {
 				public void doubleClick(DoubleClickEvent event) {
@@ -195,6 +212,8 @@ implements MouseListener, Listener {
 
 	private void refreshNode(TreeItem item, TraceEntry entry, Tree tree) 
 	throws ApplicationException {
+		setInitialSortIndicator();
+
 		// Get data to display
 		List entries;
 		if (logicalView) {
@@ -210,6 +229,8 @@ implements MouseListener, Listener {
 		if (tree != null) {
 			tree.removeAll();
 		}
+
+		entries.sort(comparator);
 
 		// Add new items
 		Iterator iter = entries.iterator();
@@ -263,12 +284,15 @@ implements MouseListener, Listener {
 			item.setImage(ArecaImages.ICO_FS_FILE);
 		}
 
+		// "Name" column (Logical View)
 		int idx = data.getKey().lastIndexOf('/');
 		String label = data.getKey();
 		if (idx != -1) {
 			label = data.getKey().substring(idx + 1);
 		}
 		item.setText(0, label);
+		
+		// "Size" column (Logical View)
 		if (((!stored) && (!displayNonStoredItemsSize))) {
 			item.setText(1, " ");
 		} else {
@@ -425,4 +449,43 @@ implements MouseListener, Listener {
 	public Tree getTree() {
 		return tree;
 	}
+
+
+	/** @param columnIndex Zero-based index. */
+	private void addSortingListenerTo(int columnIndex) {
+		final TreeColumn column = tree.getColumn(columnIndex);
+    	if (column != null) {
+			column.addSelectionListener(new SelectionAdapter() {
+				int direction = SWT.UP;
+				Comparator<TraceEntry> columnComparator = ArchiveExplorerComparatorFactory.forColumn(columnIndex);
+				
+				public void widgetSelected(SelectionEvent event) {
+					// Logger.defaultLogger().info(String.format("Toggle sorting of column %d.", columnIndex), "Archive Explorer");
+					if (column.equals(tree.getSortColumn())) {
+						columnComparator = columnComparator.reversed();
+						direction = (tree.getSortDirection() == SWT.UP) ? SWT.DOWN : SWT.UP;
+					}
+					comparator = columnComparator;
+					tree.setSortDirection(direction);
+					tree.setSortColumn(column);
+					try {
+						refresh(aggregated);
+					} catch (ApplicationException e) {
+						Logger.defaultLogger().error(e);
+					}
+				}
+			});
+		}
+	}
+
+
+	/** Should be called only one time. */
+	private void setInitialSortIndicator() {
+		if (tree.getSortColumn() == null) {
+			comparator = ArchiveExplorerComparatorFactory.forColumn(defaultNameColumnIndex);
+			tree.setSortColumn(tree.getColumn(defaultNameColumnIndex));
+			tree.setSortDirection(SWT.UP);
+		}
+	}
+
 }
