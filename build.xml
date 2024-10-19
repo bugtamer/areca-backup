@@ -123,6 +123,12 @@
             <fileset dir="${root}/bin">
                 <include name="**"/>
             </fileset>
+            <fileset dir="${root}/jni">
+                <include name="*.sh"/>
+            </fileset>
+            <fileset dir="${root}/building/scripts">
+                <include name="*.sh"/>
+            </fileset>
             <fileset dir="${root}">
                 <include name="*.sh"/>
             </fileset>
