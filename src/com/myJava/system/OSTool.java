@@ -21,12 +21,14 @@ import com.myJava.util.log.Logger;
  * Utility class for all system calls
  * <BR>
  * @author Olivier PETRUCCI
+ * @author bugtamer
  * <BR>
  *
  */
 
  /*
  Copyright 2005-2015, Olivier PETRUCCI.
+ Copyright 2024, bugtamer.
 
 This file is part of Areca.
 
@@ -308,7 +310,10 @@ public class OSTool {
     }
     
     public static String getVMDescription() {
-        return System.getProperty("java.runtime.name") + " - " + System.getProperty("java.runtime.version") + " - " + getJavaVendor();
+        String name    = System.getProperty("java.runtime.name");
+        String version = System.getProperty("java.runtime.version");
+        String bitness = System.getProperty("sun.arch.data.model");
+        return String.format("%s - %s (%s bits) - %s", name, version, bitness, getJavaVendor());
     }
     
     public static boolean isJavaVersionGreaterThanOrEquals(int[] referenceVersion) {
