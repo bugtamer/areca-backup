@@ -12,10 +12,10 @@ rmdir releases/
 mkdir releases/
 
 ant clean
-ant windows-x86-64
 ant windows-x86-32
-ant linux-x86-64
+ant windows-x86-64
 ant linux-x86-32
+ant linux-x86-64
 
 cp docs/developer/history.md releases/REAME.md
 

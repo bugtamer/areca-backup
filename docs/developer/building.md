@@ -12,6 +12,7 @@ The building pipeline is initially defined by [`build.xml`](../../build.xml) and
 
 - Execute the following commands from the project root folder (`areca-backup/`).
 - `ant` builds a release bundle for the current platform if it is supported.
+- Run the `releases.sh` script to build all bundles.
 - The release bundle output folder is `areca-backup/releases/`.
 
 ### Windows platform
