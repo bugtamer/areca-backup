@@ -1,15 +1,17 @@
 # Areca Backup - Versions history
 
-
-## Version 8.1.0 (released on 2024-09-22) BUILD_ID 1144424320352243113
+## Version 8.1.0 (released on 2024-10-21)
 
 - Add support for building and running Java LTS: 11, 17, and 21 apart from 8.
-- Change the URL of version.xml to point to the areca-backup repo
-- As areca.bat, now areca.sh works with ARECA_HOME and JAVA_HOME environment variables and embeded JRE/JDK
-- Rename documentation folder to prepare GitHub Pages
+- As `areca.bat`, now `areca.sh` works with `JAVA_HOME` environment variable and embeded JRE/JDK.
+- Sortable columns for *Physical View*, *Logical View*, *History* and *File Explorer*.
+- Update and rename documentation folder to prepare *GitHub Pages*.
+- Change the URL of `version.xml` to point to the areca-backup repo.
+- Minor building pipeline improvements.
+- Minor fixes.
 
 
-## Version 8.0.0 (released on 2024-09-21) BUILD_ID 5682047565851761744
+## Version 8.0.0 (released on 2024-09-21)
 
 - Fixed Areca launchers.
 - Support for Java 8 LTS.

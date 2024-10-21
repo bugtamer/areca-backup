@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <versiondata
-    id="8.0.0"
-    date="2024-8-21"
-    url="https://github.com/bugtamer/areca-backup/releases"
-    description="Fixed Areca launchers. Support for Java 8 LTS. Fixed broken links to online documentation. Fixed `Check for new version ...` feature. Fixed building pipeline. Add dependency manager. Add some documentation for users and developers."
+    id="8.1.0"
+    date="2024-9-21"
+    url="https://sourceforge.net/projects/areca-backup/files/"
+    description="Add support for building and running Java LTS: 11, 17, and 21 apart from 8. As 'areca.bat', now 'areca.sh' works with 'JAVA_HOME' environment variable and embeded JRE/JDK. Sortable columns for 'Physical View', 'Logical View', 'History' and 'File Explorer'. Update and rename documentation folder to prepare 'GitHub Pages'. Change the URL of 'version.xml' to point to the areca-backup repo. Minor building pipeline improvements. Minor fixes."
 />

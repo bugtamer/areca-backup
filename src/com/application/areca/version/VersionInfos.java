@@ -60,10 +60,11 @@ public class VersionInfos {
 
 	static {
 		// INIT BUILD ID - DO NOT MODIFY THE FOLLOWING COMMENT :
-		BUILD_ID = 5682047565851761744L;
+		BUILD_ID = 1144424320352243113L;
 
 		// INIT VERSION DATA
-		VERSIONS.add(new VersionData("8.0.0", new GregorianCalendar(2024, 8, 21), "Fixed Areca launchers. Support for Java 8 LTS. Fixed broken links to online documentation. Fixed `Check for new version ...` feature. Fixed building pipeline. Add dependency manager. Add some documentation for users and developers."));
+		release("8.1.0", 2024, 9, 21, "Add support for building and running Java LTS: 11, 17, and 21 apart from 8. As 'areca.bat', now 'areca.sh' works with 'JAVA_HOME' environment variable and embeded JRE/JDK. Sortable columns for 'Physical View', 'Logical View', 'History' and 'File Explorer'. Update and rename documentation folder to prepare 'GitHub Pages'. Change the URL of 'version.xml' to point to the areca-backup repo. Minor building pipeline improvements. Minor fixes.");
+		release("8.0.0", 2024, 8, 21, "Fixed Areca launchers. Support for Java 8 LTS. Fixed broken links to online documentation. Fixed `Check for new version ...` feature. Fixed building pipeline. Add dependency manager. Add some documentation for users and developers.");
 		VERSIONS.add(new VersionData("7.5", new GregorianCalendar(2015, 7, 26), "Fixed the issue that prevented archives from being created when there were only deleted files (no new files);Fixed a minor issue when reconnecting to a FTP server."));
 		VERSIONS.add(new VersionData("7.4.9", new GregorianCalendar(2014, 10, 26), "Fixed compression issue that could occur with filenames containing line breaks."));
 		VERSIONS.add(new VersionData("7.4.8", new GregorianCalendar(2014, 10, 02), "Fixed encryption issued which could occur with recent versions of JREs"));
@@ -238,4 +239,21 @@ public class VersionInfos {
 	public static long getBuildId() {
 		return BUILD_ID;
 	}
+
+
+	/**
+	 * Register a new Areca version.
+	 * @param version x.y.z
+	 * @param year YYYY
+	 * @param month zero-based month [0, 11]
+	 * @param day one-based day [1-31]
+	 * @param changeLog
+	 */
+	private static void release(String version, int year, int month, int day, String changeLog) {
+		if ((month < 0) || (month > 11)) {
+			throw new IllegalArgumentException(String.format("Month (%d) is out of range [0, 11]", month));
+		}
+		VERSIONS.add(new VersionData(version, new GregorianCalendar(year, month, day), changeLog));
+	}
+
 }

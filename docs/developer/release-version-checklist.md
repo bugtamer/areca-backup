@@ -56,12 +56,17 @@ What `<major>.<minor>.<patch>` means in a specific Areca version (`8.0.0`):
      > `VERSIONS` shows the change log in the feature `History` in `Areca Backup - About`
        (`Help` menu > `About ...` or `Plugins ...`).
      ```Java
-     VERSIONS.add(new VersionData("8.0.0", new GregorianCalendar(2024, 8, 21), "Fixed Areca launchers. Support for Java 8 LTS. Fixed broken links to online documentation. Fixed `Check for new version ...` feature. Fixed building pipeline. Add dependency manager. Add some documentation for users and developers."));
+     release("8.0.0", 2024, 8, 21, "Fixed Areca launchers. Support for Java 8 LTS. Fixed broken links to online documentation. Fixed `Check for new version ...` feature. Fixed building pipeline. Add dependency manager. Add some documentation for users and developers.");
      ```
      `month` is a zero-based `int`:
      ```Java
      new GregorianCalendar(intYear, intZeroBasedMonth, intDay)
      ```
+     or
+     ```Java
+     release("8.0.0", 2024, 8, 21, "Fixed Areca launchers. Support for Java 8 LTS. Fixed broken links to online documentation. Fixed `Check for new version ...` feature. Fixed building pipeline. Add dependency manager. Add some documentation for users and developers.");
+     ```
+
 
 5. Update [`version.xml`](../../version.xml).
    > `version.xml` allows Areca to discover the new released version with the feature `Check for new version ...`
@@ -82,14 +87,16 @@ What `<major>.<minor>.<patch>` means in a specific Areca version (`8.0.0`):
 6. Update the value of `VERSION_URL` in [`ArecaURLs.java`](../../src/com/application/areca/ArecaURLs.java)
    if the location where `version.xml` is hosted has changed its location (e.g. due to a repo fork).
 
-7. Commit changes to `develop` branch:<br>
+7. Update [`builds.csv`](builds.csv) to track `BUILD_ID`s (month is one-based integer).
+
+8. Commit changes to `develop` branch:<br>
    `git commit --message "Version 8.0.0"`
 
-8. [Build release bundles](building.md).
+9. [Build release bundles](building.md).
 
-9. Upload release bundles to the `url` pointed in [`version.xml`](../../version.xml).
+10. Upload release bundles to the `url` pointed in [`version.xml`](../../version.xml).
 
-10. Release the source code changes
+11. Release the source code changes
     - Switch to `main` branch:<br>
       `git checkout main`
     - Update local `main` branch:<br>
