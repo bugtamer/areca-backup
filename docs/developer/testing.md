@@ -23,7 +23,7 @@ Parameters:
 
 Example:
 
-- $ `java -cp lib/areca.jar com.application.areca.tests.CompareFiles README AUTHORS outfile.txt`
+- $ `java -cp lib/areca.jar com.application.areca.tests.CompareFiles README.md AUTHORS outfile.txt`
 
 
 ### ComputeHash
@@ -38,7 +38,7 @@ Parameters:
 
 Example:
 
-- $ `java -cp lib/areca.jar com.application.areca.tests.ComputeHash README AUTHORS`
+- $ `java -cp lib/areca.jar com.application.areca.tests.ComputeHash README.md AUTHORS`
 
 
 ### CreateData
