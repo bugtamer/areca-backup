@@ -262,7 +262,7 @@ public class DefaultFileSystemDriver extends AbstractFileSystemDriver {
 		} catch (NullPointerException e) {
 			// Seems to be a bug in open source VMs (GNU libgcj) with some characters (german "Umlaut"s for instance)
 			if (file != null) {
-				Logger.defaultLogger().error("Error during file list (for : " + file.getAbsolutePath() + "). It is probably due to the fact that you use an incompatible Java Runtime Environment. Note that (Eclipse Temurin or) Oracle's Runtime Environment is highly recommended.", e);
+				Logger.defaultLogger().error("Error during file list (for : " + file.getAbsolutePath() + "). It is probably due to the fact that you use an incompatible Java Runtime Environment. Note that Oracle's Runtime Environment is highly recommended.", e);
 			}
 			throw e;
 		} catch (RuntimeException e) {

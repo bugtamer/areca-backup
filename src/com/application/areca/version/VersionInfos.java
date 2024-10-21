@@ -54,9 +54,9 @@ public class VersionInfos {
 	+ OSTool.formatJavaVersion(REQUIRED_JAVA_VERSION) 
 	+ " to run properly.\nThe version which is currently installed on your system (v " 
 	+ OSTool.formatJavaVersion(OSTool.getJavaVersion()) 
-	+ ") does not meet this requirement.\n\nPlease go to http://java.sun.com/javase/downloads/ and get a newer version of Java.\n "; 
+	+ ") does not meet this requirement.\n\nPlease go to https://www.oracle.com/java/ and get a newer version of Java.\n "; 
 	
-	public static String VENDOR_MSG = "CAUTION : The Java Runtime Environment you are currently using has been released by '" + OSTool.getJavaVendor() + "'.\nIt seems that some open source Java Virtual Machines have problems dealing with some specific filenames characters (German 'Umlaut' for instance).\nIt is so highly advised to use Sun Microsystem's Java Runtime Environment to run " + VersionInfos.APP_SHORT_NAME + ".\n(http://www.java.com/download/)";
+	public static String VENDOR_MSG = "CAUTION : The Java Runtime Environment you are currently using has been released by '" + OSTool.getJavaVendor() + "'.\nIt seems that some open source Java Virtual Machines have problems dealing with some specific filenames characters (German 'Umlaut' for instance).\nIt is so highly advised to use Oracle's Java Runtime Environment to run " + VersionInfos.APP_SHORT_NAME + ".\n(https://www.java.com/download/)";
 
 	static {
 		// INIT BUILD ID - DO NOT MODIFY THE FOLLOWING COMMENT :
