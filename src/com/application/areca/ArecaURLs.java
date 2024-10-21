@@ -42,7 +42,7 @@ public interface ArecaURLs {
 	public String DONATION_URL = "https://www.paypal.com/cgi-bin/webscr?item_name=Donation+to+Areca+Backup&cmd=_donations&business=olivier.petrucci%40gmail.com&lc=US";
 	public String ARECA_URL       = BASE_URL;
 	public String REGEX_URL       = BASE_URL + "/regex.html";
-    public String VERSION_URL     = "https://raw.githubusercontent.com/bugtamer/areca-backup-legacy-documentation/main/areca-backup.org/version.xml";
+    public String VERSION_URL     = "https://raw.githubusercontent.com/bugtamer/areca-backup/refs/heads/main/version.xml";
     public String BACKUP_COPY_URL = BASE_URL + "/config_backup.html";
     public String PLUGINS_URL     = BASE_URL + "/plugin_list.html";
 }

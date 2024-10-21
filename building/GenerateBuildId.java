@@ -16,6 +16,9 @@ import java.util.Random;
  * <code>Next Areca's BUILD ID: -7610986468043976209L for src/com/application/areca/version/VersionInfos.java<code>
  * 
  * @see src/com/application/areca/version/VersionInfos.java
+ * @see src/com/application/areca/external/ShowBuildId.java
+ * 
+ * java -cp ./lib/areca.jar com.application.areca.external.ShowBuildId
  */
 public class GenerateBuildId {
 

@@ -1,6 +1,8 @@
 package com.application.areca.launcher.gui.composites;
 
 import java.io.File;
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.GregorianCalendar;
 
 import org.eclipse.jface.viewers.DoubleClickEvent;
@@ -8,6 +10,7 @@ import org.eclipse.jface.viewers.IDoubleClickListener;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CTabFolder;
+import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.layout.GridData;
@@ -28,6 +31,7 @@ import com.application.areca.launcher.gui.Application;
 import com.application.areca.launcher.gui.common.AbstractWindow;
 import com.application.areca.launcher.gui.common.ArecaImages;
 import com.application.areca.launcher.gui.common.Colors;
+import com.application.areca.launcher.gui.common.PhysicalViewComparatorFactory;
 import com.application.areca.launcher.gui.common.Refreshable;
 import com.application.areca.launcher.gui.resources.ResourceManager;
 import com.application.areca.metadata.manifest.Manifest;
@@ -37,12 +41,14 @@ import com.myJava.util.log.Logger;
 /**
  * <BR>
  * @author Olivier PETRUCCI
+ * @author bugtamer
  * <BR>
  *
  */
 
  /*
  Copyright 2005-2015, Olivier PETRUCCI.
+ Copyright 2024, bugtamer.
 
 This file is part of Areca.
 
@@ -71,6 +77,9 @@ implements SelectionListener, Refreshable {
 	//private Composite messageMainContainer;
 	//private Label lblMessage;
 	//private Text txtPath;
+	private Comparator<File> comparator;
+	private final int defaultDateColumnIndex = 1;
+
 
 	public PhysicalViewComposite(final CTabFolder parent) {
 		super(parent, SWT.NONE);
@@ -102,6 +111,7 @@ implements SelectionListener, Refreshable {
 			TableColumn column = new TableColumn (table, SWT.NONE);
 			column.setText(titles[i]);
 			column.setMoveable(true);
+			addSortingListenerTo(i);
 		}
 
 		table.getColumn(1).setWidth(AbstractWindow.computeWidth(200));
@@ -213,6 +223,8 @@ implements SelectionListener, Refreshable {
 	}
 
 	private void fillTargetData(AbstractTarget target) {
+		setInitialSortIndicator();
+		
 		AbstractIncrementalFileSystemMedium medium = (AbstractIncrementalFileSystemMedium)target.getMedium();
 		File[] archives = new File[0];
 		try {
@@ -225,6 +237,8 @@ implements SelectionListener, Refreshable {
 		if (archives == null) {
 			archives = new File[0];
 		}
+		
+		Arrays.sort(archives, comparator);
 		
 		medium.checkArchivesEncoding(archives);
 
@@ -247,7 +261,7 @@ implements SelectionListener, Refreshable {
 
 				if (
 						(prp != null && prp.equals(AbstractTarget.BACKUP_SCHEME_FULL))
-						|| i == 0
+						// || i == 0
 				) {
 					item.setImage(0, ArecaImages.ICO_FS_FOLDER_FULL);
 				} else if (prp != null && prp.equals(AbstractTarget.BACKUP_SCHEME_DIFFERENTIAL)) {
@@ -320,4 +334,39 @@ implements SelectionListener, Refreshable {
 
 		Application.getInstance().setCurrentDates(first, last);
 	}
+
+
+	/** @param columnIndex Zero-based index. */
+	private void addSortingListenerTo(int columnIndex) {
+		final TableColumn column = table.getColumn(columnIndex);
+    	if (column != null) {
+			column.addSelectionListener(new SelectionAdapter() {
+				int direction = SWT.DOWN;
+				Comparator<File> columnComparator = PhysicalViewComparatorFactory.forColumn(columnIndex);
+				
+				public void widgetSelected(SelectionEvent event) {
+					// Logger.defaultLogger().info(String.format("Toggle sorting of column %d.", columnIndex), "Physical View");
+					if (column.equals(table.getSortColumn())) {
+						columnComparator = columnComparator.reversed();
+						direction = (table.getSortDirection() == SWT.UP) ? SWT.DOWN : SWT.UP;
+					}
+					comparator = columnComparator;
+					table.setSortDirection(direction);
+					table.setSortColumn(column);
+					refresh();
+				}
+			});
+		}
+	}
+
+
+	/** Should be called only one time. */
+	private void setInitialSortIndicator() {
+		if (table.getSortColumn() == null) {
+			TableColumn defaultColumn = table.getColumn(defaultDateColumnIndex);
+			table.setSortColumn(defaultColumn);
+			table.setSortDirection(SWT.DOWN);
+		}
+	}
+
 }

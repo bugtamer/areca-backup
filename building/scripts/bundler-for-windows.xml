@@ -99,6 +99,9 @@
 
         <!-- build.xml -->
 
+        <!-- README -->
+        <copy file="${root}/building/assets/README.windows.txt" tofile="${bundle.dir}/README.txt" preservelastmodified="true" overwrite="true"/>
+
         <zip destfile="${building.dir}/${bundle.file.name}.zip" level="9" zip64Mode="as-needed">
             <zipfileset dir="${bundle.dir}" prefix="${bundle.file.name}"/>
         </zip>

@@ -34,7 +34,9 @@
         <copy file="${root}/build.xml" tofile="${bundle.dir}/build.xml" preservelastmodified="true" overwrite="true"/>
         
         <!-- COPYING -->
+
         <!-- README -->
+        <copy file="${root}/building/assets/README.linux.txt" tofile="${bundle.dir}/README.txt" preservelastmodified="true" overwrite="true"/>
 
         <!-- compression and set permissions -->
         <tar destfile="${building.dir}/${bundle.file.name}.tar" longfile="posix">

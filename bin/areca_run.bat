@@ -32,9 +32,7 @@ SET "P12_OPTIONAL=%9"
 
 :: Getting Areca's directory
 SET "CURRENT_WORKING_DIRECTORY=%CD%"
-IF NOT EXIST "%CURRENT_WORKING_DIRECTORY%\lib\areca.jar" SET "CURRENT_WORKING_DIRECTORY=%SCRIPT_PATH%"
 SET "ARECA_DIR=%CURRENT_WORKING_DIRECTORY%"
-IF EXIST "%ARECA_HOME%\lib\areca.jar" SET "ARECA_DIR=%ARECA_HOME%"
 
 
 :: Getting Java directory
@@ -132,19 +130,24 @@ IF "%P1_REQUIRED_LAUNCHER_CLASS%"=="com.application.areca.launcher.gui.Launcher"
     SET "JAVA=%JAVAW_EXE%"
 
     :: Logging
-    SET "ARECA_LOG=%PROGRAM_DIR%\logs\areca.log"
+    SET "ARECA_LOG=%PROGRAM_DIR%\logs\areca_run.bat.log"
+    ECHO SCRIPT:                    areca_run.bat
+    ECHO SCRIPT_PATH:               %SCRIPT_PATH%
     ECHO CURRENT_WORKING_DIRECTORY: %CURRENT_WORKING_DIRECTORY%
+    ECHO.
     ECHO ARECA_HOME:                %ARECA_HOME%
-    ECHO ARECA_DIR:                 %ARECA_DIR%
+    ECHO JAVA_HOME:                 %JAVA_HOME%
     ECHO JAVA_PATH:                 %JAVA_PATH%
-    ECHO JAVA:                      %JAVA%
     ECHO JAVA_EXE:                  %JAVA_EXE%
     ECHO JAVAW_EXE:                 %JAVAW_EXE%
-    ECHO LIBRARY_PATH:              %LIBRARY_PATH%
     ECHO GDK_NATIVE_WINDOWS:        %GDK_NATIVE_WINDOWS%
     ECHO.
+    ECHO JAVA:                      %JAVA%
     ECHO CLASSPATH:                 %CLASSPATH%
+    ECHO ARECA_DIR:                 %ARECA_DIR%
+    ECHO LIBRARY_PATH:              %LIBRARY_PATH%
     ECHO.
+    ECHO P0:                         %BATCH_SCRIPT_PATHNAME%
     ECHO P1_REQUIRED_LAUNCHER_CLASS: %P1_REQUIRED_LAUNCHER_CLASS%
     ECHO P2_OPTIONAL:                %P2_OPTIONAL%
     ECHO P3_OPTIONAL:                %P3_OPTIONAL%

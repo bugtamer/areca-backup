@@ -25,6 +25,10 @@
         <copy file="${root}/icons/ico_16.png" tofile="${bundle.dir}/icons/ico_16.png" preservelastmodified="true" overwrite="true"/>
         <copy file="${root}/icons/ico_72.png" tofile="${bundle.dir}/icons/ico_72.png" preservelastmodified="true" overwrite="true"/>
 
+        <!-- embedded Java locations -->
+        <mkdir dir="${bundle.dir}/jdk"/>
+        <mkdir dir="${bundle.dir}/jre"/>
+
         <!-- lib/ -->
         <copy todir="${bundle.dir}/lib" preservelastmodified="true" overwrite="true">
             <fileset dir="${root}/lib"/>
@@ -52,7 +56,6 @@
         <copy file="${root}/COPYING" tofile="${bundle.dir}/COPYING" preservelastmodified="true" overwrite="true"/>
 
         <!-- README -->
-        <copy file="${root}/README" tofile="${bundle.dir}/README" preservelastmodified="true" overwrite="true"/>
 
         <property name="bundle.agnostic-part.ready" value="true"/>
     </target>

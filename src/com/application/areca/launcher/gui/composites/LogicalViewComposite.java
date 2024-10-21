@@ -1,11 +1,15 @@
 package com.application.areca.launcher.gui.composites;
 
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.GregorianCalendar;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.SashForm;
 import org.eclipse.swt.events.MouseEvent;
 import org.eclipse.swt.events.MouseListener;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.layout.GridData;
@@ -30,6 +34,7 @@ import com.application.areca.impl.AbstractFileSystemMedium;
 import com.application.areca.launcher.gui.Application;
 import com.application.areca.launcher.gui.common.AbstractWindow;
 import com.application.areca.launcher.gui.common.ArecaImages;
+import com.application.areca.launcher.gui.common.FileHistoryComparatorFactory;
 import com.application.areca.launcher.gui.common.Refreshable;
 import com.application.areca.launcher.gui.resources.ResourceManager;
 import com.application.areca.metadata.MetadataConstants;
@@ -41,12 +46,14 @@ import com.myJava.util.log.Logger;
 /**
  * <BR>
  * @author Olivier PETRUCCI
+ * @author bugtamer
  * <BR>
  *
  */
 
  /*
  Copyright 2005-2015, Olivier PETRUCCI.
+ Copyright 2024, bugtamer.
 
 This file is part of Areca.
 
@@ -69,6 +76,7 @@ public class LogicalViewComposite
 extends AbstractTabComposite 
 implements MouseListener, Refreshable, Listener { 
 
+	/** [ Name | Size ] */
 	private ArchiveExplorer explorer;
 	private Table history;
 	private Text manifest;
@@ -79,6 +87,17 @@ implements MouseListener, Refreshable, Listener {
 	private Application application = Application.getInstance();
 	private static ResourceManager RM = ResourceManager.instance();
 
+	private int defaultFileDateColumnIndex = 2;
+	private Comparator<EntryArchiveData> comparator = FileHistoryComparatorFactory.forColumn(defaultFileDateColumnIndex);
+	Event eventToTriggerSorting = new Event();
+
+
+	/**
+	 * [ Name | Size ]
+	 * [ Action | Size | File date | Backup date ]
+	 * [ Description ]
+	 * @param parent
+	 */
 	public LogicalViewComposite(Composite parent) {
 		super(parent, SWT.NONE);
 		this.setLayout(new FillLayout());
@@ -103,6 +122,8 @@ implements MouseListener, Refreshable, Listener {
 		this.initHistoryContent(entry);
 	}
 
+
+	/** [ Action | Size | File date | Backup date ] */
 	private void buildHistoryComposite(Composite parent) {
 		Composite content = new Composite(parent, SWT.NONE);
 		GridLayout layout = new GridLayout();
@@ -138,6 +159,12 @@ implements MouseListener, Refreshable, Listener {
 		col2.setWidth(AbstractWindow.computeWidth(110));
 		col3.setWidth(AbstractWindow.computeWidth(150));
 		col4.setWidth(AbstractWindow.computeWidth(150));
+
+		addFileHistorySortingListenerTo(0);
+		addFileHistorySortingListenerTo(1);
+		addFileHistorySortingListenerTo(2);
+		addFileHistorySortingListenerTo(3);
+
 		history.setHeaderVisible(true);
 		history.setLinesVisible(AbstractWindow.getTableLinesVisible());
 		history.addMouseListener(this);
@@ -152,6 +179,8 @@ implements MouseListener, Refreshable, Listener {
 		history.setLayoutData(dt2);
 	}
 
+
+	/** [ Name | Size ] */
 	private void buildExplorerComposite(Composite parent) {
 		Composite content = new Composite(parent, SWT.NONE);
 		GridLayout layout = new GridLayout(1, false);
@@ -197,6 +226,8 @@ implements MouseListener, Refreshable, Listener {
 		});
 	}
 
+
+	/** [ Description ] */
 	private void buildManifestComposite(Composite parent) {
 		Composite content = new Composite(parent, SWT.NONE);
 		GridLayout layout = new GridLayout();
@@ -226,11 +257,13 @@ implements MouseListener, Refreshable, Listener {
 		manifest.setLayoutData(dt2);
 	}
 
+
+	/** [ Name | Size ] */
 	public void refresh() {
 		if (explorer != null) {
 			if (Application.getInstance().isCurrentObjectTarget()) {
 			    AbstractFileSystemMedium medium = (AbstractFileSystemMedium)Application.getInstance().getCurrentTarget().getMedium();
-	        	Logger.defaultLogger().info("Looking for archives in " + medium.getFileSystemPolicy().getDisplayableParameters(true), "Logical View");
+	        	// Logger.defaultLogger().info("Looking for archives in " + medium.getFileSystemPolicy().getDisplayableParameters(true), "Logical View");
 				explorer.setMedium(medium);
 				btnMode.setEnabled(! medium.isImage());
 			} else {
@@ -254,8 +287,16 @@ implements MouseListener, Refreshable, Listener {
 		}
 	}
 
+
+	/** [ Action | Size | File date | Backup date ] */
 	public void handleEvent(Event e) {
 		if (e.widget instanceof Tree) {
+			if (eventToTriggerSorting.widget == null) {
+				eventToTriggerSorting.widget = e.widget;
+			}
+
+			setInitialSortIndicator();
+
 			TreeItem[] selection = explorer.getTree().getSelection();
 
 			if (selection.length == 1) {
@@ -279,6 +320,8 @@ implements MouseListener, Refreshable, Listener {
 		}
 	}
 
+
+	/** [ Description ] */
 	private void refreshManifest(EntryArchiveData data) {
 		this.application.setCurrentEntryData(data);
 
@@ -299,25 +342,34 @@ implements MouseListener, Refreshable, Listener {
 		}
 	}
 
+
+	/** [ Action | Size | File date | Backup date ] */
 	private void resetHistoryContent() {
 		this.history.removeAll();
 		this.manifest.setText("");
 	}
 
+
+	/** [ Action | Size | File date | Backup date ] */
 	private void initHistoryContent(TraceEntry entry) {
 		try {
 			application.enableWaitCursor();
 
 			EntryArchiveData[] currentEntryData = application.getCurrentTarget().getMedium().getHistory(entry.getKey());
+			
+			Arrays.sort(currentEntryData, comparator);
+
 			resetHistoryContent();
 
 			for (int i=currentEntryData.length - 1; i>=0; i--) {
 				Manifest mf = currentEntryData[i].getManifest();                
 				TableItem item = new TableItem(history, SWT.NONE);
 
+				// Action
 				item.setText(0, Application.STATUS_LABELS[currentEntryData[i].getStatus() + 1]); 
 				item.setImage(0, Application.STATUS_ICONS[currentEntryData[i].getStatus() + 1]); 
 				item.setData(currentEntryData[i]);
+				// Backup date
 				if (mf != null) {
 					item.setText(3, Utils.formatDisplayDate(mf.getDate()));
 				} else {
@@ -325,11 +377,13 @@ implements MouseListener, Refreshable, Listener {
 				}  	
 				if (currentEntryData[i].getHash() != null) {
 					try {
+						// File date
 						long lastModified = ArchiveTraceParser.extractFileAttributesFromTrace(currentEntryData[i].getHash(), currentEntryData[i].getMetadataVersion()).getLastmodified();
 						GregorianCalendar cal = new GregorianCalendar();
 						cal.setTimeInMillis(lastModified);
 						item.setText(2, Utils.formatDisplayDate(cal));
 						
+						// Size
 						long size = ArchiveTraceParser.extractFileSizeFromTrace(currentEntryData[i].getHash());
 						item.setText(1, Utils.formatFileSize(size));
 					} catch (Exception e) {
@@ -352,4 +406,43 @@ implements MouseListener, Refreshable, Listener {
 	public Object getRefreshableKey() {
 		return this.getClass().getName();
 	}
+
+
+	/**
+	 * [ Action | Size | File date | Backup date ]
+	 * 
+	 * @param columnIndex Zero-based index.
+	 */
+	private void addFileHistorySortingListenerTo(int columnIndex) {
+		final TableColumn column = history.getColumn(columnIndex);
+    	if (column != null) {
+			column.addSelectionListener(new SelectionAdapter() {
+				int direction = SWT.DOWN;
+				Comparator<EntryArchiveData> columnComparator = FileHistoryComparatorFactory.forColumn(columnIndex);
+				
+				public void widgetSelected(SelectionEvent event) {
+					// Logger.defaultLogger().info(String.format("Toggle sorting of column %d.", columnIndex), "Logical View");
+					if (column.equals(history.getSortColumn())) {
+						columnComparator = columnComparator.reversed();
+						direction = (history.getSortDirection() == SWT.UP) ? SWT.DOWN : SWT.UP;
+					}
+					comparator = columnComparator;
+					history.setSortDirection(direction);
+					history.setSortColumn(column);
+					handleEvent(eventToTriggerSorting);
+				}
+			});
+		}
+	}
+
+
+	/** Should be called only one time. */
+	private void setInitialSortIndicator() {
+		if (history.getSortColumn() == null) {
+			TableColumn defaultColumn = history.getColumn(defaultFileDateColumnIndex);
+			history.setSortColumn(defaultColumn);
+			history.setSortDirection(SWT.DOWN);
+		}
+	}
+
 }
