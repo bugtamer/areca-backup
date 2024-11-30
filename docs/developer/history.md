@@ -5,7 +5,7 @@
 - Now "Preferences" allows you to change how file sizes are displayed (decimal or binary).
 - Replica of Olivier PETRUCCI's Areca official site.
 - Replace the URLs pointing to the repository with the URL of the Areca web site replica.
-- Fix broken links and links that frezee Areca on Linux.
+- Fix broken links and links that freeze Areca on Linux.
 - Fix building issue that prevents Areca from launching when the JVM version at build is higher than the one used at runtime.
 
 
