@@ -56,6 +56,7 @@
                destdir="${root}/classes"
                debug="off"
                source="8"
+               target="8"
                encoding="ISO-8859-1"
         >
             <classpath>
