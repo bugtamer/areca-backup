@@ -60,13 +60,8 @@ What `<major>.<minor>.<patch>` means in a specific Areca version (`8.0.0`):
      ```
      `month` is a zero-based `int`:
      ```Java
-     new GregorianCalendar(intYear, intZeroBasedMonth, intDay)
+     void release(String version, int year, int intZeroBasedMonth, int day, String changeLog);
      ```
-     or
-     ```Java
-     release("8.0.0", 2024, 8, 21, "Fixed Areca launchers. Support for Java 8 LTS. Fixed broken links to online documentation. Fixed `Check for new version ...` feature. Fixed building pipeline. Add dependency manager. Add some documentation for users and developers.");
-     ```
-
 
 5. Update [`version.xml`](../../version.xml).
    > `version.xml` allows Areca to discover the new released version with the feature `Check for new version ...`
@@ -129,3 +124,5 @@ What `<major>.<minor>.<patch>` means in a specific Areca version (`8.0.0`):
       ```
     - Upload local commits to the remote repo:<br>
       `git push --follow-tags`
+    - Switch to `develop` branch:<br>
+      `git checkout develop`
