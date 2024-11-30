@@ -1,16 +1,12 @@
 package com.application.areca.launcher.gui.filters;
 
-import java.net.URL;
-
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Link;
-import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 
 import com.application.areca.ArecaURLs;
@@ -18,18 +14,20 @@ import com.application.areca.filter.ArchiveFilter;
 import com.application.areca.filter.RegexArchiveFilter;
 import com.application.areca.launcher.gui.FilterEditionWindow;
 import com.application.areca.launcher.gui.FilterRepository;
-import com.myJava.system.viewer.ViewerHandlerHelper;
-import com.myJava.util.log.Logger;
+import com.application.areca.launcher.gui.composites.Anchor;
+
 
 /**
  * <BR>
  * @author Olivier PETRUCCI
+ * @author bugtamer
  * <BR>
  *
  */
 
  /*
  Copyright 2005-2015, Olivier PETRUCCI.
+ Copyright 2024, bugtamer.
 
 This file is part of Areca.
 
@@ -70,17 +68,9 @@ implements ArecaURLs {
         
         Label lblExample = new Label(this, SWT.NONE);
         lblExample.setText(EXAMPLE_REGEX);
-        Link lnk = new Link(this, SWT.NONE);
-        lnk.addListener (SWT.Selection, new Listener() {
-            public void handleEvent(Event event) {
-                try {
-                    ViewerHandlerHelper.getViewerHandler().browse(new URL(event.text));
-                } catch (Exception e) {
-                    Logger.defaultLogger().error(e);
-                }
-            }
-        });
-        lnk.setText("<A HREF=\"" + REGEX_URL + "\">" + RM.getLabel("menu.help.label") + "</A>");
+        
+        final String label = RM.getLabel("menu.help.label");
+        final Link lnk = Anchor.build(this, REGEX_URL, label);
         lnk.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false));
         
         new Label(this, SWT.NONE);

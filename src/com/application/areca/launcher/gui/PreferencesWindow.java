@@ -1,7 +1,5 @@
 package com.application.areca.launcher.gui;
 
-import java.io.File;
-
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
@@ -21,9 +19,9 @@ import com.application.areca.launcher.ArecaUserPreferences;
 import com.application.areca.launcher.gui.common.AbstractWindow;
 import com.application.areca.launcher.gui.common.ListPane;
 import com.application.areca.launcher.gui.common.SavePanel;
+import com.application.areca.launcher.gui.composites.Anchor;
 import com.application.areca.launcher.gui.resources.ResourceManager;
-import com.myJava.system.viewer.ViewerHandlerHelper;
-import com.myJava.util.log.Logger;
+
 
 /**
  * <BR>
@@ -99,18 +97,10 @@ extends AbstractWindow {
         grpArchives.setLayout(new GridLayout(3, false));
         buildArchivesComposite(grpArchives);
         
-        lblPrfPath = new Link(composite, SWT.NONE);
+		// preferences's link
+        final String userPrefPath = ArecaUserPreferences.getPath();
+		final Link lblPrfPath = Anchor.build(composite, userPrefPath, userPrefPath);
         lblPrfPath.setLayoutData(new GridData(SWT.CENTER, SWT.FILL, true, false));
-        lblPrfPath.setText("<A HREF=\"\">" + ArecaUserPreferences.getPath() + "</A>");
-        lblPrfPath.addListener (SWT.Selection, new Listener() {
-            public void handleEvent(Event event) {
-                try {
-                    ViewerHandlerHelper.getViewerHandler().open(new File(ArecaUserPreferences.getPath()));
-                } catch (Exception e) {
-                    Logger.defaultLogger().error(e);
-                }
-            }
-        });
         
         SavePanel pnlSave = new SavePanel(this);
         pnlSave.buildComposite(composite).setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false));

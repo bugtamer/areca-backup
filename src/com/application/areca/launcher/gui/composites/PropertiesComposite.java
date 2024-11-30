@@ -1,11 +1,10 @@
 package com.application.areca.launcher.gui.composites;
 
-import java.io.File;
-
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.program.Program;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Link;
@@ -24,18 +23,20 @@ import com.application.areca.launcher.gui.common.AbstractWindow;
 import com.application.areca.launcher.gui.menus.AppActionReferenceHolder;
 import com.application.areca.launcher.gui.resources.ResourceManager;
 import com.myJava.file.FileSystemManager;
-import com.myJava.system.viewer.ViewerHandlerHelper;
 import com.myJava.util.log.Logger;
+
 
 /**
  * <BR>
  * @author Olivier PETRUCCI
+ * @author bugtamer
  * <BR>
  *
  */
 
  /*
  Copyright 2005-2015, Olivier PETRUCCI.
+ Copyright 2024, bugtamer.
 
 This file is part of Areca.
 
@@ -127,7 +128,7 @@ extends Composite {
             public void handleEvent(Event event) {
                 try {
                     try {
-						ViewerHandlerHelper.getViewerHandler().open(new File(conf));
+                        Program.launch(conf);
 					} catch (Exception e) {
 						if (Application.getInstance().isCurrentObjectTarget()) {
 							Application.getInstance().showEditTargetXML(application.getInstance().getCurrentTarget());

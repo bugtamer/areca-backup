@@ -1,17 +1,13 @@
 package com.application.areca.launcher.gui;
 
-import java.net.URL;
-
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
-import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Link;
-import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 
 import com.application.areca.ArecaURLs;
@@ -19,9 +15,9 @@ import com.application.areca.launcher.ArecaUserPreferences;
 import com.application.areca.launcher.gui.common.AbstractWindow;
 import com.application.areca.launcher.gui.common.ArecaImages;
 import com.application.areca.launcher.gui.common.SavePanel;
+import com.application.areca.launcher.gui.composites.Anchor;
 import com.application.areca.launcher.gui.resources.ResourceManager;
-import com.myJava.system.viewer.ViewerHandlerHelper;
-import com.myJava.util.log.Logger;
+
 
 /**
  * <BR>
@@ -101,19 +97,9 @@ extends AbstractWindow {
             checkNewVersions.setSelection(ArecaUserPreferences.isCheckNewVersions());
             checkNewVersions.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, true, false)); 
             
+            final String label = RM.getLabel("preferences.checkversions.official.site.label");
+            final Link lnk = Anchor.build(ret, ArecaURLs.ARECA_URL, label);
             GridData dt3 = new GridData(SWT.CENTER, SWT.BOTTOM, false, false);
-            Link lnk = new Link(ret, SWT.NONE);
-            lnk.addListener (SWT.Selection, new Listener() {
-                public void handleEvent(Event event) {
-                    try {
-                    	ViewerHandlerHelper.getViewerHandler().browse(new URL(event.text));
-                    } catch (Exception e) {
-                        Logger.defaultLogger().error(e);
-                    }
-                }
-            });
-            final String anchorLabel = RM.getLabel("preferences.checkversions.official.site.label");
-            lnk.setText("<A HREF=\"" + ArecaURLs.ARECA_URL + "\">" + anchorLabel + "</A>");
             lnk.setLayoutData(dt3);
             
             SavePanel pnlSave;

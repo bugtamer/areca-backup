@@ -1,28 +1,23 @@
 package com.application.areca.launcher.gui.composites;
 
-import java.net.URL;
-
-import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Link;
-import org.eclipse.swt.widgets.Listener;
 
 import com.application.areca.ArecaURLs;
 import com.application.areca.launcher.gui.resources.ResourceManager;
-import com.myJava.system.viewer.ViewerHandlerHelper;
-import com.myJava.util.log.Logger;
+
 
 /**
  * 
  * <BR>
  * @author Olivier PETRUCCI
+ * @author bugtamer
  * <BR>
- *
  */
 
  /*
  Copyright 2005-2015, Olivier PETRUCCI.
+ Copyright 2024, bugtamer.
 
 This file is part of Areca.
 
@@ -42,18 +37,10 @@ This file is part of Areca.
 
  */
 public class DonationLink implements ArecaURLs {
+
 	public static Link build(Composite composite) {
-		Link lnk = new Link(composite, SWT.NONE);
-		lnk.addListener (SWT.Selection, new Listener() {
-			public void handleEvent(Event event) {
-				try {
-					ViewerHandlerHelper.getViewerHandler().browse(new URL(event.text));
-				} catch (Exception e) {
-					Logger.defaultLogger().error(e);
-				}
-			}
-		});
-		lnk.setText("<A HREF=\"" + DONATION_URL + "\">" + ResourceManager.instance().getLabel("about.support") + "</A>");
-		return lnk;
+		final String label = ResourceManager.instance().getLabel("about.support");
+		return Anchor.build(composite, DONATION_URL, label);
 	}
+
 }
