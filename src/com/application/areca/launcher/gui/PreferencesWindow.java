@@ -1,7 +1,5 @@
 package com.application.areca.launcher.gui;
 
-import java.io.File;
-
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
@@ -21,19 +19,21 @@ import com.application.areca.launcher.ArecaUserPreferences;
 import com.application.areca.launcher.gui.common.AbstractWindow;
 import com.application.areca.launcher.gui.common.ListPane;
 import com.application.areca.launcher.gui.common.SavePanel;
+import com.application.areca.launcher.gui.composites.Anchor;
 import com.application.areca.launcher.gui.resources.ResourceManager;
-import com.myJava.system.viewer.ViewerHandlerHelper;
-import com.myJava.util.log.Logger;
+
 
 /**
  * <BR>
  * @author Olivier PETRUCCI
+ * @author bugtamer
  * <BR>
  *
  */
 
  /*
  Copyright 2005-2015, Olivier PETRUCCI.
+ Copyright 2024, bugtamer.
 
 This file is part of Areca.
 
@@ -71,6 +71,9 @@ extends AbstractWindow {
     private Button showWSPath;
     private Button showToolBar;
     private Link lblPrfPath;
+    private Button binPrefix;
+    private Button decPrefix;
+
 
     protected Control createContents(Composite parent) {
         Composite composite = new Composite(parent, SWT.NONE);
@@ -78,7 +81,7 @@ extends AbstractWindow {
         
         ListPane pane = new ListPane(composite, SWT.BORDER, true);
         GridData dt = new GridData(SWT.FILL, SWT.FILL, true, true);
-        dt.heightHint = computeHeight(230);
+        dt.heightHint = computeHeight(330);
         dt.widthHint = computeWidth(700);
         pane.setLayoutData(dt);
         Composite grpDisp = pane.addElement("appearence", RM.getLabel("preferences.appearence.title"));
@@ -94,18 +97,10 @@ extends AbstractWindow {
         grpArchives.setLayout(new GridLayout(3, false));
         buildArchivesComposite(grpArchives);
         
-        lblPrfPath = new Link(composite, SWT.NONE);
+		// preferences's link
+        final String userPrefPath = ArecaUserPreferences.getPath();
+		final Link lblPrfPath = Anchor.build(composite, userPrefPath, userPrefPath);
         lblPrfPath.setLayoutData(new GridData(SWT.CENTER, SWT.FILL, true, false));
-        lblPrfPath.setText("<A HREF=\"\">" + ArecaUserPreferences.getPath() + "</A>");
-        lblPrfPath.addListener (SWT.Selection, new Listener() {
-            public void handleEvent(Event event) {
-                try {
-                    ViewerHandlerHelper.getViewerHandler().open(new File(ArecaUserPreferences.getPath()));
-                } catch (Exception e) {
-                    Logger.defaultLogger().error(e);
-                }
-            }
-        });
         
         SavePanel pnlSave = new SavePanel(this);
         pnlSave.buildComposite(composite).setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false));
@@ -151,6 +146,31 @@ extends AbstractWindow {
         showWSPath.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, true, false, 2, 1));
         showWSPath.setSelection(ArecaUserPreferences.isDisplayWSAddress());
         monitorControl(showWSPath);
+
+        new Label(parent, SWT.NONE).setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, false, false, 2, 1));
+
+        // File size prefixes
+        final Label prefixQuestion = new Label(parent, SWT.NONE);
+        prefixQuestion.setText(RM.getLabel("preferences.file.size.prefix.question.label"));
+        prefixQuestion.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, false, false, 2, 1));
+        binPrefix = new Button(parent, SWT.RADIO);
+        binPrefix.setText(RM.getLabel("preferences.file.size.prefix.bin.label"));
+        binPrefix.setToolTipText(RM.getLabel("preferences.file.size.prefix.bin.tooltip"));
+        binPrefix.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, true, false, 2, 1));
+        decPrefix = new Button(parent, SWT.RADIO);
+        decPrefix.setText(RM.getLabel("preferences.file.size.prefix.dec.label"));
+        decPrefix.setToolTipText(RM.getLabel("preferences.file.size.prefix.dec.tooltip"));
+        decPrefix.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, true, false, 2, 1));
+        final String fileSizePrefix = ArecaUserPreferences.getFileSizePrefix();
+        switch (fileSizePrefix) {
+            case "decimal":
+                decPrefix.setSelection(true);
+                break;
+            case "binary":
+            default:
+                binPrefix.setSelection(true);
+        }
+        monitorControl(binPrefix);    
     }
     
     private void buildStartupComposite(Composite parent) {
@@ -278,6 +298,7 @@ extends AbstractWindow {
             String lang = (String)langCombo.getItem(langCombo.getSelectionIndex());
             ArecaUserPreferences.setLang(((TranslationData)langCombo.getData(lang)).getLanguage());
         }
+        final String fileSizePrefix = binPrefix.getSelection() ? ArecaUserPreferences.BIN_PREFIX : ArecaUserPreferences.DEC_PREFIX;
         ArecaUserPreferences.setStartupMode(openLastWorkspace.getSelection() ? ArecaUserPreferences.LAST_WORKSPACE_MODE : ArecaUserPreferences.DEFAULT_WORKSPACE_MODE);
         ArecaUserPreferences.setDefaultWorkspace(defaultWorkspace.getText());
         ArecaUserPreferences.setDefaultArchiveStorage(defaultArchiveStorage.getText());
@@ -286,6 +307,7 @@ extends AbstractWindow {
         ArecaUserPreferences.setInformationSynthetic(informationSynthetic.getSelection());
         ArecaUserPreferences.setDisplayLogicalViewOnStartup(showLogical.getSelection());
         ArecaUserPreferences.setDateFormat(dateFormat.getText());
+        ArecaUserPreferences.setFileSizePrefix(fileSizePrefix);
         ArecaUserPreferences.setCheckNewVersion(checkNewVersions.getSelection());
         ArecaUserPreferences.setDisplayToolBar(showToolBar.getSelection());
         ArecaUserPreferences.setDisplayWSAddress(showWSPath.getSelection());

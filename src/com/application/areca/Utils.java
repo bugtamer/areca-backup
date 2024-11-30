@@ -15,7 +15,9 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Properties;
 
+import com.application.areca.launcher.ArecaUserPreferences;
 import com.application.areca.launcher.LocalPreferences;
+import com.application.areca.launcher.gui.PreferencesWindow;
 import com.application.areca.launcher.gui.resources.ResourceManager;
 import com.application.areca.plugins.Plugin;
 import com.application.areca.plugins.PluginRegistry;
@@ -260,16 +262,35 @@ public class Utils implements ArecaFileConstants {
 		}
 	}
 
-	public static String formatFileSize(long argSize) {
-		long size = argSize;
 
-		if (size >= 1024) {
-			size = (long)(argSize / 1024);
-			return NF.format(size) + " " + ResourceManager.instance().getLabel("common.kb.label");
-		} else {
-			return NF.format(size) + " " + ResourceManager.instance().getLabel("common.bytes.label");
+	/**
+	 * Format file size.
+	 * <p>9_223_372_036_854_775_808 is the maximum positive value of the long type</p>
+	 * <p>1_152_921_504_606_846_976 bytes = 1 Exabyte</p>
+	 * @param argSize Size in bytes.
+	 * @return bytes, kB/kiB, MB/MiB, GB/GiB, TB/TiB, PB/PiB, EB/EiB, ZB/ZiB or YB/YiB.
+	 * @see "International System of Units (SI)"
+	 * @see "ISO/IEC 80000-13"
+	 * @see ArecaUserPreferences.java
+	 * @see PreferencesWindow.java
+	 * @see BigInterger
+	 */
+	public static String formatFileSize(long argSize) {
+		final boolean isDecPrefix = ArecaUserPreferences.getFileSizePrefix().equals(ArecaUserPreferences.DEC_PREFIX);
+		final int base = isDecPrefix ? 1000 : 1024;
+		final int exponent = (int) Math.floor(Math.log(argSize) / Math.log(base)); // See how to change the base of a logarithm from base 'a' to base 'c'
+		String labelPattern = "common.bytes.label"; // base ^ 0 = 1 --> prefix is "byte"
+		if (exponent > 0) {
+			final String[] decPrefixes = {"byte", "kilo", "mega", "giga", "tera", "peta", "exa",  "zetta", "yotta"}; // 1000 ^ exponent = prefix
+			final String[] binPrefixes = {"byte", "kibi", "mebi", "gibi", "tebi", "pebi", "exbi", "zebi",  "yobi"};  // 1024 ^ exponent = prefix
+			final String prefix = isDecPrefix ? decPrefixes[exponent] : binPrefixes[exponent];
+			labelPattern = String.format("common.%s.byte.label", prefix);
 		}
+		final String unitLabel = ResourceManager.instance().getLabel(labelPattern);
+		final long size = Math.round(argSize / Math.pow(base, exponent));
+		return NF.format(size) + " " + unitLabel;
 	}
+
 
 	public static String formatLong(long argLong) {
 		NumberFormat nf = new DecimalFormat();

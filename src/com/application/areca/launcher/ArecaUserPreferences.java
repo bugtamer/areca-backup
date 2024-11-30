@@ -11,6 +11,7 @@ import com.myJava.file.FileSystemManager;
 import com.myJava.system.OSTool;
 
 /**
+ * @author bugtamer
  * @author Stephane Brunel
  * @author Olivier Petrucci
  * <BR>
@@ -19,6 +20,7 @@ import com.myJava.system.OSTool;
 
  /*
  Copyright 2005-2015, Olivier PETRUCCI.
+ Copyright 2024, bugtamer.
 
 This file is part of Areca.
 
@@ -51,6 +53,7 @@ public final class ArecaUserPreferences {
     private static final String TEXT_EDITOR = "editor.text";
     private static final String INFO_SYNTHETIC = "info.channel.synthetic";
     private static final String DATE_FORMAT = "date.format";
+	public static final String FILE_SIZE_PREFIX = "file.size.prefix";
     public static final String DISPLAY_JAVA_VENDOR_MESSAGE = "display.java.vendor.message";
     public static final String DISPLAY_DEPRECATED_IMAGE_MESSAGE = "display.deprecated.image.message";
 	private static final String CHECK_NEW_VERSIONS = "check.new.versions";
@@ -71,6 +74,10 @@ public final class ArecaUserPreferences {
 	public static final int UNDEFINED = -1;
 	public static final int LAST_WORKSPACE_MODE = 0;
 	public static final int DEFAULT_WORKSPACE_MODE = 1;
+	
+	// FILE_SIZE_PREFIX
+	public static final String BIN_PREFIX = "binary";
+	public static final String DEC_PREFIX = "decimal";
 	
     private static final String STARTUP_MODE_LAST = "last";
     private static final String STARTUP_MODE_DEFAULT = "default";
@@ -119,6 +126,21 @@ public final class ArecaUserPreferences {
     
     public static void setDateFormat(String df) {
         LocalPreferences.instance().set(DATE_FORMAT, df);
+        synchronizeClientConfigurations();
+    }
+	
+    /**
+	 * @return "decimal" or "binary" (default value).
+	 */
+	public static String getFileSizePrefix() {
+        return LocalPreferences.instance().get(FILE_SIZE_PREFIX, BIN_PREFIX);
+    }
+    
+    /**
+	 * @param prefix <code>binary</code> (1024 bytes = 1 kiB) or <code>decimal</code> (1000 bytes = 1 kB)
+	 */
+	public static void setFileSizePrefix(String prefix) {
+        LocalPreferences.instance().set(FILE_SIZE_PREFIX, prefix);
         synchronizeClientConfigurations();
     }
 	

@@ -10,6 +10,7 @@ import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.FontData;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.program.Program;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
@@ -34,15 +35,18 @@ import com.myJava.util.log.LogHelper;
 import com.myJava.util.log.LogProcessor;
 import com.myJava.util.log.Logger;
 
+
 /**
  * <BR>
  * @author Olivier PETRUCCI
+ * @author bugtamer
  * <BR>
  *
  */
 
  /*
  Copyright 2005-2015, Olivier PETRUCCI.
+ Copyright 2024, bugtamer.
 
 This file is part of Areca.
 
@@ -327,7 +331,7 @@ implements LogProcessor, Refreshable {
 			lblPath.addListener (SWT.Selection, new Listener() {
 				public void handleEvent(Event event) {
 					try {
-						Application.getInstance().secureOpenFile(path);
+						Program.launch(path);
 					} catch (Exception e) {
 						Logger.defaultLogger().error(e);
 					}

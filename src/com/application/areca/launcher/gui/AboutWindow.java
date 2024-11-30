@@ -11,10 +11,8 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
-import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Link;
-import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
@@ -25,6 +23,7 @@ import com.application.areca.Utils;
 import com.application.areca.launcher.gui.common.AbstractWindow;
 import com.application.areca.launcher.gui.common.ArecaImages;
 import com.application.areca.launcher.gui.common.ListPane;
+import com.application.areca.launcher.gui.composites.Anchor;
 import com.application.areca.launcher.gui.composites.DonationLink;
 import com.application.areca.launcher.gui.resources.ResourceManager;
 import com.application.areca.plugins.Plugin;
@@ -32,9 +31,8 @@ import com.application.areca.plugins.PluginRegistry;
 import com.application.areca.version.VersionInfos;
 import com.myJava.file.FileTool;
 import com.myJava.system.OSTool;
-import com.myJava.system.viewer.ViewerHandlerHelper;
-import com.myJava.util.log.Logger;
 import com.myJava.util.version.VersionData;
+
 
 /**
  * <BR>
@@ -102,19 +100,9 @@ implements ArecaURLs {
 			initPluginsContent(addTab(tabs, RM.getLabel("about.pluginstab.label")));
 			initSystemContent(addTab(tabs, RM.getLabel("about.systemtab.label")));
 
-			GridData dt3 = new GridData(SWT.CENTER, SWT.BOTTOM, false, true);
-			Link lnk = new Link(ret, SWT.NONE);
-			lnk.addListener (SWT.Selection, new Listener() {
-				public void handleEvent(Event event) {
-					try {
-						ViewerHandlerHelper.getViewerHandler().browse(new URL(event.text));
-					} catch (Exception e) {
-						Logger.defaultLogger().error(e);
-					}
-				}
-			});
             final String anchorLabel = RM.getLabel("preferences.checkversions.official.site.label");
-			lnk.setText("<A HREF=\"" + ARECA_URL + "\">" + anchorLabel + "</A>");
+			Link lnk = Anchor.build(ret, ARECA_URL, anchorLabel);
+			GridData dt3 = new GridData(SWT.CENTER, SWT.BOTTOM, false, true);
 			lnk.setLayoutData(dt3);
 
 			tabs.setSelection(selectedIndex);
@@ -175,17 +163,8 @@ implements ArecaURLs {
 	}
 
 	private void initPluginsContent(Composite composite) {
-		Link lnk0 = new Link(composite, SWT.NONE);
-		lnk0.addListener (SWT.Selection, new Listener() {
-			public void handleEvent(Event event) {
-				try {
-					ViewerHandlerHelper.getViewerHandler().browse(new URL(event.text));
-				} catch (Exception e) {
-					Logger.defaultLogger().error(e);
-				}
-			}
-		});
-		lnk0.setText("<A HREF=\"" + ArecaURLs.PLUGINS_URL + "\">" + RM.getLabel("plugins.getmore.label") + "</A>");
+		final String label = RM.getLabel("plugins.getmore.label");
+		Link lnk0 = Anchor.build(composite, ArecaURLs.PLUGINS_URL, label);
 		lnk0.setLayoutData(new GridData(SWT.CENTER, SWT.BOTTOM, false, false));
 		
 		TableViewer viewer = new TableViewer(composite, SWT.BORDER | SWT.SINGLE | SWT.FULL_SELECTION);

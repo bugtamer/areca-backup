@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <versiondata
-    id="8.1.0"
-    date="2024-9-21"
+    id="8.2.0"
+    date="2024-10-30"
     url="https://sourceforge.net/projects/areca-backup/files/"
-    description="Add support for building and running Java LTS: 11, 17, and 21 apart from 8. As 'areca.bat', now 'areca.sh' works with 'JAVA_HOME' environment variable and embeded JRE/JDK. Sortable columns for 'Physical View', 'Logical View', 'History' and 'File Explorer'. Update and rename documentation folder to prepare 'GitHub Pages'. Change the URL of 'version.xml' to point to the areca-backup repo. Minor building pipeline improvements. Minor fixes."
+    description="Now 'Preferences' allows you to change how file sizes are displayed (decimal or binary). Replica of Olivier PETRUCCI's Areca official site. Replace the URLs pointing to the repository with the URL of the Areca web site replica. Fix broken links and links that frezee Areca on Linux. Fix building issue that prevents Areca from launching when the JVM version at build is higher than the one used at runtime."
 />

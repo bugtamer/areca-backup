@@ -56,6 +56,7 @@
                destdir="${root}/classes"
                debug="off"
                source="8"
+               target="8"
                encoding="ISO-8859-1"
         >
             <classpath>
@@ -88,10 +89,6 @@
 
         <chmod file="${scripts.dir}/install-c-header-dependencies-from-dep-packges.sh" perm="755" type="file"/>
         <exec dir="${scripts.dir}" executable="./install-c-header-dependencies-from-dep-packges.sh" os="Linux"/>
-
-        <chmod file="${scripts.dir}/locate-jni-headers.sh" perm="755" type="file"/>
-        <exec dir="${scripts.dir}" executable="./locate-jni-headers.sh" os="Linux" outputproperty="jni.h.dir"/>
-        <available type="file" file="${jni.h.dir}/linux/jni_md.h" property="jni_md.h.dir" value="${jni.h.dir}/linux"/>
 
         <chmod file="${scripts.dir}/locate-jni-headers.sh" perm="755" type="file"/>
         <exec dir="${scripts.dir}" executable="./locate-jni-headers.sh" os="Linux" outputproperty="jni.h.dir"/>

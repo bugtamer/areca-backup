@@ -1,5 +1,14 @@
 # Areca Backup - Versions history
 
+## Version 8.2.0 (released on 2024-11-30)
+
+- Now "Preferences" allows you to change how file sizes are displayed (decimal or binary).
+- Replica of Olivier PETRUCCI's Areca official site.
+- Replace the URLs pointing to the repository with the URL of the Areca web site replica.
+- Fix broken links and links that frezee Areca on Linux.
+- Fix building issue that prevents Areca from launching when the JVM version at build is higher than the one used at runtime.
+
+
 ## Version 8.1.0 (released on 2024-10-21)
 
 - Add support for building and running Java LTS: 11, 17, and 21 apart from 8.
