@@ -32,17 +32,17 @@ This file is part of Areca.
  */
 public interface ArecaURLs {
     /** Only used to shorten Areca URLs. */
-    static String BASE_URL = "https://bugtamer.github.io/areca-backup-legacy-documentation/areca-backup.org";
+    static String BASE_URL = "https://areca-backup.sourceforge.io";
 
     /** Only used to shorten Areca URLs. */
     static String QUERY_PARAMS = "?fromApplication=1&currentVersion=";
 
-	public String HELP_ROOT       = BASE_URL + "/documentation.html" + QUERY_PARAMS;
-	public String TUTORIAL_ROOT   = BASE_URL + "/tutorial.html"      + QUERY_PARAMS;
+	public String HELP_ROOT       = BASE_URL + "/documentation.php" + QUERY_PARAMS;
+	public String TUTORIAL_ROOT   = BASE_URL + "/tutorial.php"      + QUERY_PARAMS;
 	public String DONATION_URL = "https://www.paypal.com/cgi-bin/webscr?item_name=Donation+to+Areca+Backup&cmd=_donations&business=olivier.petrucci%40gmail.com&lc=US";
 	public String ARECA_URL       = BASE_URL;
-	public String REGEX_URL       = BASE_URL + "/regex.html";
-    public String VERSION_URL     = "https://raw.githubusercontent.com/bugtamer/areca-backup/refs/heads/main/version.xml";
-    public String BACKUP_COPY_URL = BASE_URL + "/config_backup.html";
-    public String PLUGINS_URL     = BASE_URL + "/plugin_list.html";
+	public String REGEX_URL       = BASE_URL + "/regex.php";
+    public String VERSION_URL     = BASE_URL + "/version_xml.php";
+    public String BACKUP_COPY_URL = BASE_URL + "/config_backup.php";
+    public String PLUGINS_URL     = BASE_URL + "/plugin_list.php";
 }
