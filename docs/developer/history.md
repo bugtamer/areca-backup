@@ -3,6 +3,7 @@
 ## Version 8.2.0 (released on 2024-11-30)
 
 - Now "Preferences" allows you to change how file sizes are displayed (decimal or binary).
+  It may require relaunching Areca or resorting the columns.
 - Replica of Olivier PETRUCCI's Areca official site.
 - Replace the URLs pointing to the repository with the URL of the Areca web site replica.
 - Fix broken links and links that freeze Areca on Linux.
