@@ -108,10 +108,10 @@
         </exec>
         <exec dir="${root}/jni" executable="gcc">
             <arg value="-shared"/>
-            <arg value="-lacl"/>
             <arg value="-o"/>
             <arg value="libarecafs.so"/>
             <arg value="com_myJava_file_metadata_posix_jni_wrapper_FileAccessWrapper.o"/>
+            <arg value="-lacl"/>
         </exec>
         <delete file="${root}/jni/com_myJava_file_metadata_posix_jni_wrapper_FileAccessWrapper.o"/>
         <delete file="${root}/jni/com_myJava_file_metadata_posix_jni_wrapper_FileAccessWrapper.h"/>
