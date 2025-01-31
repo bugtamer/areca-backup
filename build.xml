@@ -58,6 +58,7 @@
                source="8"
                target="8"
                encoding="ISO-8859-1"
+               includeantruntime="false"
         >
             <classpath>
                 <fileset dir="${root}/lib">
