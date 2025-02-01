@@ -60,10 +60,11 @@ public class VersionInfos {
 
 	static {
 		// INIT BUILD ID - DO NOT MODIFY THE FOLLOWING COMMENT :
-		BUILD_ID = 5622969789605581043L;
+		BUILD_ID = -5208585787071477895L;
 
 		// INIT VERSION DATA
-		release("8.2.0", 2024, 10, 30, "Now 'Preferences' allows you to change how file sizes are displayed (decimal or binary). Replica of Olivier PETRUCCI's Areca official site. Replace the URLs pointing to the repository with the URL of the Areca web site replica. Fix broken links and links that frezee Areca on Linux. Fix building issue that prevents Areca from launching when the JVM version at build is higher than the one used at runtime.");
+		release("8.2.1", 2025, 01, 01, "Fixed ACL support for Linux that prevents Areca from launching.");
+		release("8.2.0", 2024, 10, 30, "Now 'Preferences' allows you to change how file sizes are displayed (decimal or binary), it may require relaunching Areca or resorting the columns. Replica of Olivier PETRUCCI's Areca official site. Replace the URLs pointing to the repository with the URL of the Areca web site replica. Fix broken links and links that frezee Areca on Linux. Fix building issue that prevents Areca from launching when the JVM version at build is higher than the one used at runtime.");
 		release("8.1.0", 2024, 9, 21, "Add support for building and running Java LTS: 11, 17, and 21 apart from 8. As 'areca.bat', now 'areca.sh' works with 'JAVA_HOME' environment variable and embeded JRE/JDK. Sortable columns for 'Physical View', 'Logical View', 'History' and 'File Explorer'. Update and rename documentation folder to prepare 'GitHub Pages'. Change the URL of 'version.xml' to point to the areca-backup repo. Minor building pipeline improvements. Minor fixes.");
 		release("8.0.0", 2024, 8, 21, "Fixed Areca launchers. Support for Java 8 LTS. Fixed broken links to online documentation. Fixed `Check for new version ...` feature. Fixed building pipeline. Add dependency manager. Add some documentation for users and developers.");
 		VERSIONS.add(new VersionData("7.5", new GregorianCalendar(2015, 7, 26), "Fixed the issue that prevented archives from being created when there were only deleted files (no new files);Fixed a minor issue when reconnecting to a FTP server."));

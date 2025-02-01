@@ -1,5 +1,14 @@
 # Areca Backup - Versions history
 
+## Version 8.2.1 (released on 2025-02-01)
+
+- Fixed ACL support for Linux that prevents Areca from launching.
+  Visit the following places for extra help:
+  - areca-backup/help/ACL_troubleshooting.txt
+  - https://areca-backup.sourceforge.io/
+  - https://sourceforge.net/projects/areca-backup/support
+
+
 ## Version 8.2.0 (released on 2024-11-30)
 
 - Now "Preferences" allows you to change how file sizes are displayed (decimal or binary).
