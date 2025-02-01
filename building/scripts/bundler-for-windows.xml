@@ -63,17 +63,10 @@
         <delete file="${bundle.dir}/config/fwk.windows.properties"/>
 
         <!-- help/ -->
-        <copy todir="${bundle.dir}/help" preservelastmodified="true" overwrite="true">
-            <fileset dir="${root}/help"/>
-        </copy>
+        <copy file="${root}/help/Help.html.url" tofile="${bundle.dir}/help/Help.html.url" preservelastmodified="true" overwrite="true"/>
 
         <!-- lib/ -->
-        <copy todir="${bundle.dir}/lib" preservelastmodified="true" overwrite="true">
-            <fileset dir="${root}/lib">
-                <exclude name="libarecafs.so"/>
-            </fileset>
-        </copy>
-        
+
         <!-- tools/ -->
         <copy todir="${bundle.dir}/tools" preservelastmodified="true" overwrite="true">
             <fileset dir="${root}/tools"/>
