@@ -126,3 +126,5 @@ What `<major>.<minor>.<patch>` means in a specific Areca version (`8.0.0`):
       `git push --follow-tags`
     - Switch to `develop` branch:<br>
       `git checkout develop`
+
+12. Update the [Areca Backup official site](https://areca-backup.sourceforge.io/) if necessary.

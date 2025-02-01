@@ -12,7 +12,9 @@ H=$(../building/scripts/locate-jni-headers.sh)
 ./header.sh
 
 gcc -c -fPIC -lacl com_myJava_file_metadata_posix_jni_wrapper_FileAccessWrapper.c -o com_myJava_file_metadata_posix_jni_wrapper_FileAccessWrapper.o -I${H} -I${H}/linux
-gcc -shared -lacl -Wl,-soname,libarecafs.so -o libarecafs.so  com_myJava_file_metadata_posix_jni_wrapper_FileAccessWrapper.o
+gcc -shared -Wl,-soname,libarecafs.so -o libarecafs.so com_myJava_file_metadata_posix_jni_wrapper_FileAccessWrapper.o -lacl
 
 rm com_myJava_file_metadata_posix_jni_wrapper_FileAccessWrapper.o
 rm com_myJava_file_metadata_posix_jni_wrapper_FileAccessWrapper.h
+
+mv --interactive libarecafs.so ../lib/libarecafs.so

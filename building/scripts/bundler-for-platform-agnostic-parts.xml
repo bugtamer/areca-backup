@@ -9,16 +9,9 @@
         <!-- bin/ -->
 
         <!-- config/ -->
-        <copy todir="${bundle.dir}/config" preservelastmodified="true" overwrite="true">
-            <fileset dir="${root}/config"/>
-        </copy>
-
+        
         <!-- help/ -->
-        <copy todir="${bundle.dir}/help" preservelastmodified="true" overwrite="true">
-            <fileset dir="${root}/help">
-                <exclude name="Help.html.url"/>
-            </fileset>
-        </copy>
+        <copy file="${root}/help/ADVANCED_ENCRYPTION_HOWTO" tofile="${bundle.dir}/help/ADVANCED_ENCRYPTION_HOWTO" preservelastmodified="true" overwrite="true"/>
 
         <!-- icons/ -->
         <mkdir dir="${bundle.dir}/icons"/>
@@ -30,10 +23,21 @@
         <mkdir dir="${bundle.dir}/jre"/>
 
         <!-- lib/ -->
-        <copy todir="${bundle.dir}/lib" preservelastmodified="true" overwrite="true">
-            <fileset dir="${root}/lib"/>
-            <!-- platform-specific SWT was previously set) -->
-        </copy>
+        <property name="lib.jar.core.commands"  value="org.eclipse.core.commands_3.2.0.I20060605-1400.jar"/>
+        <property name="lib.jar.equinox.common" value="org.eclipse.equinox.common_3.2.0.v20060603.jar"/>
+        <property name="lib.jar.jface"          value="org.eclipse.jface_3.2.0.I20060605-1400.jar"/>
+        <copy preservelastmodified="true" overwrite="true" file="${root}/lib/areca.jar"                 tofile="${bundle.dir}/lib/areca.jar"/>
+        <copy preservelastmodified="true" overwrite="true" file="${root}/lib/activation.jar"            tofile="${bundle.dir}/lib/activation.jar"/>
+        <copy preservelastmodified="true" overwrite="true" file="${root}/lib/commons-codec-1.4.jar"     tofile="${bundle.dir}/lib/commons-codec-1.4.jar"/>
+        <copy preservelastmodified="true" overwrite="true" file="${root}/lib/commons-net-1.4.1.jar"     tofile="${bundle.dir}/lib/commons-net-1.4.1.jar"/>
+        <copy preservelastmodified="true" overwrite="true" file="${root}/lib/jakarta-oro-2.0.8.jar"     tofile="${bundle.dir}/lib/jakarta-oro-2.0.8.jar"/>
+        <copy preservelastmodified="true" overwrite="true" file="${root}/lib/jsch.jar"                  tofile="${bundle.dir}/lib/jsch.jar"/>
+        <copy preservelastmodified="true" overwrite="true" file="${root}/lib/local_policy.jar"          tofile="${bundle.dir}/lib/local_policy.jar"/>
+        <copy preservelastmodified="true" overwrite="true" file="${root}/lib/mail.jar"                  tofile="${bundle.dir}/lib/mail.jar"/>
+        <copy preservelastmodified="true" overwrite="true" file="${root}/lib/${lib.jar.core.commands}"  tofile="${bundle.dir}/lib/${lib.jar.core.commands}"/>
+        <copy preservelastmodified="true" overwrite="true" file="${root}/lib/${lib.jar.equinox.common}" tofile="${bundle.dir}/lib/${lib.jar.equinox.common}"/>
+        <copy preservelastmodified="true" overwrite="true" file="${root}/lib/${lib.jar.jface}"          tofile="${bundle.dir}/lib/${lib.jar.jface}"/>
+        <copy preservelastmodified="true" overwrite="true" file="${root}/lib/swt.jar"                   tofile="${bundle.dir}/lib/swt.jar"/>
         
         <!-- plugins/ -->
         <mkdir dir="${bundle.dir}/plugins"/>
