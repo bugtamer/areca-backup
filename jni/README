@@ -4,7 +4,7 @@ Areca is mainly developed in Java, but it also uses some native code to handle f
 
 If you want to compile this library, run the "build.xml" ant file or run the following commands :
 gcc -c -fPIC -lacl com_myJava_file_metadata_posix_jni_wrapper_FileAccessWrapper.c -o com_myJava_file_metadata_posix_jni_wrapper_FileAccessWrapper.o
-gcc -shared -lacl -Wl -o libarecafs.so  com_myJava_file_metadata_posix_jni_wrapper_FileAccessWrapper.o
+gcc -shared -Wl -o libarecafs.so com_myJava_file_metadata_posix_jni_wrapper_FileAccessWrapper.o -lacl
 
 Once the compilation is completed, copy the library to "/usr/lib" or "/lib".
 
