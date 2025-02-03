@@ -8,10 +8,15 @@ SETLOCAL
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 
+:: Absolute script path
+SET "SCRIPT_DIR=%~dp0%"
+
+:: Logging data
 SET "BATCH_SCRIPT_PATHNAME=%0"
 SET "SCRIPT_PATH=%BATCH_SCRIPT_PATHNAME:~1,-19%"
 SET "SCRIPT_PATH=%SCRIPT_PATH:/=\%"
 
+:: Command-line arguments
 SET "P1_REQUIRED_LAUNCHER_CLASS=%1"
 SET "P2_OPTIONAL=%2"
 SET "P3_OPTIONAL=%3"
@@ -31,8 +36,7 @@ SET "P12_OPTIONAL=%9"
 
 
 :: Getting Areca's directory
-SET "CURRENT_WORKING_DIRECTORY=%CD%"
-SET "ARECA_DIR=%CURRENT_WORKING_DIRECTORY%"
+SET "ARECA_DIR=%SCRIPT_DIR:~0,-5%"
 
 
 :: Getting Java directory
@@ -132,8 +136,8 @@ IF "%P1_REQUIRED_LAUNCHER_CLASS%"=="com.application.areca.launcher.gui.Launcher"
     :: Logging
     SET "ARECA_LOG=%PROGRAM_DIR%\logs\areca_run.bat.log"
     ECHO SCRIPT:                    areca_run.bat
+    ECHO SCRIPT_DIR:                %SCRIPT_DIR%
     ECHO SCRIPT_PATH:               %SCRIPT_PATH%
-    ECHO CURRENT_WORKING_DIRECTORY: %CURRENT_WORKING_DIRECTORY%
     ECHO.
     ECHO ARECA_HOME:                %ARECA_HOME%
     ECHO JAVA_HOME:                 %JAVA_HOME%

@@ -8,20 +8,23 @@ SETLOCAL
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 
-SET "PROGRAM_DIR=%cd%"
+SET "SCRIPT_DIR=%~dp0%"
+SET "PROGRAM_DIR=%SCRIPT_DIR:~0,-1%"
+
 SET "ARECA_LAUNCHER=%PROGRAM_DIR%\areca_cl.exe"
+SET "IS_EXE_LAUNCHER=1"
 
-IF EXIST "%ARECA_LAUNCHER%" (GOTO launch_areca) ELSE (SET "ARECA_LAUNCHER=%PROGRAM_DIR%\bin\areca_run.bat")
+IF NOT EXIST "%ARECA_LAUNCHER%" (
+    SET "ARECA_LAUNCHER=%PROGRAM_DIR%\bin\areca_run.bat"
+    SET "IS_EXE_LAUNCHER=0"
+)
 
-SET "BATCH_SCRIPT_PATHNAME=%0"
-SET "SCRIPT_PATH=%BATCH_SCRIPT_PATHNAME:~1,-14%"
-
-IF EXIST "%ARECA_LAUNCHER%" (GOTO launch_areca) ELSE (SET "ARECA_LAUNCHER=%SCRIPT_PATH%\areca_cl.exe")
-IF EXIST "%ARECA_LAUNCHER%" (GOTO launch_areca) ELSE (SET "ARECA_LAUNCHER=%SCRIPT_PATH%\bin\areca_run.bat")
-
-
-:launch_areca
 SET "ARECA_LAUNCHER=%ARECA_LAUNCHER:/=\%"
-CALL "%ARECA_LAUNCHER%" com.application.areca.launcher.tui.Launcher %*
+
+IF "%IS_EXE_LAUNCHER%" == "1" (
+    "%ARECA_LAUNCHER%" %*
+) ELSE (
+    CALL "%ARECA_LAUNCHER%" com.application.areca.launcher.tui.Launcher %*
+)
 
 ENDLOCAL
