@@ -75,7 +75,7 @@ What `<major>.<minor>.<patch>` means in a specific Areca version (`8.0.0`):
    />
    ```
    - `id` is the release version.
-   - `date` is the release date (month is zero-based).
+   - `date` is the release date (month is one-based).
    - `url` is where the Areca's user can download the new release version.
    - `description` is the list of changes that includes this new version.
 

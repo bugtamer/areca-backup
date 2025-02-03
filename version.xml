@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <versiondata
     id="8.2.1"
-    date="2025-01-01"
+    date="2025-02-01"
     url="https://sourceforge.net/projects/areca-backup/files/"
     description="Fixed ACL support for Linux that prevents Areca from launching."
 />
