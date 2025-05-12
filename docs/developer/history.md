@@ -1,5 +1,10 @@
 # Areca Backup - Versions history
 
+## Version 8.2.2 (released on 2025-05-12)
+
+- Fixed Windows launchers when they are executed outside of Areca directory.
+
+
 ## Version 8.2.1 (released on 2025-02-01)
 
 - Fixed ACL support for Linux that prevents Areca from launching.
