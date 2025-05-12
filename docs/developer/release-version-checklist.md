@@ -92,11 +92,11 @@ What `<major>.<minor>.<patch>` means in a specific Areca version (`8.0.0`):
 10. Upload release bundles to the `url` pointed in [`version.xml`](../../version.xml).
 
 11. Release the source code changes
-    - Switch to `main` branch:<br>
-      `git checkout main`
-    - Update local `main` branch:<br>
+    - Switch to `release` branch:<br>
+      `git checkout release`
+    - Update local `release` branch:<br>
       `git pull`
-    - Merge `develop` into the `main` branch with a **merge squash**:<br>
+    - Merge `develop` into the `release` branch with a **merge squash**:<br>
       `git merge --squash develop`
     - Commit the merge squash:<br>
       ```shell
