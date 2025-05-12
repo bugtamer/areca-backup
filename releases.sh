@@ -2,6 +2,15 @@
 
 clear
 
+
+BRANCH=$(git branch --show-current)
+
+if [ "$BRANCH" != "develop" ]; then
+    echo ERROR: This script can only be run from the develop branch. Current branch: "$BRANCH".
+    exit 1
+fi
+
+
 javac -version
 
 if [[ "$?" -ne 0 ]]; then
