@@ -51,7 +51,7 @@ the missing links are topics that could be documented.
     - 1234567890/yymmdd.zip_data/trace
     - 1234567890/history
 - Recovers
-- Launchers
+- [Launchers](launchers.md)
 - TUI
 - GUI
   - Menus
