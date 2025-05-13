@@ -110,11 +110,7 @@ It has been designed to ?
 - [Translations](docs/user/documentation.md#translations)
 - [Extending Areca](docs/user/documentation.md#extending-areca)
 - [Config backup](docs/user/config_backup.md)
-
-### Documentation for developers
-
-- [Development environment](docs/developer/development-environment.md)
-- [Build Areca Backup](docs/developer/building.md)
+- [Documentation for developers](docs/developer/README.md)
 
 ---
 
