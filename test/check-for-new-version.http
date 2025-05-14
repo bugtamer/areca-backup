@@ -1,0 +1,11 @@
+# REST Client (Huachao Mao) Extension for Visual Studio Code
+# https://marketplace.visualstudio.com/items?itemName=humao.rest-client
+# `Ctrl+Alt+R` (`Cmd+Alt+R` for macOS)
+#
+# https://www.jetbrains.com/help/webstorm/exploring-http-syntax.html
+# https://www.jetbrains.com/help/webstorm/http-client-in-product-code-editor.html
+
+
+### Check for new version ... (See: src/com/application/areca/ArecaURLs.java)
+GET https://areca-backup.sourceforge.io/version_xml.php HTTP/1.1
+content-type: application/xml
