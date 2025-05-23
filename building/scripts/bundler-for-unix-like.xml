@@ -9,7 +9,7 @@
 
         <!-- bin/ -->
         <copy todir="${bundle.dir}/bin" preservelastmodified="true" overwrite="true">
-            <fileset dir="${root}/bin"  includes="*.sh"/>
+            <fileset dir="${root}/bin" excludes="debug_*.sh" includes="*.sh"/>
         </copy>
 
         <!-- building/ -->

@@ -1,5 +1,9 @@
 # Areca Backup - Developer documentation
 
+It is not intended to be detailed and precise documentation,
+but rather to provide a general understanding of how it works,
+which helps reduce the time needed to learn how to maintain Areca.
+
 Only the linked topics have any level of documentation;
 the missing links are topics that could be documented.
 
@@ -7,9 +11,10 @@ the missing links are topics that could be documented.
 ## Settings
 
 - [Development environment](development-environment.md)
-- [Building](building.md)
-- [Testing](testing.md)
 - [Dependencies](../../ivy.xml)
+- [Building](building.md)
+- [Debugging](debugging.md)
+- [Testing](testing.md)
 - Security
 
 
@@ -24,7 +29,7 @@ the missing links are topics that could be documented.
 - First changes after forking Areca Backup
 
 
-## How it works
+## How what you see works
 
 - Workspace
   - $USER/.areca/preferences.properties
