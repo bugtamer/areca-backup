@@ -20,19 +20,20 @@ the missing links are topics that could be documented.
 
 ## Expand Areca
 
-- Roadmap
+- [Roadmap](https://sourceforge.net/projects/areca-backup/files/)
 - [Authors](../../AUTHORS)
 - [Plugins](areca_plugins_documentation.pdf)
 - [Translations](../../translations/README)
 - [Platforms](building.md)
 - Contribute
+- [Authors](../../AUTHORS)
 - First changes after forking Areca Backup
 
 
 ## How what you see works
 
 - Workspace
-  - $USER/.areca/preferences.properties
+  - $USER/.areca/[preferences.properties](preferences.properties.md)
   - Target configuration (*.bcfg XML files)
 - areca-backup/config/fwk.properties
 - Targets
@@ -111,7 +112,7 @@ the missing links are topics that could be documented.
     - Search
     - Log
     - Progression
-  - UI links
+  - [UI links](ui-links.md)
   - Icons
   - Shortcut list
   - Window Modals
