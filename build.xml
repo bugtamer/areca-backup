@@ -10,6 +10,8 @@
 
     <property name="root" value="."/>
 
+    <property name="debug" value="off"/>
+
     <!-- Path to SWT libraries (download the SWT package if this file is missing on your system) -->
     <property name="swtfile" value="${root}/lib/swt.jar"/>
     <property name="scripts.dir" value="${root}/building/scripts"/>
@@ -54,7 +56,7 @@
 
         <javac srcdir="${root}/src"
                destdir="${root}/classes"
-               debug="off"
+               debug="${debug}"
                source="8"
                target="8"
                encoding="ISO-8859-1"

@@ -3,6 +3,12 @@
     <!-- versiondata.id | versiondata.date | versiondata.url | versiondata.description -->
     <xmlproperty file="${root}/version.xml" collapseAttributes="true"/>
 
+
+    <condition property="bundle.debug-mode-enabled" value="true">
+        <contains substring="on" string="${debug}" casesensitive="true" />
+    </condition>
+
+
     <property name="building.dir" value="${root}/releases"/>
     <property name="bundle.dir" value="${building.dir}/areca"/>
     <property name="bundle.version" value="${versiondata.id}"/>

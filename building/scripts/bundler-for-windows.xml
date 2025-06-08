@@ -45,7 +45,7 @@
 
 
 
-    <target name="windows-bundler" if="target.platform" depends="platform-agnostic-parts-bundler">
+    <target name="windows-bundler" if="target.platform" unless="bundle.debug-mode-enabled" depends="platform-agnostic-parts-bundler">
         <echo message="Prepare Windows agnostic common files"/>
         <echo message="Windows bundler"/>
         <echo message="- swt.os   = '${swt.os}'"/>

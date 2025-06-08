@@ -24,3 +24,25 @@ The building pipeline is initially defined by [`build.xml`](../../build.xml) and
 
 - `ant linux-x86-64`
 - `ant linux-x86-32`
+
+
+## Build Areca to support debug mode
+
+[Debug mode](debugging.md) requires compiling Areca specifically to enable this development feature.
+
+Add the `-Ddebug=on` argument to the above compilation commands.
+`debug` can be set to either `on` or `off` (default value) but you do not need to add `-Ddebug=off` to the `off` setting;
+
+**Note:**
+You can only use breakpoints if you have already compiled Areca with `-Ddebug=on`;
+otherwise, you may only be able to catch exceptions.
+
+### Windows platform
+
+- `ant windows-x86-64 -Ddebug=on`
+- `ant windows-x86-32 -Ddebug=on`
+
+### Linux platform
+
+- `ant linux-x86-64 -Ddebug=on`
+- `ant linux-x86-32 -Ddebug=on`

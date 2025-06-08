@@ -1,6 +1,6 @@
 <project name="generate-unix-like-bundles" basedir="${root}">
 
-    <target name="unix-like-bundler" if="target.platform" depends="platform-agnostic-parts-bundler">
+    <target name="unix-like-bundler" if="target.platform" unless="bundle.debug-mode-enabled" depends="platform-agnostic-parts-bundler">
         <echo message="Unix-like bundler"/>
         <echo message="- swt.os   = '${swt.os}'"/>
         <echo message="- swt.arch = '${swt.arch}'"/>

@@ -1,13 +1,15 @@
 # Areca Backup - Debugging
 
-Run any of these debug [launchers](launchers.md):
+1. Add `-Ddebug=on` argument to the [build command](building.md#build-areca-to-support-debug-mode).
 
-* `debug_areca.*` (GUI)
-* `debug_areca_cl.*` (TUI)
-* `debug_areca_check_version.*` (check for new versions)
-* `debug_areca_run.*` (startup logic)
+2. Run any of these debug [launchers](launchers.md):
 
-and attach an IDE's debugger to this Areca instance.
+   * `debug_areca.*` (GUI)
+   * `debug_areca_cl.*` (TUI)
+   * `debug_areca_check_version.*` (check for new versions)
+   * `debug_areca_run.*` (startup logic)
+
+3. and attach an IDE's debugger to this Areca instance.
 
 
 ## Visual Studio Code debug configuration
