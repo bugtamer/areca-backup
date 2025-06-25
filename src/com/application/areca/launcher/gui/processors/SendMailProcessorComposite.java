@@ -27,12 +27,14 @@ import com.myJava.util.CommonRules;
 /**
  * <BR>
  * @author Olivier PETRUCCI
+ * @author bugtamer
  * <BR>
  *
  */
 
  /*
  Copyright 2005-2015, Olivier PETRUCCI.
+ Copyright 2024-2025, bugtamer.
 
 This file is part of Areca.
 
@@ -225,7 +227,8 @@ public class SendMailProcessorComposite extends AbstractProcessorComposite {
 		});
 
 		if (proc != null) {
-			SendReportByMailProcessor mProc = (SendReportByMailProcessor)proc;
+			AbstractMailSendProcessor mProc = (AbstractMailSendProcessor) proc;
+			// Common settings of SendMailProcessor and SendReportByMailProcessor
 			txtRecipients.setText(mProc.getRecipients());
 			txtSmtp.setText(mProc.getSmtpServerName());
 			txtPort.setText("" + mProc.getSmtpServerPort());
@@ -240,10 +243,14 @@ public class SendMailProcessorComposite extends AbstractProcessorComposite {
 			if (mProc.getFrom() != null) {
 				txtFrom.setText(mProc.getFrom());
 			}
-			if (appendReport) {
-				chkAppendStatistics.setSelection(mProc.isAppendStatistics());
-				chkListStoredFiles.setSelection(mProc.isAppendStoredFiles());
-				txtMaxListedFiles.setText("" + mProc.getMaxStoredFiles());
+			// Specific SendReportByMailProcessor settings
+			if (mProc instanceof SendReportByMailProcessor) {
+				SendReportByMailProcessor reportProc = (SendReportByMailProcessor) mProc;
+				if (appendReport) {
+					chkAppendStatistics.setSelection(reportProc.isAppendStatistics());
+					chkListStoredFiles.setSelection(reportProc.isAppendStoredFiles());
+					txtMaxListedFiles.setText("" + reportProc.getMaxStoredFiles());
+				}
 			}
 		} else {
 			if (appendReport) {

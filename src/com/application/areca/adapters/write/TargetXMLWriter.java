@@ -42,12 +42,14 @@ import com.myJava.util.xml.XMLTool;
  * Target serializer
  * 
  * @author Olivier PETRUCCI
+ * @author bugtamer
  * <BR>
  *
  */
 
  /*
  Copyright 2005-2015, Olivier PETRUCCI.
+ Copyright 2024-2025, bugtamer.
 
 This file is part of Areca.
 
@@ -248,7 +250,7 @@ public class TargetXMLWriter extends AbstractXMLWriter {
     }
     
     protected void serializeProcessor(SendMailProcessor pp, boolean postProcess) {
-        serializeProcessorHeader(XML_PROCESSOR_EMAIL_REPORT, postProcess, pp);
+        serializeProcessorHeader(XML_PROCESSOR_EMAIL, postProcess, pp);
         serializeMailData(pp);
         sb.append("/>");        
     }
