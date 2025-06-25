@@ -1,6 +1,6 @@
 <project name="platform-agnostic-parts-bundler" basedir=".">
 
-    <target name="platform-agnostic-parts-bundler" depends="compileall" if="target.platform">
+    <target name="platform-agnostic-parts-bundler" depends="compileall" if="target.platform" unless="bundle.debug-mode-enabled">
         <property name="bundle.file.name" value="areca-${bundle.version}-${target.platform}"/>
 
         <delete dir="${bundle.dir}"/>

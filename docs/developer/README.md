@@ -1,5 +1,9 @@
 # Areca Backup - Developer documentation
 
+It is not intended to be detailed and precise documentation,
+but rather to provide a general understanding of how it works,
+which helps reduce the time needed to learn how to maintain Areca.
+
 Only the linked topics have any level of documentation;
 the missing links are topics that could be documented.
 
@@ -7,27 +11,29 @@ the missing links are topics that could be documented.
 ## Settings
 
 - [Development environment](development-environment.md)
-- [Building](building.md)
-- [Testing](testing.md)
 - [Dependencies](../../ivy.xml)
+- [Building](building.md)
+- [Debugging](debugging.md)
+- [Testing](testing.md)
 - Security
 
 
 ## Expand Areca
 
-- Roadmap
+- [Roadmap](https://sourceforge.net/projects/areca-backup/files/)
 - [Authors](../../AUTHORS)
 - [Plugins](areca_plugins_documentation.pdf)
 - [Translations](../../translations/README)
 - [Platforms](building.md)
 - Contribute
+- [Authors](../../AUTHORS)
 - First changes after forking Areca Backup
 
 
-## How it works
+## How what you see works
 
 - Workspace
-  - $USER/.areca/preferences.properties
+  - $USER/.areca/[preferences.properties](preferences.properties.md)
   - Target configuration (*.bcfg XML files)
 - areca-backup/config/fwk.properties
 - Targets
@@ -51,7 +57,7 @@ the missing links are topics that could be documented.
     - 1234567890/yymmdd.zip_data/trace
     - 1234567890/history
 - Recovers
-- Launchers
+- [Launchers](launchers.md)
 - TUI
 - GUI
   - Menus
@@ -82,7 +88,7 @@ the missing links are topics that could be documented.
     - Help
       - Help ... (F1)
       - Tutorial ...
-      - Check for new version ...
+      - [Check for new version ...](gui/menu/help/check-for-new-version.md)
       - Plugins ...
       - Support Areca Backup
       - About ...
@@ -106,7 +112,7 @@ the missing links are topics that could be documented.
     - Search
     - Log
     - Progression
-  - UI links
+  - [UI links](ui-links.md)
   - Icons
   - Shortcut list
   - Window Modals

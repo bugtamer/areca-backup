@@ -21,7 +21,7 @@ import com.myJava.util.version.VersionData;
 
  /*
  Copyright 2005-2015, Olivier PETRUCCI.
- Copyright 2024, bugtamer.
+ Copyright 2024-2025, bugtamer.
 
 This file is part of Areca.
 
@@ -60,9 +60,10 @@ public class VersionInfos {
 
 	static {
 		// INIT BUILD ID - DO NOT MODIFY THE FOLLOWING COMMENT :
-		BUILD_ID = 6283992802312422164L;
+		BUILD_ID = -3489034389499747275L;
 
 		// INIT VERSION DATA
+		release("8.2.3", 2025, 05, 25, "Fixed 'Send the report by email' Pre-processing action error on edit, which should be labeled as 'Send email'.");
 		release("8.2.2", 2025, 04, 12, "Fixed Windows launchers when they are executed outside of Areca directory.");
 		release("8.2.1", 2025, 01, 01, "Fixed ACL support for Linux that prevents Areca from launching.");
 		release("8.2.0", 2024, 10, 30, "Now 'Preferences' allows you to change how file sizes are displayed (decimal or binary), it may require relaunching Areca or resorting the columns. Replica of Olivier PETRUCCI's Areca official site. Replace the URLs pointing to the repository with the URL of the Areca web site replica. Fix broken links and links that frezee Areca on Linux. Fix building issue that prevents Areca from launching when the JVM version at build is higher than the one used at runtime.");

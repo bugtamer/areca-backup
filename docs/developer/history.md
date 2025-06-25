@@ -1,5 +1,20 @@
 # Areca Backup - Versions history
 
+## Version 8.2.3 (released on 2025-06-25)
+
+- Fixed `Send the report by email` Pre-processing action error on edit, which should be labeled as `Send email`.
+
+  This fix does not automatically repair any previously broken `Send email` actions.
+  If you understand `xml` files, you could try to repair them manually:
+
+  - Open the `bcfg` file (e.g. `.areca/workspace/1234567890.bcfg` and `repository/areca_config_backup/1234567890.bcfg`) that contains the `Send email` action to fix.
+  - Identify the `Send email` action to fix:
+    - The properties `statistics`, `list_stored_files`, and `max_listed_files` belong only to the `Send the report by email` action (`email_processor` tag).
+    - The `Send email` action (`email_pre_processor` tag) does not have these properties.
+  - Replace only the `email_processor` tag with `email_pre_processor` in the `Send email` action you want to fix.
+  - Reopen Areca Backup to read `1234567890.bcfg` again.
+
+
 ## Version 8.2.2 (released on 2025-05-12)
 
 - Fixed Windows launchers when they are executed outside of Areca directory.
