@@ -26,7 +26,7 @@ ant windows-x86-64
 ant linux-x86-32
 ant linux-x86-64
 
-cp docs/developer/history.md releases/REAME.md
+cp docs/developer/history.md releases/README.md
 
 cd releases
 zip -9r hashes.zip . -i hashes/*
