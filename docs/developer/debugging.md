@@ -1,5 +1,7 @@
 # Areca Backup - Debugging
 
+## Attach debugging mode
+
 1. Add `-Ddebug=on` argument to the [build command](building.md#build-areca-to-support-debug-mode).
 
 2. Run any of these debug [launchers](launchers.md):
@@ -12,7 +14,9 @@
 3. and attach an IDE's debugger to this Areca instance.
 
 
-## Visual Studio Code debug configuration
+## Launch debugging mode
+
+### Visual Studio Code debug configuration
 
 `areca-backup/.vscode/launch.json` should have something like this
 
@@ -29,15 +33,53 @@
             "request": "attach",
             "hostName": "127.0.0.1",
             "port": "8000"
-        }
+        },
+        {
+            "type": "java",
+            "name": "Launch Areca GUI",
+            "request": "launch",
+            "mainClass": "com.application.areca.launcher.gui.Launcher",
+            "args": "${env:HOME}/.areca",
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal",
+            "env": {
+                "GDK_NATIVE_WINDOWS": true,
+                "JAVA_PATH": "/usr/share/java",
+            },
+            "classPaths": [
+                "${workspaceFolder}",
+                "${workspaceFolder}/translations",
+                "${workspaceFolder}/config",
+                "${workspaceFolder}/lib",
+                "${workspaceFolder}/lib/areca.jar",
+                "${workspaceFolder}/lib/mail.jar",
+                "${workspaceFolder}/lib/activation.jar",
+                "${workspaceFolder}/lib/commons-net-1.4.1.jar",
+                "${workspaceFolder}/lib/jakarta-oro-2.0.8.jar",
+                "${workspaceFolder}/lib/jsch.jar",
+                "${workspaceFolder}/lib/org.eclipse.core.commands_3.2.0.I20060605-1400.jar",
+                "${workspaceFolder}/lib/org.eclipse.equinox.common_3.2.0.v20060603.jar",
+                "${workspaceFolder}/lib/org.eclipse.jface_3.2.0.I20060605-1400.jar",
+                "${workspaceFolder}/lib/swt.jar",
+                "${workspaceFolder}/lib/commons-codec-1.4.jar",
+            ],
+            "vmArgs": [
+                "-Xms64m",
+                "-Xmx1024m",
+                "-Duser.dir=${workspaceFolder}",
+                "-Djava.library.path=${workspaceFolder}/lib:${env:JAVA_PATH}/lib:${env:JAVA_PATH}/jni",
+                "-Djava.system.class.loader=com.application.areca.impl.tools.ArecaClassLoader",
+            ],
+        },
     ]
 }
 ```
 
-- [Launch versus attach configurations](https://code.visualstudio.com/docs/debugtest/debugging-configuration#_launch-versus-attach-configurations)
-- [Running and debugging Java](https://code.visualstudio.com/docs/java/java-debugging)
+Check `JAVA_PATH` is right for you system.
 
 
 ## Additional Resources
 
+- [Launch versus attach configurations](https://code.visualstudio.com/docs/debugtest/debugging-configuration#_launch-versus-attach-configurations)
+- [Running and debugging Java](https://code.visualstudio.com/docs/java/java-debugging)
 - [Java Application Remote Debugging](https://www.baeldung.com/java-application-remote-debugging)
