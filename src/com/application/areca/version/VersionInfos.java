@@ -60,9 +60,10 @@ public class VersionInfos {
 
 	static {
 		// INIT BUILD ID - DO NOT MODIFY THE FOLLOWING COMMENT :
-		BUILD_ID = -3489034389499747275L;
+		BUILD_ID = 5454828092862496675L;
 
 		// INIT VERSION DATA
+		release("8.2.4", 2025, 06, 06, "Fixed misleading placement of some arguments in the Terminal User Interface (TUI) help. Fixed the need to reopen Areca to apply changes to the way file sizes are displayed (decimal or binary). This feature was introduced in v8.2.0.");
 		release("8.2.3", 2025, 05, 25, "Fixed 'Send the report by email' Pre-processing action error on edit, which should be labeled as 'Send email'.");
 		release("8.2.2", 2025, 04, 12, "Fixed Windows launchers when they are executed outside of Areca directory.");
 		release("8.2.1", 2025, 01, 01, "Fixed ACL support for Linux that prevents Areca from launching.");

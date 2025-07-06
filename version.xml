@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <versiondata
-    id="8.2.3"
-    date="2025-06-25"
+    id="8.2.4"
+    date="2025-07-06"
     url="https://sourceforge.net/projects/areca-backup/files/"
-    description="Fixed 'Send the report by email' Pre-processing action error on edit, which should be labeled as 'Send email'."
+    description="Fixed misleading placement of some arguments in the Terminal User Interface (TUI) help. Fixed the need to reopen Areca to apply changes to the way file sizes are displayed (decimal or binary). This feature was introduced in v8.2.0."
 />
