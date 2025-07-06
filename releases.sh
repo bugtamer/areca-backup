@@ -2,7 +2,7 @@
 
 clear
 
-rmdir --ignore-fail-on-non-empty releases/
+rm -rf releases/
 mkdir releases/
 
 
