@@ -33,7 +33,7 @@ import com.application.areca.launcher.gui.resources.ResourceManager;
 
  /*
  Copyright 2005-2015, Olivier PETRUCCI.
- Copyright 2024, bugtamer.
+ Copyright 2024-2025, bugtamer.
 
 This file is part of Areca.
 
@@ -314,6 +314,9 @@ extends AbstractWindow {
         
         this.hasBeenUpdated = false;
         this.close();
+
+        // Allow to refresh sortable columns for Physical View, Logical View, History and File Explorer.
+        Application.getInstance().getMainWindow().refresh(true, true);
     }
 
     protected void updateState(boolean rulesSatisfied) {
