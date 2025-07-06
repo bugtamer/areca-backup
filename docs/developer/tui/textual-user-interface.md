@@ -103,14 +103,15 @@ INFO -  - Areca Backup
 INFO -  - Copyright 2005-2025, Olivier PETRUCCI
 INFO -  - List of valid arguments :
 INFO - 
+INFO -  - Show informations about Areca :
 INFO -  -       infos
 INFO - 
-INFO -  - Show informations about Areca :
 INFO -  - Describe targets :
+INFO -  -       describe -config (xml configuration file or directory)
 INFO - 
 INFO -  - Launch a backup :
-INFO -  -       describe -config (xml configuration file or directory)
 INFO -  -       backup -config (xml configuration file or directory) [-f] [-d] [-c] [-wdir (working directory)] [-s] [-title (archive title)]
+INFO -  -          -f to force full backup (instead of incremental backup)
 INFO -  -          -d to force differential backup (instead of incremental backup)
 INFO -  -          -c to check the archive consistency after backup
 INFO -  -          -wdir to use a specific working directory during archive check
@@ -133,19 +134,18 @@ INFO -  -       delete -config (xml configuration file) [-date (deletion date : 
 INFO - 
 INFO -  - Recover archives :
 INFO -  -       recover -config (xml configuration file) -destination (destination folder) [-date (recovered date : YYYY-MM-DD)] [-c]
-INFO -  -          -f to force full backup (instead of incremental backup)
 INFO -  -          -c to check consistency of recovered files
 INFO -  -          -o to overwrite existing files
 INFO -  -          -nosubdir to prevent Areca to perform the recovery in a subdirectory
+INFO -  -          -date to specify the recovery date
 INFO - 
 INFO -  - Check archives :
 INFO -  -       check -config (xml configuration file) [-wdir (working directory)] [-date (checked date : YYYY-MM-DD)] [-a]
-INFO -  -          -date to specify the recovery date
 INFO -  -          -wdir to use a specific working directory
+INFO -  -          -a to check all files (not only those contained in the archive denoted by the date argument)
 INFO -  -          -date to specify the archive which will be checked
 INFO - 
 INFO -  - ------------------------------------------------------------------
 INFO - 
 INFO -  - Error : invalid arguments (a command must be provided)
-INFO -  -          -a to check all files (not only those contained in the archive denoted by the date argument)
 ```
