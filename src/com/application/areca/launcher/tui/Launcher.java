@@ -45,12 +45,14 @@ import com.myJava.util.xml.AdapterException;
  * Launcher
  * <BR>
  * @author Olivier PETRUCCI
+ * @author bugtamer
  * <BR>
  *
  */
 
  /*
  Copyright 2005-2015, Olivier PETRUCCI.
+ Copyright 2025-2025, bugtamer.
 
 This file is part of Areca.
 
@@ -244,7 +246,7 @@ implements CommandConstants {
 		}
 	}
 
-	private void printHelp() {
+	private synchronized void printHelp() {
 		channel.print(SEPARATOR);
 		channel.print(VersionInfos.APP_NAME);
 		channel.print("Copyright 2005-" + CURRENT_YEAR + ", Olivier PETRUCCI");

@@ -20,7 +20,7 @@ if [[ -e "${ARECA_DIR}/jdk/${JNI}" ]] && [[ -e "${ARECA_DIR}/jdk/${JNI_MD}" ]]; 
 elif [[ -e "${JAVA_HOME}/${JNI}" ]] && [[ -e "${JAVA_HOME}/${JNI_MD}" ]]; then
     HEADERS=$JAVA_HOME
 else
-    HEADERS=/usr/lib/jvm
+    HEADERS=$(locate jni.h | tail -n 1 | sed 's:/jni\.h$::')
 fi
 
 

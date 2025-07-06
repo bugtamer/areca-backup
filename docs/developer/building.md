@@ -46,3 +46,13 @@ otherwise, you may only be able to catch exceptions.
 
 - `ant linux-x86-64 -Ddebug=on`
 - `ant linux-x86-32 -Ddebug=on`
+
+
+## Troubleshooting
+
+### `jni.h` was not found
+
+It caused by missing or wrong setting of `jni.h.dir` and `jni_md.h.dir`
+which are files that are provided by the JDK.
+
+Check: `locate-jni-headers.sh`

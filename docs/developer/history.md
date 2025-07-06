@@ -1,5 +1,12 @@
 # Areca Backup - Versions history
 
+## Version 8.2.4 (released on 2025-07-06)
+
+- Fixed misleading placement of some arguments in the Terminal User Interface (TUI) help.
+- Fixed the need to reopen Areca to apply changes to the way file sizes are displayed (decimal or binary).
+  This feature was introduced in v8.2.0.
+
+
 ## Version 8.2.3 (released on 2025-06-25)
 
 - Fixed `Send the report by email` Pre-processing action error on edit, which should be labeled as `Send email`.
