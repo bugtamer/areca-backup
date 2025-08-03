@@ -28,7 +28,7 @@ import com.myJava.util.log.Logger;
 
  /*
  Copyright 2005-2015, Olivier PETRUCCI.
- Copyright 2024, bugtamer.
+ Copyright 2024-2025, bugtamer.
 
 This file is part of Areca.
 
@@ -171,6 +171,12 @@ public class OSTool {
 	public static int execute(String[] cmd) throws IOException {
 		return execute(cmd, false);
 	}
+
+
+    public static boolean hasExecutionElevatedPrivileges() {
+        return isAdmin() || isRoot();
+    }
+
 	
 	/**
 	 * Works only on Windows
@@ -197,6 +203,34 @@ public class OSTool {
 	        return false;
 	    }
 	}
+
+
+    public static boolean isRoot() {
+        if (isSystemWindows()) {
+            return false;
+        }
+        final String command = "id --user";
+        final int rootId = 0;
+        try {
+            final Process p = Runtime.getRuntime().exec(command);
+            try (BufferedReader reader = new BufferedReader(new InputStreamReader(p.getInputStream()))) {
+                p.waitFor();
+                final String output = reader.readLine();
+                if (output != null) {
+                    final int actualUserId = Integer.parseInt(output.trim());
+                    return actualUserId == rootId;
+                } else {
+                    Logger.defaultLogger().error("The effective user ID could not be obtained.");
+                }
+            } catch (Exception e) {
+                Logger.defaultLogger().error(e);
+            }
+        } catch (Exception e) {
+            Logger.defaultLogger().error(e);
+        }
+        return false;
+    }
+
 	
 	public static boolean is64BitsJVM() {
 		String osArch = System.getProperty("os.arch");
