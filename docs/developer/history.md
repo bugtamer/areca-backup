@@ -1,5 +1,13 @@
 # Areca Backup - Versions history
 
+## Version 8.2.5 (released on 2026-03-15)
+
+- Fixed the display of the "Filter Group" type,
+  which always showed "And" in the "Target Edition" >> "Filters" tab regardless of whether it was "And" or "Or".
+- Added "Elevated privileges" log message.
+  Areca requires sufficient permissions to complete backup or restore operations.
+
+
 ## Version 8.2.4 (released on 2025-07-06)
 
 - Fixed misleading placement of some arguments in the Terminal User Interface (TUI) help.

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <versiondata
-    id="8.2.4"
-    date="2025-07-06"
+    id="8.2.5"
+    date="2026-03-15"
     url="https://sourceforge.net/projects/areca-backup/files/"
-    description="Fixed misleading placement of some arguments in the Terminal User Interface (TUI) help. Fixed the need to reopen Areca to apply changes to the way file sizes are displayed (decimal or binary). This feature was introduced in v8.2.0."
+    description="Fixed the display of the 'Filter Group' type, which always showed 'And' in the 'Filters' tab of 'Target Edition' window regardless of whether it was 'And' or 'Or'. Added 'Elevated privileges' log message."
 />
