@@ -103,12 +103,14 @@ import com.myJava.util.log.Logger;
 /**
  * <BR>
  * @author Olivier PETRUCCI
+ * @author bugtamer
  * <BR>
  *
  */
 
  /*
  Copyright 2005-2015, Olivier PETRUCCI.
+ Copyright 2024-2026, bugtamer.
 
 This file is part of Areca.
 
@@ -1599,11 +1601,10 @@ extends AbstractWindow {
 		item.removeAll();
 
 		ArchiveFilter filter = (ArchiveFilter)item.getData();
-		TreeItem parent = item.getParentItem();
 
 		String prefix = "";
 		if (! isFirst) {
-			prefix = (RM.getLabel(((FilterGroup)parent.getData()).isAnd() ? "common.operator.and" : "common.operator.or") + " ");
+			prefix = (RM.getLabel(((FilterGroup)item.getData()).isAnd() ? "common.operator.and" : "common.operator.or") + " ");
 		}
 
 		String filterExclude = RM.getLabel(
