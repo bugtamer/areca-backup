@@ -21,7 +21,7 @@ import com.myJava.util.version.VersionData;
 
  /*
  Copyright 2005-2015, Olivier PETRUCCI.
- Copyright 2024-2025, bugtamer.
+ Copyright 2024-2026, bugtamer.
 
 This file is part of Areca.
 
@@ -60,9 +60,10 @@ public class VersionInfos {
 
 	static {
 		// INIT BUILD ID - DO NOT MODIFY THE FOLLOWING COMMENT :
-		BUILD_ID = 5454828092862496675L;
+		BUILD_ID = -6180662568315811070L;
 
 		// INIT VERSION DATA
+		release("8.2.5", 2026, 02, 15, "Fixed the display of the 'Filter Group' type, which always showed 'And' in the 'Filters' tab of 'Target Edition' window regardless of whether it was 'And' or 'Or'. Added 'Elevated privileges' log message.");
 		release("8.2.4", 2025, 06, 06, "Fixed misleading placement of some arguments in the Terminal User Interface (TUI) help. Fixed the need to reopen Areca to apply changes to the way file sizes are displayed (decimal or binary). This feature was introduced in v8.2.0.");
 		release("8.2.3", 2025, 05, 25, "Fixed 'Send the report by email' Pre-processing action error on edit, which should be labeled as 'Send email'.");
 		release("8.2.2", 2025, 04, 12, "Fixed Windows launchers when they are executed outside of Areca directory.");

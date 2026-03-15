@@ -82,7 +82,7 @@ the missing links are topics that could be documented.
       - Backup ... (Ctrl + Enter)
       - Merge archives ...
       - Delete archives ... (Ctrl + Delete)
-      - Recover ...
+      - [Recover ...](/docs/developer/recovery/recover-dialogs.md)
       - Check ... (Ctrl + C)
       - Backup all targets
     - Help
@@ -99,7 +99,7 @@ the missing links are topics that could be documented.
     - Launch a backup process
     - Merge the archives
     - Delete the archives
-    - Recover the archive
+    - [Recover the archive](/docs/developer/recovery/recover-dialogs.md)
     - Displays Areca's help
   - Current workspace / Open a workspace (Workspace selector)
   - Target/Group panel
@@ -115,7 +115,7 @@ the missing links are topics that could be documented.
   - [UI links](ui-links.md)
   - Icons
   - Shortcut list
-  - Window Modals
+  - Window dialogs
     - Areca Backup - Backup
     - Areca Backup - Preferences
     - Areca Backup - Target edition
@@ -132,7 +132,7 @@ the missing links are topics that could be documented.
     - Areca Backup - Backup simulation for target_name
     - Areca Backup - Archive check (target_name)
     - Areca Backup - Archive detail
-    - Areca Backup - Data recovery
+    - [Areca Backup - Data recovery](/docs/developer/recovery/recover-dialogs.md)
     - Areca Backup - New version found
     - Areca Backup - No new version found
     - Areca Backup - About
@@ -160,11 +160,11 @@ the missing links are topics that could be documented.
     - Archive
       - Merge archives ...
       - Delete archive ...
-      - Recover ...
+      - [Recover ...](/docs/developer/recovery/recover-dialogs.md)
       - Check ...
       - Archive detail ...
     - Logical view
-      - Recover ...
+      - [Recover ...](/docs/developer/recovery/recover-dialogs.md)
       - Copy file names
       - View ...
       - View as test ...
@@ -174,5 +174,5 @@ the missing links are topics that could be documented.
     - Log
       - Clear
     - Areca Backup - Archive detail (modal)
-      - Recover ...
+      - [Recover ...](/docs/developer/recovery/recover-dialogs.md)
       - Copy file names

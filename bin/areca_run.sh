@@ -115,6 +115,10 @@ ARECA_LOG=${PROGRAM_DIR}/logs/areca_run.sh.log
 mkdir --parents ${PROGRAM_DIR}/logs
 echo DATE:                       $(date --utc --iso-8601)  > $ARECA_LOG 2>&1
 echo SCRIPT:                     areca_run.sh             >> $ARECA_LOG 2>&1
+<<<<<<< HEAD
+=======
+echo EFECTIVE USER ID:           $(id --user)             >> $ARECA_LOG 2>&1
+>>>>>>> develop
 echo CURRENT_WORKING_DIRECTORY:  $(pwd)                   >> $ARECA_LOG 2>&1
 echo                                                      >> $ARECA_LOG 2>&1
 echo JAVADIR:                    $JAVADIR                 >> $ARECA_LOG 2>&1

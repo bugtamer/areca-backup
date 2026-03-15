@@ -44,8 +44,8 @@ Either the `JRE` (Java Runtime Environment) or the `JDK` (Java Development Kit) 
 
 You must call either `javaw` (GUI) or `java` (GUI or TUI) and provide the following details:
 
-1. Initial RAM allocation (64 MB by default: `-Xmx1024m`).
-2. Maximum assignable RAM (1024 MB by default: `-Xms64m`).
+1. Initial RAM allocation (64 MB by default: `-Xms64m`).
+2. Maximum assignable RAM (1024 MB by default: `-Xmx1024m`).
 3. Classpath (`-cp "<CLASSPATH>"`), which includes paths to:
    * license file,
    * libraries (including `areca.jar` and the platform-specific [`SWT`](https://eclipse.dev/eclipse/swt/)),
@@ -127,6 +127,38 @@ as both `areca.exe` and `areca_cl.exe` already contain all the aforementioned lo
 and can also display an icon to represent them.
 Scripts (`bat` and `sh`) do not display icons; to show an icon,
 create a shortcut to them and associate an icon with it.
+
+
+## Elevated privileges
+
+Backup and recovery operations require sufficient permissions to complete.
+These permissions do not have to be root or admin permissions, but they must be sufficient.
+
+### Areca Log
+
+Since version 8.2.5 Areca shows if it has detected that it is running with elevated privileges.
+Example: `YY-MM-DD HH:MM - INFO - Elevated privileges : yes`.
+
+### Windows
+
+`areca.bat` Run as administrator
+
+### Linux
+
+`sudo ./areca.sh`
+
+~~~terminal
+ls: cannot access '/usr/java': No such file or directory
+No valid JRE found in /usr/java.
+~~~
+
+If after that message Areca does not run, you can try:
+- `sudo --preserve-env=PATH ./areca.sh`
+  Consider, where appropriate, which environment variables of the user, who executes sudo, needs to pass to a "clean" root environment. 
+  Consider whether it may pose a security problem in your case. 
+  You can add more than one environment variable by separating them with commas (`,`).
+- `sudo -E ./areca.sh`
+  `-E` attempts to preserve the user's environment
 
 
 ## Relevant classes

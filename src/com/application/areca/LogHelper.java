@@ -17,12 +17,14 @@ import com.myJava.util.log.Logger;
 /**
  * <BR>
  * @author Olivier PETRUCCI
+ * @author bugtamer
  * <BR>
  *
  */
 
  /*
  Copyright 2005-2015, Olivier PETRUCCI.
+ Copyright 2025-2025, bugtamer.
 
 This file is part of Areca.
 
@@ -60,6 +62,7 @@ public class LogHelper {
 		log("Framework properties : " + FrameworkConfiguration.getInstance().toFullString(FrameworkConfiguration.class));
 		log("Available translations : " + Utils.getTranslationsAsString());
 		log("File metadata accessor : " + mtdtAccessor);
+		log("Elevated privileges : " + (OSTool.hasExecutionElevatedPrivileges() ? "yes" : "no"));
 		Logger.defaultLogger().info(SEPARATOR);
 	}
 
