@@ -92,24 +92,6 @@ What `<major>.<minor>.<patch>` means in a specific Areca version (`8.0.0`):
 10. Upload release bundles to the `url` pointed in [`version.xml`](../../version.xml).
 
 11. Release the source code changes
-    - Switch to `release` branch:<br>
-      `git checkout release`
-    - Update local `release` branch:<br>
-      `git pull`
-    - Merge `develop` into the `release` branch with a **merge squash**:<br>
-      `git merge --squash develop`
-    - Commit the merge squash:<br>
-      ```shell
-      git commit --message "Version 8.0.0
-      
-      - Fixed Areca launchers.
-      - Support for Java 8 LTS.
-      - Fixed broken links to online documentation.
-      - Fixed `Check for new version ...` feature.
-      - Fixed building pipeline.
-      - Add dependency manager.
-      - Add some documentation for users and developers."
-      ```
     - Annotated tag:<br>
       ```shell
       git tag -a v8.0.0 --message "Version 8.0.0
@@ -124,7 +106,5 @@ What `<major>.<minor>.<patch>` means in a specific Areca version (`8.0.0`):
       ```
     - Upload local commits to the remote repo:<br>
       `git push --follow-tags`
-    - Switch to `develop` branch:<br>
-      `git checkout develop`
 
 12. Update the [Areca Backup official site](https://areca-backup.sourceforge.io/) if necessary.
