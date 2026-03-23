@@ -1,0 +1,33 @@
+<ivysettings>
+    <resolvers>
+        <chain name="main-chain">
+
+            <!-- Maven Central: https://repo1.maven.org/maven2/ -->
+            <ibiblio name="central" m2compatible="true"/>
+            
+            <!-- For: jface 3.2.0-I20060605-1400 -->
+            <ibiblio
+                name="jboss"
+                root="https://repository.jboss.org/nexus/content/groups/public/"
+                m2compatible="true"
+            />
+
+            <!-- For: local_policy 1.0|1.6|1.7 -->
+            <ibiblio
+                name="ibkey"
+                root="https://ibkey.sourceforge.net/maven/"
+                m2compatible="true"
+            />
+
+            <!-- For: JSch 0.1.44 -->
+            <ibiblio
+                name="atlassian"
+                root="https://maven.artifacts.atlassian.com/"
+                m2compatible="true"
+            />
+
+        </chain>
+    </resolvers>
+
+    <settings defaultResolver="main-chain"/>
+</ivysettings>

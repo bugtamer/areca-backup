@@ -1,0 +1,64 @@
+<project name="platform-agnostic-parts-bundler" basedir=".">
+
+    <target name="platform-agnostic-parts-bundler" depends="compileall" if="target.platform" unless="bundle.debug-mode-enabled">
+        <property name="bundle.file.name" value="areca-${bundle.version}-${target.platform}"/>
+
+        <delete dir="${bundle.dir}"/>
+        <mkdir dir="${bundle.dir}"/>
+
+        <!-- bin/ -->
+
+        <!-- config/ -->
+        
+        <!-- help/ -->
+        <copy file="${root}/help/ADVANCED_ENCRYPTION_HOWTO" tofile="${bundle.dir}/help/ADVANCED_ENCRYPTION_HOWTO" preservelastmodified="true" overwrite="true"/>
+
+        <!-- icons/ -->
+        <mkdir dir="${bundle.dir}/icons"/>
+        <copy file="${root}/icons/ico_16.png" tofile="${bundle.dir}/icons/ico_16.png" preservelastmodified="true" overwrite="true"/>
+        <copy file="${root}/icons/ico_72.png" tofile="${bundle.dir}/icons/ico_72.png" preservelastmodified="true" overwrite="true"/>
+
+        <!-- embedded Java locations -->
+        <mkdir dir="${bundle.dir}/jdk"/>
+        <mkdir dir="${bundle.dir}/jre"/>
+
+        <!-- lib/ -->
+        <copy preservelastmodified="true" overwrite="true" file="${root}/lib/areca.jar"             tofile="${bundle.dir}/lib/areca.jar"/>
+        <copy preservelastmodified="true" overwrite="true" file="${root}/lib/activation.jar"        tofile="${bundle.dir}/lib/activation.jar"/>
+        <copy preservelastmodified="true" overwrite="true" file="${root}/lib/commons-codec.jar"     tofile="${bundle.dir}/lib/commons-codec.jar"/>
+        <copy preservelastmodified="true" overwrite="true" file="${root}/lib/commons-net.jar"       tofile="${bundle.dir}/lib/commons-net.jar"/>
+        <copy preservelastmodified="true" overwrite="true" file="${root}/lib/oro.jar"               tofile="${bundle.dir}/lib/oro.jar"/>
+        <copy preservelastmodified="true" overwrite="true" file="${root}/lib/jsch.jar"              tofile="${bundle.dir}/lib/jsch.jar"/>
+        <copy preservelastmodified="true" overwrite="true" file="${root}/lib/local_policy.jar"      tofile="${bundle.dir}/lib/local_policy.jar"/>
+        <copy preservelastmodified="true" overwrite="true" file="${root}/lib/mail.jar"              tofile="${bundle.dir}/lib/mail.jar"/>
+        <copy preservelastmodified="true" overwrite="true" file="${root}/lib/commands.jar"          tofile="${bundle.dir}/lib/commands.jar"/>
+        <copy preservelastmodified="true" overwrite="true" file="${root}/lib/common.jar"            tofile="${bundle.dir}/lib/common.jar"/>
+        <copy preservelastmodified="true" overwrite="true" file="${root}/lib/org.eclipse.jface.jar" tofile="${bundle.dir}/lib/org.eclipse.jface.jar"/>
+        <copy preservelastmodified="true" overwrite="true" file="${swt.jar}"                        tofile="${bundle.dir}/lib/swt.jar"/>
+        
+        <!-- plugins/ -->
+        <mkdir dir="${bundle.dir}/plugins"/>
+
+        <!-- translations/ -->
+        <copy todir="${bundle.dir}/translations" preservelastmodified="true" overwrite="true">
+            <fileset dir="${root}/translations"/>
+        </copy>
+
+        <!-- areca.sh/exe -->
+
+        <!-- areca_check_version.sh/exe -->
+
+        <!-- AUTHORS -->
+        <copy file="${root}/AUTHORS" tofile="${bundle.dir}/AUTHORS" preservelastmodified="true" overwrite="true"/>
+
+        <!-- build.xml -->
+
+        <!-- COPYING -->
+        <copy file="${root}/COPYING" tofile="${bundle.dir}/COPYING" preservelastmodified="true" overwrite="true"/>
+
+        <!-- README -->
+
+        <property name="bundle.agnostic-part.ready" value="true"/>
+    </target>
+
+</project>

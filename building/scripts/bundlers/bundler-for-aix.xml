@@ -1,0 +1,36 @@
+<!--
+    See: docs/developer/building.md
+    See: ivy.xml
+-->
+<project name="generate-aix-bundles" basedir="${root}">
+
+    <property name="bundler.message" value="Build Areca Backup bundle compatible with AIX"/>
+
+
+
+    <target name="aix-ppc64">
+        <echo message="${bundler.message} PowerPC 64 bits | PPC64"/>
+
+        <property name="target.platform" value="aix-ppc64"/>
+
+        <antcall target="aix-bundler"/>
+    </target>
+
+
+
+    <target name="aix-ppc">
+        <echo message="${bundler.message} PowerPC | PPC"/>
+
+        <property name="target.platform" value="aix-ppc"/>
+
+        <antcall target="aix-bundler"/>
+    </target>
+
+
+
+    <target name="aix-bundler" if="target.platform">
+        <antcall target="unix-like-bundler"/>
+        <antcall target="tar.gz"/>
+    </target>
+
+</project>

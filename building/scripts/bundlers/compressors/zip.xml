@@ -1,0 +1,18 @@
+<project name="bundle-zip-compressor" basedir="${root}">
+
+    <target name="zip" if="target.platform" unless="bundle.debug-mode-enabled" depends="platform-agnostic-parts-bundler">
+        <zip destfile="${building.dir}/${bundle.file.name}.zip" level="9" zip64Mode="as-needed">
+            <zipfileset dir="${bundle.dir}" prefix="${bundle.file.name}"/>
+        </zip>
+
+        <!-- bundle hashes -->
+        <property name="hash.dir" value="${building.dir}/hashes/areca-${versiondata.id}-${target.platform}"/>
+        <checksum file="${building.dir}/${bundle.file.name}.zip" todir="${hash.dir}" forceOverwrite="yes" algorithm="SHA-512"/>
+        <checksum file="${building.dir}/${bundle.file.name}.zip" todir="${hash.dir}" forceOverwrite="yes" algorithm="SHA-1"/>
+        <checksum file="${building.dir}/${bundle.file.name}.zip" todir="${hash.dir}" forceOverwrite="yes" algorithm="MD5"/>
+        
+        <!-- remove files and folders -->
+        <delete dir="${bundle.dir}"/>
+    </target>
+
+</project>

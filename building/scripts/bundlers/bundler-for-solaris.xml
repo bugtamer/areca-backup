@@ -1,0 +1,36 @@
+<!--
+    See: docs/developer/building.md
+    See: ivy.xml
+-->
+<project name="generate-solaris-bundles" basedir="${root}">
+
+    <property name="bundler.message" value="Build Areca Backup bundle compatible with Solaris"/>
+
+
+
+    <target name="solaris-x86-32">
+        <echo message="${bundler.message} x32 | x86 | x86-32 | x86_32 | i586 | i686"/>
+
+        <property name="target.platform" value="solaris-x86-32"/>
+
+        <antcall target="solaris-bundler"/>
+    </target>
+
+
+
+    <target name="solaris-sparc">
+        <echo message="${bundler.message} sparc"/>
+
+        <property name="target.platform" value="solaris-sparc"/>
+
+        <antcall target="solaris-bundler"/>
+    </target>
+
+
+
+    <target name="solaris-bundler" if="target.platform">
+        <antcall target="unix-like-bundler"/>
+        <antcall target="tar.gz"/>
+    </target>
+
+</project>

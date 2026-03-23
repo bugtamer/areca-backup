@@ -14,9 +14,16 @@
     <property name="bundle.version" value="${versiondata.id}"/>
 
 
+    <import file="compressors/zip.xml"/>
+    <import file="compressors/tar.gz.xml"/>
+
     <import file="bundler-for-platform-agnostic-parts.xml"/>
     <import file="bundler-for-windows.xml"/>
     <import file="bundler-for-unix-like.xml"/>
     <import file="bundler-for-linux.xml"/>
+    <import file="bundler-for-macos.xml"/>
+    <import file="bundler-for-solaris.xml"/>
+    <import file="bundler-for-aix.xml"/>
+    <import file="bundler-for-hpux.xml"/>
 
 </project>

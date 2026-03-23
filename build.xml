@@ -13,12 +13,11 @@
     <property name="debug" value="off"/>
 
     <!-- Path to SWT libraries (download the SWT package if this file is missing on your system) -->
-    <property name="swtfile" value="${root}/lib/swt.jar"/>
+    <property name="swt.jar"     value="${root}/lib/swt.jar"/>
     <property name="scripts.dir" value="${root}/building/scripts"/>
 
-    <import file="${scripts.dir}/swt-platform.xml"/>
     <import file="${scripts.dir}/dependency-manager.xml"/>
-    <import file="${scripts.dir}/bundlers.xml"/>
+    <import file="${scripts.dir}/bundlers/bundlers.xml"/>
 
     <!-- Test the OS -->
     <condition property="isWindows">
@@ -66,7 +65,7 @@
                 <fileset dir="${root}/lib">
                     <include name="**/*.jar"/>
                 </fileset>
-                <fileset file="${swtfile}"/>
+                <fileset file="${swt.jar}"/>
             </classpath>
         </javac>
 

@@ -1,34 +1,65 @@
-<!--
-    Dependency Management
--->
-<ivy-module version="2.0">
+<?xml version="1.0" encoding="UTF-8"?>
+<ivy-module version="2.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="http://ant.apache.org/ivy/schemas/ivy.xsd"
+>
+
 
     <info organisation="bugtamer" module="areca"/>
 
 
-    <configurations defaultconf="all-dependencies">
-        <conf name="all-dependencies" extends="platform-agnostic,platform-specific"/>
-        <conf name="platform-agnostic"/>
-        <conf name="platform-specific"/>
+    <configurations defaultconf="platform-linux-x86-64">
+        <conf name="platform-agnostic" description="Shared dependencies among all platforms." />
+        <conf name="platform-windows-x86-64" />
+        <conf name="platform-windows-x86-32" />
+        <conf name="platform-macos-x86-64" />
+        <conf name="platform-macos-x86-32" />
+        <conf name="platform-linux-x86-64" />
+        <conf name="platform-linux-x86-32" />
+        <conf name="platform-linux-ppc64" />
+        <conf name="platform-linux-ppc" />
+        <conf name="platform-linux-s390x" />
+        <conf name="platform-linux-s390" />
+        <conf name="platform-solaris-x86-32" />
+        <conf name="platform-solaris-sparc" />
+        <conf name="platform-aix-ppc64" />
+        <conf name="platform-aix-ppc" />
+        <conf name="platform-hpux-ia64" />
     </configurations>
 
 
     <dependencies>
 
-        <!-- Look at swt-platform.xml to find out how this dependency is determined at building time -->
-        <dependency conf="platform-specific->*" org="${swt.org}" name="${swt.name}" rev="${swt.rev}"/>
+        <!-- Platform Agnostic -->
 
-        <!-- https://mvnrepository.com/artifact/oro/oro -->
-        <dependency conf="platform-agnostic->*" org="oro" name="oro" rev="2.0.8"/>
+        <dependency conf="platform-agnostic -> default" org="oro"                                     name="oro"               rev="2.0.8" />
+        <dependency conf="platform-agnostic -> default" org="commons-net"                             name="commons-net"       rev="1.4.1" />
+        <dependency conf="platform-agnostic -> default" org="commons-codec"                           name="commons-codec"     rev="1.4" />
+        <dependency conf="platform-agnostic -> default" org="javax.mail"                              name="mail"              rev="1.4" />
+        <dependency conf="platform-agnostic -> default" org="org.eclipse.jface"                       name="org.eclipse.jface" rev="3.2.0-I20060605-1400" />
+        <dependency conf="platform-agnostic -> default" org="org.eclipse.core"                        name="commands"          rev="3.2.0-I20060605-1400" />
+        <dependency conf="platform-agnostic -> default" org="org.eclipse.equinox"                     name="common"            rev="3.2.0-v20060603" />
+        <dependency conf="platform-agnostic -> default" org="java.security.policies.crypto.unlimited" name="local_policy"      rev="1.6" />
+        <dependency conf="platform-agnostic -> default" org="javax.activation"                        name="activation"        rev="1.1" />
+        <dependency conf="platform-agnostic -> default" org="jsch"                                    name="jsch"              rev="0.1.44" />
 
-        <!-- https://mvnrepository.com/artifact/commons-net/commons-net -->
-        <dependency conf="platform-agnostic->*" org="commons-net" name="commons-net" rev="1.4.1"/>
-
-        <!-- https://mvnrepository.com/artifact/commons-codec/commons-codec -->
-        <dependency conf="platform-agnostic->*" org="commons-codec" name="commons-codec" rev="1.4"/>
-
-        <!-- https://mvnrepository.com/artifact/org.eclipse.jface/org.eclipse.jface -->
-        <dependency conf="platform-agnostic->*" org="org.eclipse.jface" name="org.eclipse.jface" rev="3.2.0-I20060605-1400"/>
+        <!-- Platform Specific -->
+        
+        <dependency conf="platform-windows-x86-64 -> *" org="org.eclipse.swt" name="org.eclipse.swt.win32.win32.x86_64"  rev="4.3" />
+        <dependency conf="platform-windows-x86-32 -> *" org="org.eclipse.swt" name="org.eclipse.swt.win32.win32.x86"     rev="4.3" />
+        <dependency conf="platform-linux-x86-64   -> *" org="org.eclipse.swt" name="org.eclipse.swt.gtk.linux.x86_64"    rev="4.3" />
+        <dependency conf="platform-linux-x86-32   -> *" org="org.eclipse.swt" name="org.eclipse.swt.gtk.linux.x86"       rev="4.3" />
+        <dependency conf="platform-linux-ppc64    -> *" org="org.eclipse.swt" name="org.eclipse.swt.gtk.linux.ppc64"     rev="4.3" />
+        <dependency conf="platform-linux-ppc      -> *" org="org.eclipse.swt" name="org.eclipse.swt.gtk.linux.ppc"       rev="4.3" />
+        <dependency conf="platform-linux-s390x    -> *" org="org.eclipse.swt" name="org.eclipse.swt.gtk.linux.s390x"     rev="4.3" />
+        <dependency conf="platform-linux-s390     -> *" org="org.eclipse.swt" name="org.eclipse.swt.gtk.linux.s390"      rev="4.3" />
+        <dependency conf="platform-macos-x86-64   -> *" org="org.eclipse.swt" name="org.eclipse.swt.cocoa.macosx.x86_64" rev="4.3" />
+        <dependency conf="platform-macos-x86-32   -> *" org="org.eclipse.swt" name="org.eclipse.swt.cocoa.macosx"        rev="4.3" />
+        <dependency conf="platform-solaris-x86-32 -> *" org="org.eclipse.swt" name="org.eclipse.swt.gtk.solaris.x86"     rev="4.3" />
+        <dependency conf="platform-solaris-sparc  -> *" org="org.eclipse.swt" name="org.eclipse.swt.gtk.solaris.sparc"   rev="4.3" />
+        <dependency conf="platform-aix-ppc64      -> *" org="org.eclipse.swt" name="org.eclipse.swt.gtk.aix.ppc64"       rev="4.3" />
+        <dependency conf="platform-aix-ppc        -> *" org="org.eclipse.swt" name="org.eclipse.swt.gtk.aix.ppc"         rev="4.3" />
+        <dependency conf="platform-hpux-ia64      -> *" org="org.eclipse.swt" name="org.eclipse.swt.gtk.hpux.ia64"       rev="4.3" />
 
     </dependencies>
 

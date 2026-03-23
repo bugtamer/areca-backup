@@ -1,0 +1,76 @@
+<!--
+    See: docs/developer/building.md
+    See: ivy.xml
+-->
+<project name="generate-linux-bundles" basedir="${root}">
+
+    <property name="bundler.message" value="Build Areca Backup bundle compatible with GNU/Linux"/>
+
+
+
+    <target name="linux-x86-64">
+        <echo message="${bundler.message} x64 | AMD64 | x86-64 | x86_64 | Intel 64 | IA-32e | EM64T"/>
+
+        <property name="target.platform" value="linux-x86-64"/>
+
+        <antcall target="linux-bundler"/>
+    </target>
+
+
+
+    <target name="linux-x86-32">
+        <echo message="${bundler.message} x32 | x86 | x86-32 | x86_32 | i586 | i686"/>
+
+        <property name="target.platform" value="linux-x86-32"/>
+
+        <antcall target="linux-bundler"/>
+    </target>
+
+
+
+    <target name="linux-ppc64">
+        <echo message="${bundler.message} PPC64"/>
+
+        <property name="target.platform" value="linux-ppc64"/>
+
+        <antcall target="linux-bundler"/>
+    </target>
+
+
+
+    <target name="linux-ppc">
+        <echo message="${bundler.message} PPC"/>
+
+        <property name="target.platform" value="linux-ppc"/>
+
+        <antcall target="linux-bundler"/>
+    </target>
+
+
+
+    <target name="linux-s390x">
+        <echo message="${bundler.message} S390X"/>
+
+        <property name="target.platform" value="linux-s390x"/>
+
+        <antcall target="linux-bundler"/>
+    </target>
+
+
+
+    <target name="linux-s390">
+        <echo message="${bundler.message} S390"/>
+
+        <property name="target.platform" value="linux-s390"/>
+
+        <antcall target="linux-bundler"/>
+    </target>
+
+
+
+    <target name="linux-bundler" if="target.platform">
+        <antcall target="unix-like-bundler"/>
+        <antcall target="tar.gz"/>
+    </target>
+
+</project>

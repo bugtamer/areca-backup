@@ -24,40 +24,26 @@
     </target>
 
 
-    <target name="get-java-dependencies" depends="install-ivy,detect-swt-platform" description="Retrieve dependencies with Apache Ivy">
-        <property name="swt.name" value="${swt.org}.${swt.os}.${swt.arch}"/>
-        <property name="swt.cache" value="${user.home}/.ivy2/cache/${swt.org}/${swt.name}/jars/${swt.name}-${swt.rev}.jar"/>
-        <property name="swtfile" value="${root}/building/legacy/lib/swt.jar"/>
-        <property name="lib.swt" value="${root}/lib/${swt.name}-${swt.rev}.jar"/>
+    <target name="get-java-dependencies" depends="install-ivy" description="Retrieve dependencies with Apache Ivy">
+        <ivy:settings file="ivysettings.xml"/>
 
-        <ivy:retrieve conf="platform-specific" type="jar" transitive="false"/>
-        <move file="${lib.swt}" tofile="${swtfile}" overwrite="true"/>
- 
-        <checksum file="${root}/lib/swt.jar" algorithm="SHA-512" property="hash.sha512"/>
-        <checksum file="${root}/lib/swt.jar" algorithm="SHA-1"   property="hash.sha1"/>
-        <checksum file="${root}/lib/swt.jar" algorithm="MD5"     property="hash.md5"/>
-        
-        <echo message="Retrieved swt.jar (see: ivy.xml):"/>
-        <echo message="- Artifact:   ${swt.name}"/>
-        <echo message="- Repository: https://mvnrepository.com/artifact/${swt.org}/${swt.name}/${swt.rev}"/>
-        <echo message="- SHA-512:    ${hash.sha512}"/>
-        <echo message="- SHA-1:      ${hash.sha1}"/>
-        <echo message="- MD5:        ${hash.md5}"/>
+        <ivy:retrieve conf="platform-agnostic"           type="jar" overwriteMode="always" transitive="false" pattern="${root}/lib/[artifact].[ext]" />
+        <ivy:retrieve conf="platform-${target.platform}" type="jar" overwriteMode="always" transitive="false" pattern="${swt.jar}" />
     </target>
 
 
     <target name="clean" depends="install-ivy" description="Clean the project">
-        <delete quiet="true" file="${root}/lib/areca.jar"/>
-        <delete quiet="true" file="${root}/lib/swt.jar"/>
         <delete quiet="true" file="${root}/lib/libarecafs.so"/>
         <delete quiet="true" file="${root}/jni/com_myJava_file_metadata_posix_jni_wrapper_FileAccessWrapper.h"/>
         <delete quiet="true" file="${root}/jni/com_myJava_file_metadata_posix_jni_wrapper_FileAccessWrapper.o"/>
         <delete quiet="true" file="${root}/building/GenerateBuildId.class"/>
 
         <delete quiet="true" includeemptydirs="true">
+            <fileset dir="${root}/classes"/>
             <fileset dir="${root}/building/releases"/>
             <fileset dir="${root}/releases"/>
-            <fileset dir="${root}" includes="**/*.class"/>
+            <fileset dir="${root}/lib" includes="**/*.jar"/>
+            <fileset dir="${root}"     includes="**/*.class"/>
         </delete>
     </target>
     

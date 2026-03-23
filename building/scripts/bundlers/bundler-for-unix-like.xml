@@ -2,8 +2,7 @@
 
     <target name="unix-like-bundler" if="target.platform" unless="bundle.debug-mode-enabled" depends="platform-agnostic-parts-bundler">
         <echo message="Unix-like bundler"/>
-        <echo message="- swt.os   = '${swt.os}'"/>
-        <echo message="- swt.arch = '${swt.arch}'"/>
+        <echo message="- Platform: '${target.platform}'"/>
 
         <delete file="${building.dir}/${bundle.file.name}.tar.gz"/>
 
