@@ -1601,9 +1601,15 @@ extends AbstractWindow {
 		item.removeAll();
 
 		ArchiveFilter filter = (ArchiveFilter)item.getData();
+		TreeItem parent = item.getParentItem();
 
 		String prefix = "";
 		if (! isFirst) {
+			prefix = (RM.getLabel(((FilterGroup)parent.getData()).isAnd() ? "common.operator.and" : "common.operator.or") + " ");
+		} 
+
+		boolean isFilterGroup = item.getData() instanceof FilterGroup;
+		if (isFilterGroup) {
 			prefix = (RM.getLabel(((FilterGroup)item.getData()).isAnd() ? "common.operator.and" : "common.operator.or") + " ");
 		}
 
