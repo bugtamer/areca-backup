@@ -8,10 +8,10 @@
 
 
 
-    <target name="hpux-x86-64">
-        <echo message="${bundler.message} x64 | AMD64 | x86-64 | x86_64 | Intel 64 | IA-32e | EM64T"/>
+    <target name="hpux-ia64">
+        <echo message="${bundler.message} IA64"/>
 
-        <property name="target.platform" value="hpux-x86-64"/>
+        <property name="target.platform" value="hpux-ia64"/>
 
         <antcall target="hpux-bundler"/>
     </target>
