@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <versiondata
-    id="8.2.5"
-    date="2026-03-15"
+    id="8.2.6"
+    date="2026-06-07"
     url="https://sourceforge.net/projects/areca-backup/files/"
-    description="Fixed the display of the 'Filter Group' type, which always showed 'And' in the 'Filters' tab of 'Target Edition' window regardless of whether it was 'And' or 'Or'. Added 'Elevated privileges' log message."
+    description="Fixed '#3 Windows Locked Files and Locked File Filter crashes' that was an error from the ''Fixed the display of the 'Filter Group' type'' fix in Areca 8.2.5."
 />

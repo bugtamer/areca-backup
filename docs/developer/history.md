@@ -1,5 +1,21 @@
 # Areca Backup - Versions history
 
+## Version 8.2.6 (released on 2026-06-07)
+
+- Fixed "[#3 Windows Locked Files and Locked File Filter crashes](https://sourceforge.net/p/areca-backup/tickets/3/)"
+  that was an error from the «Fixed the display of the "Filter Group" type» fix in Areca 8.2.5.
+- Updated some internal documentation.
+- Added missing original legacy SWT libraries (4.3) to `building\legacy` directory for building legacy releases.
+- Moved legacy dependencies to `building\legacy` directory.
+- Improved the building script to support future updated versions of SWT and all its legacy platforms for 4.3 version:<br/>
+  · _Windows_ (x86-64 + x86-32),<br/>
+  · _Linux_   (x86-64 + x86-32 + ppc64 + ppc + s390x + s390),<br/>
+  · _macOS_   (x86-64 + x86-32),<br/>
+  · _Solaris_ (sparc  + x86-32),<br/>
+  · _AIX_     (ppc64  + ppc) and,<br/>
+  · _HP-UX_   (ia64)
+
+
 ## Version 8.2.5 (released on 2026-03-15)
 
 - Fixed the display of the "Filter Group" type,
