@@ -64,10 +64,27 @@ fi
 # BUILD BUNDLES
 
 ant clean
+
 ant windows-x86-32
 ant windows-x86-64
+
 ant linux-x86-32
 ant linux-x86-64
+ant linux-ppc64
+ant linux-ppc
+ant linux-s390x
+ant linux-s390
+
+ant macos-x86-64
+ant macos-x86-32
+
+ant solaris-x86-32
+ant solaris-sparc
+
+ant aix-ppc64
+ant aix-ppc
+
+ant hpux-ia64
 
 
 # DOWNLOAD SOURCE CODE
@@ -115,7 +132,9 @@ done < "$HISTORY" > releases/README.md
 # https://sourceforge.net/p/forge/documentation/File%20Management/
 # https://sourceforge.net/p/forge/documentation/SFTP/
 # https://sourceforge.net/p/forge/documentation/rsync/
+# https://sourceforge.net/p/forge/documentation/Using%20the%20Release%20API/
 
+PROJECT_NAME=areca-backup
 RELEASE_DIR=areca-backup-${CURRENT_VERSION}-DEPLOYMENT-TEST
 
 # https://sourceforge.net/p/forge/documentation/SSH%20Keys/
@@ -131,8 +150,37 @@ sftp bugtamer@frs.sourceforge.net <<EOF
     put areca-$CURRENT_VERSION-linux-x86-64.tar.gz areca-$CURRENT_VERSION-linux-x86-64.tar.gz
     put areca-$CURRENT_VERSION-windows-x86-32.zip  areca-$CURRENT_VERSION-windows-x86-32.zip
     put areca-$CURRENT_VERSION-windows-x86-64.zip  areca-$CURRENT_VERSION-windows-x86-64.zip
+    mkdir untested
+    cd untested
+    lcd ..
+    put building/assets/untested-platforms.md        README.md
+    lcd releases/
+    put areca-$CURRENT_VERSION-hpux-ia64.tar.gz      areca-$CURRENT_VERSION-hpux-ia64.tar.gz
+    put areca-$CURRENT_VERSION-aix-ppc.tar.gz        areca-$CURRENT_VERSION-aix-ppc.tar.gz
+    put areca-$CURRENT_VERSION-aix-ppc64.tar.gz      areca-$CURRENT_VERSION-aix-ppc64.tar.gz
+    put areca-$CURRENT_VERSION-solaris-x86-32.tar.gz areca-$CURRENT_VERSION-solaris-x86-32.tar.gz
+    put areca-$CURRENT_VERSION-solaris-sparc.tar.gz  areca-$CURRENT_VERSION-solaris-sparc.tar.gz
+    put areca-$CURRENT_VERSION-macos-x86-32.tar.gz   areca-$CURRENT_VERSION-macos-x86-32.tar.gz
+    put areca-$CURRENT_VERSION-macos-x86-64.tar.gz   areca-$CURRENT_VERSION-macos-x86-64.tar.gz
+    put areca-$CURRENT_VERSION-linux-s390.tar.gz     areca-$CURRENT_VERSION-linux-s390.tar.gz
+    put areca-$CURRENT_VERSION-linux-s390x.tar.gz    areca-$CURRENT_VERSION-linux-s390x.tar.gz
+    put areca-$CURRENT_VERSION-linux-ppc.tar.gz      areca-$CURRENT_VERSION-linux-ppc.tar.gz
+    put areca-$CURRENT_VERSION-linux-ppc64.tar.gz    areca-$CURRENT_VERSION-linux-ppc64.tar.gz
+    cd ..
     cd ..
     lcd ..
     put docs/developer/history.md README.md
     exit
 EOF
+
+
+RELEASE_URL=https://sourceforge.net/projects/${PROJECT_NAME}/files/areca-stable/${RELEASE_DIR}
+
+echo
+echo stage "${RELEASE_DIR}" folder, making it not listed for 3 days.
+curl -H "Accept: application/json" \
+     -X PUT \
+     -d "stage=1" \
+     -d "api_key=${SF_API_KEY}" ${RELEASE_URL}
+
+echo
