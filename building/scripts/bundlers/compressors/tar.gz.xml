@@ -1,6 +1,6 @@
 <project name="bundle-tar.gz-compressor" basedir="${root}">
 
-    <target name="tar.gz" if="target.platform" unless="bundle.debug-mode-enabled" depends="platform-agnostic-parts-bundler">
+    <target name="tar.gz" if="bundle.specific-part.ready" unless="bundle.debug-mode-enabled">
         <!-- compression and set permissions -->
         <tar destfile="${building.dir}/${bundle.file.name}.tar" longfile="posix">
             <tarfileset dir="${bundle.dir}" prefix="${bundle.file.name}" preserveLeadingSlashes="true">

@@ -20,7 +20,6 @@
 
     <target name="hpux-bundler" if="target.platform">
         <antcall target="unix-like-bundler"/>
-        <antcall target="tar.gz"/>
     </target>
 
 </project>

@@ -1,6 +1,6 @@
 <project name="bundle-zip-compressor" basedir="${root}">
 
-    <target name="zip" if="target.platform" unless="bundle.debug-mode-enabled" depends="platform-agnostic-parts-bundler">
+    <target name="zip" if="bundle.specific-part.ready" unless="bundle.debug-mode-enabled">
         <zip destfile="${building.dir}/${bundle.file.name}.zip" level="9" zip64Mode="as-needed">
             <zipfileset dir="${bundle.dir}" prefix="${bundle.file.name}"/>
         </zip>

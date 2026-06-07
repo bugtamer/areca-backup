@@ -30,7 +30,6 @@
 
     <target name="solaris-bundler" if="target.platform">
         <antcall target="unix-like-bundler"/>
-        <antcall target="tar.gz"/>
     </target>
 
 </project>

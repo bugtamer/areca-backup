@@ -75,6 +75,7 @@
         <!-- README -->
         <copy file="${root}/building/assets/README.windows.txt" tofile="${bundle.dir}/README.txt" preservelastmodified="true" overwrite="true"/>
 
+        <property name="bundle.specific-part.ready" value="true"/>
         <antcall target="zip"/>
     </target>
 
